@@ -7,7 +7,11 @@ export const brand = {
   name: "Mettle",
   tagline: "Solving complexity with precision",
   shortDescription:
-    "A consulting-led firm that helps founders handle complexity with confidence, clarity, and competence.",
+    "Mettle helps founders navigate complexity and turn it into clear, workable systems.",
   longDescription:
-    "Mettle exists to help founders handle complexity with confidence, clarity, and competence. We work with complex, ambiguous problems through consulting-led approaches, partnering with founders to turn messy problems into workable systems.",
+    "Mettle exists to help founders handle complexity with confidence, clarity, and competence. We consult, design, and execute where clarity matters most, partnering with you to understand problems before jumping to solutions. Our approach emphasizes diagnosis, systems thinking, and long-term outcomes over short-term delivery.",
+  cta: {
+    text: "Get Started",
+    href: "/contact",
+  },
 } as const;

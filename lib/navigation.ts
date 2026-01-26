@@ -10,7 +10,6 @@ export const navigation = {
     { label: "Capabilities", href: "/capabilities" },
     { label: "Thinking", href: "/thinking" },
     { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
   ],
   footer: [
     { label: "About", href: "/about" },

@@ -11,6 +11,16 @@ import {
   X,
   ChevronRight,
   Check,
+  AlertTriangle,
+  Lightbulb,
+  Clock,
+  TrendingUp,
+  Monitor,
+  HelpCircle,
+  Twitter,
+  Linkedin,
+  Github,
+  Info,
 } from "lucide-react";
 
 export const Icons = {
@@ -21,4 +31,14 @@ export const Icons = {
   close: X,
   chevronRight: ChevronRight,
   check: Check,
+  alertTriangle: AlertTriangle,
+  lightbulb: Lightbulb,
+  clock: Clock,
+  trendingUp: TrendingUp,
+  monitor: Monitor,
+  helpCircle: HelpCircle,
+  twitter: Twitter,
+  linkedin: Linkedin,
+  github: Github,
+  info: Info,
 } as const;
