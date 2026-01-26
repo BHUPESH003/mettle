@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mettle Website
 
-## Getting Started
+Production-grade Next.js website for Mettle consulting firm.
 
-First, run the development server:
+## Architecture
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This project follows strict architectural constraints defined in:
+
+- `docs/masterPlan.md` - WHAT is built and WHY (CANONICAL)
+- `docs/ARCHITECTURE.md` - HOW it is built
+- `docs/prompts.md` - WHEN to build something
+
+**Hierarchy:** masterPlan.md > ARCHITECTURE.md > prompts.md
+
+## Key Principles
+
+- **Single Source of Truth**: All brand text, colors, fonts, icons, and navigation come from config files in `lib/`
+- **Token-Based Design**: Tailwind consumes CSS variables, not hardcoded values
+- **Server-First**: Server Components by default, minimal JavaScript
+- **Composition**: shadcn/ui components wrapped in `components/common/` for customization
+- **Performance**: Lighthouse 90+, <3s load time
+
+## Project Structure
+
+```
+app/
+  ├─ (marketing)/          # Route group for marketing pages
+  │   ├─ page.tsx          # Home
+  │   ├─ how-we-work/
+  │   ├─ work/             # Case studies
+  │   ├─ capabilities/
+  │   ├─ thinking/         # Articles
+  │   ├─ about/
+  │   └─ contact/
+  ├─ privacy/
+  ├─ terms/
+  ├─ layout.tsx            # Root layout
+  └─ globals.css           # CSS variables for tokens
+
+lib/
+  ├─ brand.ts              # Brand name, tagline, descriptions
+  ├─ theme.ts              # Design tokens (colors, spacing, radius)
+  ├─ typography.ts         # Font families and scales
+  ├─ icons.ts              # Icon mapping (lucide-react)
+  ├─ navigation.ts         # Nav and footer links
+  └─ utils.ts              # Utility functions (cn, etc.)
+
+components/
+  ├─ ui/                   # shadcn/ui base components (DO NOT modify)
+  └─ common/               # Wrapped components for Mettle-specific use
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Config Files (Single Source of Truth)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **`lib/brand.ts`**: Brand name, tagline, descriptions
+- **`lib/theme.ts`**: Design tokens (consumed via CSS variables)
+- **`lib/typography.ts`**: Font families and typography scales
+- **`lib/icons.ts`**: Icon mapping (lucide-react)
+- **`lib/navigation.ts`**: Navigation and footer links
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Development
 
-## Learn More
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run start    # Start production server
+npm run lint     # Run ESLint
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Design System
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Colors: Defined in `app/globals.css` as CSS variables, consumed by Tailwind
+- Typography: Geist Sans (primary), Geist Mono (code)
+- Icons: lucide-react (imported via `lib/icons.ts`)
+- Components: shadcn/ui base, wrapped in `components/common/` for customization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Important Rules
 
-## Deploy on Vercel
+1. **Never hardcode** brand strings, colors, or spacing values
+2. **Always use tokens** from config files
+3. **Server Components by default** - only use Client Components when necessary
+4. **Framer Motion** only when it improves UX (not decorative)
+5. **shadcn/ui** components must be wrapped, never modified directly
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Next Steps
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Follow `docs/prompts.md` for implementation tasks. Always validate against `docs/masterPlan.md` and `docs/ARCHITECTURE.md` before making changes.

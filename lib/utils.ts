@@ -1,0 +1,11 @@
+/**
+ * Utility functions
+ * cn() for className merging (required for shadcn/ui)
+ */
+
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
