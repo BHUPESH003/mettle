@@ -16,24 +16,24 @@ export const metadata: Metadata = {
 
 const coreBeliefs = [
   {
-    title: "We believe complexity is inevitable",
+    title: "Process comes first, AI second",
     description:
-      "But confusion doesn't have to be. Every growing business encounters complexity — it's a natural part of scaling. What matters is how you handle it.",
+      "Adding AI to a broken process just makes mistakes happen faster. We clinicaly audit your business workflows to fix the logic before we apply the technology.",
   },
   {
-    title: "Systems over solutions",
+    title: "Systems over decks",
     description:
-      "We don't provide quick fixes. We design systems that work today and can evolve as your business grows. Good systems reduce cognitive load and create sustainable growth.",
+      "We don't deliver 'strategy' PDFs. We deliver production-grade code, custom CRMs, and automation pipelines that live in your business and drive real output.",
   },
   {
-    title: "Understanding before action",
+    title: "Execution is the strategy",
     description:
-      "Most problems aren't solved by jumping to solutions. They're solved by deeply understanding the context, constraints, and people involved. We take the time to understand before we act.",
+      "Most consulting fails because of the gap between advice and action. We bridge that gap by owning the implementation from architecture to iteration.",
   },
   {
-    title: "Technology serves decisions",
+    title: "Technology as leverage",
     description:
-      "We choose tools and technology based on business needs, not trends. Every technology decision serves a clear purpose in moving your business forward.",
+      "We choose tools (Next.js, FastAPI, PostgreSQL) because they provide the best leverage for your business constraints, not because they're trending.",
   },
 ];
 
@@ -41,32 +41,22 @@ const values = [
   {
     title: "Clarity over complexity",
     description:
-      "We work to make the complex understandable, not to add more complexity.",
+      "We work to make your operations readable and repeatable, not more convoluted.",
   },
   {
-    title: "Long-term thinking",
+    title: "Engineering-led",
     description:
-      "We design for sustainable growth, not short-term wins.",
+      "Our founders are builders. We solve problems with an engineer's mindset of efficiency and scale.",
   },
   {
     title: "Honest partnerships",
     description:
-      "We tell you what we see, even when it's uncomfortable.",
+      "We tell you when a process is broken or when AI isn't the right tool for the job.",
   },
   {
-    title: "Continuous learning",
+    title: "Founder-to-Founder",
     description:
-      "Every project teaches us something new about systems and complexity.",
-  },
-  {
-    title: "Founder perspective",
-    description:
-      "We've been in the trenches. We understand the real challenges founders face.",
-  },
-  {
-    title: "Practical results",
-    description:
-      "We measure success by whether your systems actually work in practice.",
+      "We understand the pressure of scaling. We work as a direct extension of your core team.",
   },
 ];
 
