@@ -5,13 +5,13 @@
 
 export const brand = {
   name: "Mettle",
-  tagline: "Solving complexity with precision",
+  tagline: "Process-driven execution for growing companies",
   shortDescription:
-    "Mettle helps founders navigate complexity and turn it into clear, workable systems.",
+    "We fix broken processes and build custom automation systems that run your business. No fluff, just engineering-led execution.",
   longDescription:
-    "Mettle exists to help founders handle complexity with confidence, clarity, and competence. We consult, design, and execute where clarity matters most, partnering with you to understand problems before jumping to solutions. Our approach emphasizes diagnosis, systems thinking, and long-term outcomes over short-term delivery.",
+    "Mettle is an AI-first execution firm built by engineers. We help founders handle complexity with confidence by auditing operational workflows, stripping away friction, and deploying custom software and automation that actually moves the needle. Our approach emphasizes diagnosis, systems thinking, and long-term outcomes.",
   cta: {
-    text: "Get Started",
+    text: "Start a conversation",
     href: "/contact",
   },
 } as const;

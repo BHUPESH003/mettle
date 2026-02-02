@@ -23,67 +23,55 @@ interface Capability {
 
 const capabilities: Capability[] = [
   {
-    title: "Business Systems & Workflows",
+    title: "Process Analysis & Workflow Design",
     description:
-      "When processes become barriers to growth rather than enablers.",
+      "Auditing and rebuilding the operational sequence of your business before applying technology.",
     commonChallenges: [
-      "Decisions made in silos creating conflicting priorities",
-      "Workflows that worked for 10 people failing at 50",
-      "Unclear accountability leading to bottlenecks",
-      "Processes that exist but aren't followed",
+      "Manual workarounds that haven't been reviewed in years",
+      "Workflows that fail as team headcount or volume increases",
+      "Bottlenecks that only one person knows how to 'fix'",
+      "Automation attempts that failed because the underlying process was broken",
     ],
     ourApproach:
-      "We map how decisions actually get made and design systems that scale with your business, not against it.",
+      "We map how your business actually runs, strip away the friction, and design a clinical, repeatable workflow designed for scale.",
   },
   {
-    title: "Digital Foundations",
+    title: "Custom Internal Software",
     description:
-      "Building technology that serves business decisions, not the other way around.",
+      "Developing high-leverage tools that fit your unique business sequence like a glove.",
     commonChallenges: [
-      "Tools chosen without understanding business constraints",
-      "Disconnected systems creating data silos",
-      "Technology decisions made too fast or too slow",
-      "Digital infrastructure that hinders rather than helps",
+      "Relying on fragmented tools and disconnected spreadsheets",
+      "Outgrowing off-the-shelf CRMs and generic SaaS platforms",
+      "Lack of centralized visibility into orders, inventory, or sales",
+      "Data silos that prevent cross-department alignment",
     ],
     ourApproach:
-      "We start with business needs and work backward to technology, ensuring every tool serves a clear purpose.",
+      "We build custom CRMs, admin panels, and operational dashboards that match your exact business logic and rules.",
   },
   {
-    title: "Product Thinking",
+    title: "AI Agent & Automation Pipelines",
     description:
-      "Turning ideas into products people actually need and will pay for.",
+      "Deploying autonomous systems for repetitive communication and operational work.",
     commonChallenges: [
-      "Products built on assumptions rather than evidence",
-      "Features developed without understanding user constraints",
-      "Product roadmaps disconnected from business reality",
-      "Validation happening too late in the process",
+      "Support teams overwhelmed by routine policy or status inquiries",
+      "Manual lead coordination that slows down sales velocity",
+      "Repetitive data entry and cross-platform synchronization",
+      "Lack of real-time responsiveness to customer inquiries",
     ],
     ourApproach:
-      "We create systematic approaches to test assumptions and validate ideas before committing to full development.",
+      "We deploy intelligent agents and rule-based bots that handle the heavy lifting of support, sales, and operations autonomously.",
   },
   {
-    title: "Operational Clarity",
-    description: "Making complexity manageable and decisions transparent.",
+    title: "Data Systems & Operational Clarity",
+    description: "Turning raw business actions into readable, actionable insights.",
     commonChallenges: [
-      "Growing teams losing alignment on priorities",
-      "Hidden dependencies between teams and systems",
-      "Decision-making processes that create more questions than answers",
-      "Operational complexity outpacing organizational maturity",
+      "Fragmented data making it impossible to see the big picture",
+      "Manual reporting processes that are slow and error-prone",
+      "Unclear ownership of data across scaling teams",
+      "Difficulty tracking performance metrics in real-time",
     ],
     ourApproach:
-      "We bring clarity to complex operations by mapping relationships, establishing clear processes, and creating systems that reduce cognitive load.",
-  },
-  {
-    title: "Market Validation & Execution",
-    description: "Testing assumptions and turning insights into action.",
-    commonChallenges: [
-      "Market assumptions untested and unvalidated",
-      "Go-to-market strategies based on incomplete information",
-      "Execution plans that don't account for real-world constraints",
-      "Market feedback loops that are too slow or nonexistent",
-    ],
-    ourApproach:
-      "We design validation frameworks and execution systems that test assumptions systematically and adapt based on real evidence.",
+      "We design unified data pipelines and reporting interfaces (like AG Grid) that provide total clarity on your operational status.",
   },
 ];
 

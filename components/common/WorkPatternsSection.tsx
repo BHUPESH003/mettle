@@ -11,24 +11,24 @@ interface Pattern {
 
 const patterns: Pattern[] = [
   {
-    problem: "Operational chaos in a growing SaaS company",
+    problem: "Manual inventory and order chaos as volume scaled",
     insight:
-      "The problem wasn't tools — it was unclear decision-making processes",
+      "Fragmented visibility was the real bottleneck, not the staff speed",
     outcome:
-      "Structured workflows that reduced meeting time by 60% and improved team alignment",
+      "A centralized operations panel that halved fulfillment time and eliminated sync errors",
   },
   {
-    problem: "Broken product development foundation",
-    insight: "Features were built without understanding user constraints",
+    problem: "Support teams overwhelmed by routine policy inquiries",
+    insight: "The solution was intent-based navigation, not more human agents",
     outcome:
-      "A validation system that turned ideas into testable products before full development",
+      "A specialized automation bot that handles routine queries autonomously without friction",
   },
   {
-    problem: "Scaling pains without clear systems",
+    problem: "Operational data siloed in fragmented spreadsheets",
     insight:
-      "Growth revealed hidden dependencies between teams and processes",
+      "Businesses need a source of truth that matches their actual workflow sequence",
     outcome:
-      "Interconnected systems that scaled smoothly from 10 to 100+ people",
+      "Custom workflow systems that provide real-time clarity across sales, ops, and reporting",
   },
 ];
 

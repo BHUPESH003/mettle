@@ -26,40 +26,76 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
   {
-    id: "scaling-saas-workflows",
-    slug: "scaling-saas-workflows",
-    title: "From Operational Chaos to Structured Workflows",
-    industry: "SaaS",
+    id: "ecommerce-inventory-system",
+    slug: "ecommerce-inventory-system",
+    title: "E-commerce Operations & Inventory System",
+    industry: "Operations",
     shortDescription:
-      "Teams were making decisions in silos, leading to conflicting priorities and duplicated work.",
+      "Manual handling of orders and fragmented inventory tracking led to operational visibility gaps and fulfillment errors.",
     context:
-      "A Series A SaaS company with 50 employees was experiencing rapid growth but struggling with inconsistent processes across departments.",
+      "A high-volume e-commerce brand needed a centralized command center to manage products, orders, and assets securely.",
     outcome:
-      "Meeting time reduced by 40%, feature development cycle time improved by 60%, and team alignment increased significantly.",
+      "Eliminated manual inventory sync errors and halved order processing time through centralized visibility and automated S3 storage pipelines.",
   },
   {
-    id: "product-validation-system",
-    slug: "product-validation-system",
-    title: "Building Products People Actually Need",
-    industry: "E-commerce",
+    id: "insurance-support-bot",
+    slug: "insurance-support-bot",
+    title: "Insurance Support Automation Engine",
+    industry: "Automation",
     shortDescription:
-      "Products were built on founder assumptions and anecdotal customer feedback, without systematic validation of actual user needs or willingness to pay.",
+      "High volumes of routine policy inquiries and service requests were creating friction for both customers and support teams.",
     context:
-      "An e-commerce platform founder had built multiple products based on assumptions, but none achieved product-market fit despite significant development investment.",
+      "An insurance provider required a specialized web-based bot to navigate complex policy structures and direct users to service links.",
     outcome:
-      "Their first validated product achieved 15% month-over-month growth within 3 months of launch, and they now have a repeatable process for testing new product ideas.",
+      "Reduced support overhead by autonomously resolving routine queries, allowing the team to focus on high-stakes claims processing.",
   },
   {
-    id: "scaling-systems-dependencies",
-    slug: "scaling-systems-dependencies",
-    title: "Scaling Without Breaking",
+    id: "custom-workflow-crm",
+    slug: "custom-workflow-crm",
+    title: "Custom Workflow CRM & Operations",
+    industry: "Systems",
+    shortDescription:
+      "Fragmented tools and Excel sheets made sales, operations, and reporting difficult to track as the team scaled.",
+    context:
+      "Multiple businesses required a custom source of truth that matched their actual operational sequence rather than a generic SaaS funnel.",
+    outcome:
+      "Replaced disconnected tools with a unified system that provides real-time visibility and clear ownership across all team modules.",
+  },
+  {
+    id: "seat-booking-auth",
+    slug: "seat-booking-auth",
+    title: "Regulated Seat Allocation & Booking",
+    industry: "Security",
+    shortDescription:
+      "Managing resource allocation under strict business rules and audit requirements was impossible via manual tracking.",
+    context:
+      "A facility required a secure, restriction-aware booking system with integrated audit trails and OTP-based authentication.",
+    outcome:
+      "Achieved zero resource conflicts and a 100% audit-ready reporting history through a robust, rule-based engine.",
+  },
+  {
+    id: "campuscrave-fulfillment",
+    slug: "campuscrave-fulfillment",
+    title: "Multi-Vendor Fulfillment Platform",
     industry: "Marketplace",
     shortDescription:
-      "Hidden dependencies between teams and systems created cascading failures when changes were made.",
+      "Students faced fragmented ordering flows across multiple independent food vendors in a high-volume environment.",
     context:
-      "A marketplace business grew from 10 to 150 employees but discovered that their initial systems and processes couldn't handle the increased complexity.",
+      "CampusCrave needed a unified marketplace platform to handle complex state management, vendor fulfillment, and secure payments.",
     outcome:
-      "They successfully scaled to 500+ employees with systems that support continued growth. New team additions now integrate smoothly without disrupting existing workflows.",
+      "Developed a scalable architecture supporting simultaneous multi-vendor checkouts with integrated Stripe payments and Jotai state management.",
+  },
+  {
+    id: "emotion-recognition-ai",
+    slug: "emotion-recognition-ai",
+    title: "Applied Emotion Recognition Pipeline",
+    industry: "AI/ML",
+    shortDescription:
+      "Need for objective sentiment and emotional tone analysis in recorded communications for mental health insights.",
+    context:
+      "An exploration into practical ML applications required a high-accuracy pipeline for classifying vocal and text-based emotional data.",
+    outcome:
+      "Achieved 91% accuracy using RAVDESS/TESS datasets, demonstrating a technical foundation for automated emotional analysis tools.",
   },
 ];
 
