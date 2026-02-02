@@ -10,24 +10,24 @@ interface Principle {
 
 const principles: Principle[] = [
   {
-    title: "Good systems reduce cognitive load",
+    title: "Process First, Automation Second",
     description:
-      "They make decisions easier, not harder. They create space for what matters.",
+      "Automation on top of a broken process just makes mistakes faster. We fix the workflow first.",
   },
   {
-    title: "Technology should serve decisions",
+    title: "Execution > Advice",
     description:
-      "Not dominate them. Tools exist to enable clarity, not create complexity.",
+      "We don't build slide decks; we build systems. Real problems require real code, not PDFs.",
   },
   {
-    title: "Clarity compounds over time",
+    title: "Clarity Compounds",
     description:
-      "Small improvements in understanding lead to big changes in outcomes.",
+      "A clear system reduces cognitive load, allowing your team to focus on growth rather than friction.",
   },
   {
-    title: "Understanding comes before action",
+    title: "Engineering-Led Strategy",
     description:
-      "The best solutions emerge from deep comprehension of the problem.",
+      "The best strategy is one that can actually be built. We design with the implementation in mind.",
   },
 ];
 
