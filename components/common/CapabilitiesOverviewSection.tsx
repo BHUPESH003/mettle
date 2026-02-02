@@ -10,25 +10,25 @@ interface Capability {
 
 const capabilities: Capability[] = [
   {
-    title: "Business systems & workflows",
-    description: "When processes become barriers to growth",
+    title: "Workflow Design",
+    description: "Auditing and rebuilding the operational sequence of your business.",
   },
   {
-    title: "Digital foundations",
+    title: "Custom CRMs & Tools",
     description:
-      "Building technology that serves decisions, not the other way around",
+      "Developing high-leverage software that fits your unique business logic.",
   },
   {
-    title: "Product thinking",
-    description: "Turning ideas into validated products",
+    title: "AI Agent Pipelines",
+    description: "Deploying autonomous systems for repetitive communication and tasks.",
   },
   {
-    title: "Operational clarity",
-    description: "Making complexity manageable",
+    title: "Data Clarity",
+    description: "Turning raw business actions into readable, actionable dashboards.",
   },
   {
-    title: "Market validation",
-    description: "Testing assumptions before committing resources",
+    title: "Automation Engines",
+    description: "Building robust pipelines that move data between your systems.",
   },
 ];
 
