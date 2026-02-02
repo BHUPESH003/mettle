@@ -45,38 +45,39 @@ export default function HowWeWorkPage() {
           <div className="mx-auto max-w-6xl">
             <div className="mx-auto mb-10 max-w-3xl text-center">
               <h2 className="mb-3 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-                Understanding the Problem
+                1. Diagnosis & Audit
               </h2>
               <p className="mb-6 text-xl font-medium text-muted-foreground sm:text-2xl">
                 We don't start with solutions
               </p>
               <p className="text-lg leading-relaxed text-foreground sm:text-xl">
-                Time is spent understanding the business context, constraints,
-                people, and existing systems.
+                Most businesses try to automate broken processes. We spend time
+                finding the root cause of friction before writing a single line
+                of code.
               </p>
             </div>
 
             <div className="mb-10 grid gap-6 md:grid-cols-2 lg:gap-8">
               {[
                 {
-                  title: "Business Context",
+                  title: "Workflow Mapping",
                   description:
-                    "What drives decisions and creates real constraints? We map the business landscape before suggesting changes.",
+                    "We clinicaly map how decisions and data move through your business today, identifying the manual workarounds that slow you down.",
                 },
                 {
-                  title: "Real Constraints",
+                  title: "Constraint Identification",
                   description:
-                    "What limitations actually exist? We identify what's truly holding things back, not just what's obvious.",
+                    "We look for the true bottlenecks—whether it's technical debt, fragmented tools, or unclear ownership—not just the symptoms.",
                 },
                 {
-                  title: "People & Systems",
+                  title: "Operational Debt Audit",
                   description:
-                    "How do decisions get made? We understand the human elements and existing workflows.",
+                    "We identify where disconnected tools and 'Excel-first' thinking are creating data silos and invisible risks.",
                 },
                 {
-                  title: "Hidden Dependencies",
+                  title: "Systemic Dependencies",
                   description:
-                    "What connections exist that aren't visible? We find the relationships between different parts of the business.",
+                    "We find the hidden relationships between departments that cause one process change to break three others.",
                 },
               ].map((item, index) => (
                 <div
@@ -109,33 +110,33 @@ export default function HowWeWorkPage() {
           <div className="mx-auto max-w-6xl">
             <div className="mx-auto mb-10 max-w-3xl text-center">
               <h2 className="mb-3 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-                Creating Clarity
+                2. System Architecture
               </h2>
               <p className="mb-6 text-xl font-medium text-muted-foreground sm:text-2xl">
                 From ambiguity to direction
               </p>
               <p className="text-lg leading-relaxed text-foreground sm:text-xl">
-                Once we understand the landscape, we break down complexity into
-                understandable parts.
+                Once the process is fixed, we design the digital foundation
+                required to support it.
               </p>
             </div>
 
             <div className="mb-10 grid gap-6 md:grid-cols-3 lg:gap-8">
               {[
                 {
-                  title: "Breaking Down Complexity",
+                  title: "Modular System Design",
                   description:
-                    "Turning overwhelming problems into manageable components",
+                    "We design modular software that matches your specific business sequence, not a generic template.",
                 },
                 {
-                  title: "Finding Leverage Points",
+                  title: "Leverage Points",
                   description:
-                    "Identifying where small changes create big impacts",
+                    "We identify the highest-impact areas for automation—where 20% of the effort results in 80% of the efficiency.",
                 },
                 {
-                  title: "Aligning Decisions",
+                  title: "Unified Source of Truth",
                   description:
-                    "Ensuring choices serve the business reality, not assumptions",
+                    "We architect data pipelines that consolidate your operational knowledge into a single, readable system.",
                 },
               ].map((item, index) => (
                 <div
@@ -156,7 +157,8 @@ export default function HowWeWorkPage() {
               <div className="rounded-lg border-l-4 border-gray-900 bg-gray-50 p-6 sm:p-8">
                 <p className="text-lg font-medium leading-relaxed text-foreground sm:text-xl">
                   This is where Mettle's thinking strength shows. We don't just
-                  identify problems — we restructure how you see them.
+                  build tools—we build the infrastructure for your next stage of
+                  growth.
                 </p>
               </div>
             </div>
@@ -170,34 +172,34 @@ export default function HowWeWorkPage() {
           <div className="mx-auto max-w-6xl">
             <div className="mx-auto mb-10 max-w-3xl text-center">
               <h2 className="mb-3 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-                Designing Systems
+                3. Execution & Implementation
               </h2>
               <p className="mb-6 text-xl font-medium text-muted-foreground sm:text-2xl">
-                Systems over features, decisions over tools
+                Engineering-led delivery
               </p>
             </div>
 
             <div className="mb-10 grid gap-6 md:grid-cols-2 lg:gap-8">
               {[
                 {
-                  title: "Scalability Over Quick Wins",
+                  title: "Custom CRM & Dashboard Builds",
                   description:
-                    "We design for growth, not just immediate needs. Systems that work at 10 people should work at 100.",
+                    "We implement production-grade tools (React, Node, PostgreSQL) that your team actually enjoys using.",
                 },
                 {
-                  title: "Decisions Over Tools",
+                  title: "AI Agent Deployment",
                   description:
-                    "Technology follows clarity. We establish decision-making frameworks before choosing solutions.",
+                    "We deploy intelligent bots and agentic workflows to handle Repetitive work like support triage or lead management.",
                 },
                 {
-                  title: "Interconnected Design",
+                  title: "Automation Pipelines",
                   description:
-                    "Systems work together. We design with relationships and dependencies in mind.",
+                    "We build robust integrations and pipelines that move data between your systems without manual intervention.",
                 },
                 {
-                  title: "Adaptable Architecture",
+                  title: "Scalable Infrastructure",
                   description:
-                    "Business needs change. We build systems that can evolve without breaking.",
+                    "We ensure your new systems are cloud-ready, secure, and built to evolve as your business changes.",
                 },
               ].map((item, index) => (
                 <div
@@ -216,8 +218,8 @@ export default function HowWeWorkPage() {
 
             <div className="mx-auto max-w-3xl text-center">
               <p className="text-lg leading-relaxed text-foreground sm:text-xl">
-                This is where thinking connects to action. We design systems
-                that reduce cognitive load and create sustainable growth.
+                We don't just deliver a codebase. We deliver a working system
+                that is ready to run your business operations on day one.
               </p>
             </div>
           </div>
