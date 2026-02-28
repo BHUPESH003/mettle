@@ -155,9 +155,9 @@ export default function AboutPage() {
                 href="/contact"
                 className={cn(
                   "group inline-flex items-center gap-2 rounded-lg",
-                  "bg-gray-900 px-8 py-6 text-base font-medium text-white",
-                  "transition-colors hover:bg-gray-800",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+                  "bg-accent px-8 py-6 text-base font-medium text-white",
+                  "transition-all hover:bg-accent-dark hover:shadow-lg hover:shadow-accent/20",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                 )}
               >
                 Start a conversation

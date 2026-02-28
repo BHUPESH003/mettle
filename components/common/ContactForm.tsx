@@ -54,11 +54,11 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-lg border border-green-200 bg-green-50 p-8 text-center">
-        <h3 className="mb-2 text-xl font-semibold text-green-900">
+      <div className="rounded-lg border-2 border-accent bg-accent-light p-8 text-center">
+        <h3 className="mb-2 text-xl font-semibold text-accent-dark">
           Thank you for reaching out
         </h3>
-        <p className="text-green-800">
+        <p className="text-foreground">
           We'll review your message and get back to you within 24 hours to
           discuss your situation.
         </p>
@@ -72,9 +72,9 @@ export function ContactForm() {
       <div>
         <label
           htmlFor="name"
-          className="mb-2 block text-sm font-medium text-gray-700"
+          className="mb-2 block text-sm font-medium text-foreground"
         >
-          Name <span className="text-red-500">*</span>
+          Name <span className="text-destructive">*</span>
         </label>
         <input
           type="text"
@@ -84,10 +84,10 @@ export function ContactForm() {
           value={formData.name}
           onChange={handleChange}
           className={cn(
-            "w-full rounded-md border border-gray-300 bg-white px-4 py-2.5",
-            "text-gray-900 placeholder-gray-400",
-            "focus:border-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1",
-            "transition-colors"
+            "w-full rounded-md border-2 border-border bg-background px-4 py-2.5",
+            "text-foreground placeholder-muted-foreground",
+            "focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2",
+            "transition-all"
           )}
           placeholder="Your name"
         />
@@ -97,9 +97,9 @@ export function ContactForm() {
       <div>
         <label
           htmlFor="email"
-          className="mb-2 block text-sm font-medium text-gray-700"
+          className="mb-2 block text-sm font-medium text-foreground"
         >
-          Email <span className="text-red-500">*</span>
+          Email <span className="text-destructive">*</span>
         </label>
         <input
           type="email"
@@ -109,10 +109,10 @@ export function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           className={cn(
-            "w-full rounded-md border border-gray-300 bg-white px-4 py-2.5",
-            "text-gray-900 placeholder-gray-400",
-            "focus:border-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1",
-            "transition-colors"
+            "w-full rounded-md border-2 border-border bg-background px-4 py-2.5",
+            "text-foreground placeholder-muted-foreground",
+            "focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2",
+            "transition-all"
           )}
           placeholder="your.email@example.com"
         />
@@ -122,9 +122,9 @@ export function ContactForm() {
       <div>
         <label
           htmlFor="company"
-          className="mb-2 block text-sm font-medium text-gray-700"
+          className="mb-2 block text-sm font-medium text-foreground"
         >
-          Company <span className="text-gray-400">(optional)</span>
+          Company <span className="text-muted-foreground">(optional)</span>
         </label>
         <input
           type="text"
@@ -133,10 +133,10 @@ export function ContactForm() {
           value={formData.company}
           onChange={handleChange}
           className={cn(
-            "w-full rounded-md border border-gray-300 bg-white px-4 py-2.5",
-            "text-gray-900 placeholder-gray-400",
-            "focus:border-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1",
-            "transition-colors"
+            "w-full rounded-md border-2 border-border bg-background px-4 py-2.5",
+            "text-foreground placeholder-muted-foreground",
+            "focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2",
+            "transition-all"
           )}
           placeholder="Your company"
         />
@@ -146,10 +146,10 @@ export function ContactForm() {
       <div>
         <label
           htmlFor="message"
-          className="mb-2 block text-sm font-medium text-gray-700"
+          className="mb-2 block text-sm font-medium text-foreground"
         >
           Tell us about your situation{" "}
-          <span className="text-red-500">*</span>
+          <span className="text-destructive">*</span>
         </label>
         <textarea
           id="message"
@@ -159,17 +159,17 @@ export function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           className={cn(
-            "w-full rounded-md border border-gray-300 bg-white px-4 py-2.5",
-            "text-gray-900 placeholder-gray-400",
-            "focus:border-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1",
-            "transition-colors resize-none"
+            "w-full rounded-md border-2 border-border bg-background px-4 py-2.5",
+            "text-foreground placeholder-muted-foreground",
+            "focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2",
+            "transition-all resize-none"
           )}
           placeholder="What's the complexity you're facing? What have you tried? What clarity are you seeking?"
         />
       </div>
 
       {/* Privacy Note */}
-      <p className="text-xs text-gray-500">
+      <p className="text-xs text-muted-foreground">
         We respect your privacy. This information is only used to understand
         how we might help.
       </p>
@@ -179,10 +179,10 @@ export function ContactForm() {
         type="submit"
         disabled={isSubmitting}
         className={cn(
-          "w-full rounded-md px-6 py-3 text-base font-medium text-white",
-          "bg-gray-900 transition-colors hover:bg-gray-800",
-          "focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2",
-          "disabled:cursor-not-allowed disabled:bg-gray-400 disabled:hover:bg-gray-400"
+          "w-full rounded-md px-6 py-3 text-base font-medium text-accent-foreground shadow-sm",
+          "bg-accent transition-all hover:bg-accent-dark hover:shadow-md",
+          "focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2",
+          "disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:hover:bg-muted disabled:hover:shadow-none"
         )}
       >
         {isSubmitting ? "Sending..." : "Start conversation"}

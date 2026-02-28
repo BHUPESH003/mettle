@@ -114,15 +114,15 @@ export default function ThinkingPage() {
               {articles.map((article) => (
                 <article
                   key={article.id}
-                  className="group flex flex-col rounded-lg border border-gray-200 bg-white p-6 transition-all hover:border-gray-900 hover:shadow-md sm:p-8"
+                  className="group flex flex-col rounded-lg border border-border bg-card p-6 transition-all hover:border-accent hover:shadow-md hover:shadow-accent/10 sm:p-8"
                 >
                   {/* Card Header */}
                   <div className="mb-4 flex items-start justify-between gap-4">
-                    <span className="inline-block rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">
+                    <span className="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
                       {categoryDisplayNames[article.category]}
                     </span>
                     {article.readTime && (
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-muted-foreground">
                         {article.readTime} min read
                       </span>
                     )}
@@ -134,18 +134,18 @@ export default function ThinkingPage() {
                   </h2>
 
                   {/* Excerpt */}
-                  <p className="mb-6 flex-1 text-sm leading-relaxed text-gray-600 sm:text-base">
+                  <p className="mb-6 flex-1 text-sm leading-relaxed text-muted-foreground sm:text-base">
                     {article.excerpt}
                   </p>
 
                   {/* Footer */}
-                  <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-                    <time className="text-xs text-gray-500 sm:text-sm">
+                  <div className="flex items-center justify-between border-t border-border pt-4">
+                    <time className="text-xs text-muted-foreground sm:text-sm">
                       {formatDate(article.publishedAt)}
                     </time>
                     <Link
                       href={`/thinking/${article.slug}`}
-                      className="group/link flex items-center gap-2 text-sm font-medium text-gray-900 transition-colors hover:text-gray-600"
+                      className="group/link flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent-dark"
                     >
                       Read article
                       <ArrowIcon className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />

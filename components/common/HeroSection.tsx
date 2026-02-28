@@ -24,12 +24,12 @@ export function HeroSection() {
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-4xl text-center">
           {/* Badge */}
-          <div className="mb-4 inline-flex items-center rounded-full bg-slate-100 px-4 py-1.5 text-sm font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+          <div className="mb-4 inline-flex items-center rounded-full bg-accent-light px-4 py-1.5 text-sm font-medium text-accent-dark border border-accent/20">
             Consulting & Strategy
           </div>
 
           {/* Main Heading */}
-          <h1 className="mb-4 text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className="mb-4 text-5xl font-bold tracking-tight text-primary sm:text-6xl md:text-7xl lg:text-8xl">
             {brand.name}
           </h1>
 

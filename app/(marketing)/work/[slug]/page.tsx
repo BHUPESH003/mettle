@@ -121,7 +121,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
                 <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">The Insight</h2>
               </div>
               
-              <div className="rounded-xl border-l-4 border-gray-900 bg-gray-50 p-8 shadow-sm">
+              <div className="rounded-xl border-l-4 border-accent bg-accent/5 p-8 shadow-sm">
                 <p className="text-xl font-medium italic leading-relaxed text-foreground sm:text-2xl">
                   "{project.insight}"
                 </p>
@@ -145,7 +145,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
                 {project.system.features.map((feature, idx) => (
                   <div key={idx} className="flex items-center gap-3 rounded-lg border border-border p-4">
                     <CheckIcon className="h-5 w-5 shrink-0 text-green-600" />
-                    <span className="font-medium text-gray-900">{feature}</span>
+                    <span className="font-medium text-foreground">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -174,7 +174,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
               <div className="grid gap-6 sm:grid-cols-3">
                 {project.impact.metrics.map((metric, idx) => (
                   <div key={idx} className="text-center">
-                    <p className="text-lg font-bold text-gray-900">{metric}</p>
+                    <p className="text-lg font-bold text-primary">{metric}</p>
                   </div>
                 ))}
               </div>

@@ -86,15 +86,15 @@ export function Header() {
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "text-sm font-medium transition-colors relative",
+                      "text-sm font-medium transition-colors relative py-1",
                       active
-                        ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground"
+                        ? "text-accent"
+                        : "text-muted-foreground hover:text-accent"
                     )}
                   >
                     {item.label}
                     {active && (
-                      <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-foreground" />
+                      <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent rounded-full" />
                     )}
                   </Link>
                 );
@@ -117,7 +117,7 @@ export function Header() {
               <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                 <SheetTrigger asChild>
                   <button
-                    className="md:hidden p-2 rounded-md hover:bg-accent transition-colors"
+                    className="md:hidden p-2 rounded-md text-muted-foreground hover:bg-accent-light hover:text-accent transition-colors"
                     aria-label="Open menu"
                   >
                     <MenuIcon className="h-6 w-6" />
@@ -138,8 +138,8 @@ export function Header() {
                               className={cn(
                                 "flex items-center px-3 py-2 text-base font-medium rounded-md transition-colors",
                                 active
-                                  ? "bg-accent text-foreground"
-                                  : "text-muted-foreground hover:bg-accent hover:text-foreground"
+                                  ? "bg-accent-light text-accent border-l-2 border-accent"
+                                  : "text-muted-foreground hover:bg-accent-light hover:text-accent"
                               )}
                             >
                               {item.label}
@@ -166,9 +166,9 @@ export function Header() {
 
         {/* Progress Bar */}
         {isScrolled && (
-          <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-border">
+          <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-border-subtle">
             <div
-              className="h-full bg-foreground transition-all duration-150"
+              className="h-full bg-accent transition-all duration-150"
               style={{ width: `${scrollProgress}%` }}
             />
           </div>

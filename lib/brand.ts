@@ -14,4 +14,24 @@ export const brand = {
     text: "Start a conversation",
     href: "/contact",
   },
+  
+  /**
+   * Color Philosophy
+   * Deep Teal/Slate represents:
+   * - Trust and reliability (blue undertones)
+   * - Growth and clarity (teal/green undertones)
+   * - Consulting-grade professionalism
+   * - Strategic depth without being cold
+   * 
+   * Applied with restraint to:
+   * - Guide attention to key actions
+   * - Create visual hierarchy
+   * - Reinforce brand maturity
+   * - Maintain content-first focus
+   */
+  colorPhilosophy: {
+    primary: "Deep Teal/Slate - trustworthy, professional, strategic",
+    accent: "Bright Teal - energy, action, clarity",
+    approach: "Balanced restraint - color guides, content leads",
+  },
 } as const;

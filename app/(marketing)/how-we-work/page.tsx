@@ -154,7 +154,7 @@ export default function HowWeWorkPage() {
             </div>
 
             <div className="mx-auto max-w-3xl">
-              <div className="rounded-lg border-l-4 border-gray-900 bg-gray-50 p-6 sm:p-8">
+              <div className="rounded-lg border-l-4 border-accent bg-accent/5 p-6 sm:p-8">
                 <p className="text-lg font-medium leading-relaxed text-foreground sm:text-xl">
                   This is where Mettle's thinking strength shows. We don't just
                   build tools—we build the infrastructure for your next stage of
@@ -276,7 +276,7 @@ export default function HowWeWorkPage() {
             </div>
 
             <div className="mx-auto max-w-3xl">
-              <div className="rounded-lg border-l-4 border-gray-900 bg-gray-50 p-6 sm:p-8">
+              <div className="rounded-lg border-l-4 border-accent bg-accent/5 p-6 sm:p-8">
                 <p className="text-lg font-medium leading-relaxed text-foreground sm:text-xl">
                   Execution without understanding leads to more complexity. We
                   execute with the full context of why decisions are made.

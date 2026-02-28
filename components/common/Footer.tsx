@@ -65,32 +65,32 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-gray-200 bg-gradient-to-b from-gray-50 to-white">
+    <footer className="border-t border-border bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid gap-12 lg:grid-cols-12">
           {/* Brand Section - 5 columns */}
           <div className="lg:col-span-5">
-            <h3 className="mb-3 text-2xl font-bold text-gray-900">
+            <h3 className="mb-3 text-2xl font-bold">
               {brand.name}
             </h3>
-            <p className="mb-6 max-w-md leading-relaxed text-gray-600">
+            <p className="mb-6 max-w-md leading-relaxed text-primary-foreground/80">
               {brand.longDescription}
             </p>
 
             {/* Newsletter Section */}
             <div className="mb-6">
-              <label className="mb-2 block text-sm font-medium text-gray-900">
+              <label className="mb-2 block text-sm font-medium">
                 Subscribe to our newsletter
               </label>
               <form className="flex gap-2">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 transition-colors focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-1"
+                  className="flex-1 rounded-lg border border-primary-foreground/20 bg-primary-light px-4 py-2.5 text-sm text-foreground placeholder-muted-foreground transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary"
                 />
                 <button
                   type="submit"
-                  className="flex items-center justify-center rounded-lg bg-gray-900 px-5 py-2.5 text-white transition-all hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
+                  className="flex items-center justify-center rounded-lg bg-accent px-5 py-2.5 text-accent-foreground transition-all hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary"
                   aria-label="Subscribe"
                 >
                   <Icons.arrowRight className="h-4 w-4" />
@@ -107,7 +107,7 @@ export function Footer() {
                     <Link
                       key={social.name}
                       href={social.href}
-                      className="rounded-lg p-2 text-gray-600 transition-all hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
+                      className="rounded-lg p-2 text-primary-foreground/70 transition-all hover:bg-primary-light hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary"
                       aria-label={social.name}
                     >
                       <IconComponent className="h-5 w-5" />
@@ -123,7 +123,7 @@ export function Footer() {
             <div className="grid gap-8 sm:grid-cols-2">
               {footerLinkGroups.map((group) => (
                 <div key={group.title}>
-                  <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-900">
+                  <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider">
                     {group.title}
                   </h4>
                   <ul className="space-y-2.5">
@@ -131,7 +131,7 @@ export function Footer() {
                       <li key={link.href}>
                         <Link
                           href={link.href}
-                          className="text-sm text-gray-600 transition-colors hover:text-gray-900"
+                          className="text-sm text-primary-foreground/80 transition-colors hover:text-accent"
                         >
                           {link.label}
                         </Link>
@@ -145,7 +145,7 @@ export function Footer() {
 
           {/* Contact Information - 3 columns */}
           <div className="lg:col-span-3">
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-900">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider">
               Get In Touch
             </h4>
             <ul className="space-y-3">
@@ -155,7 +155,7 @@ export function Footer() {
                   <li key={contact.label}>
                     <Link
                       href={contact.href}
-                      className="flex items-center gap-3 text-sm text-gray-600 transition-colors hover:text-gray-900"
+                      className="flex items-center gap-3 text-sm text-primary-foreground/80 transition-colors hover:text-accent"
                     >
                       <IconComponent className="h-4 w-4 shrink-0" />
                       <span>{contact.value}</span>
@@ -169,23 +169,23 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-200 bg-white">
+      <div className="border-t border-primary-foreground/10 bg-primary-hover">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-primary-foreground/70">
               © {currentYear} {brand.name}. All rights reserved.
             </p>
-            <div className="flex items-center gap-4 text-sm text-gray-600">
+            <div className="flex items-center gap-4 text-sm text-primary-foreground/70">
               <Link
                 href="/privacy"
-                className="transition-colors hover:text-gray-900"
+                className="transition-colors hover:text-accent"
               >
                 Privacy
               </Link>
-              <span className="text-gray-400">•</span>
+              <span className="text-primary-foreground/30">•</span>
               <Link
                 href="/terms"
-                className="transition-colors hover:text-gray-900"
+                className="transition-colors hover:text-accent"
               >
                 Terms
               </Link>

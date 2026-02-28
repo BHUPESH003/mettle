@@ -20,8 +20,8 @@ const problemCards: ProblemCard[] = [
   {
     icon: "alertTriangle",
     iconColor: {
-      bg: "bg-red-100",
-      text: "text-red-600",
+      bg: "bg-gradient-to-br from-accent-light to-accent/20",
+      text: "text-accent-dark",
     },
     title: "Disconnected Tools",
     description:
@@ -30,8 +30,8 @@ const problemCards: ProblemCard[] = [
   {
     icon: "lightbulb",
     iconColor: {
-      bg: "bg-orange-100",
-      text: "text-orange-600",
+      bg: "bg-gradient-to-br from-accent-light to-accent/20",
+      text: "text-accent",
     },
     title: "Half-Built Systems",
     description:
@@ -40,8 +40,8 @@ const problemCards: ProblemCard[] = [
   {
     icon: "clock",
     iconColor: {
-      bg: "bg-yellow-100",
-      text: "text-yellow-600",
+      bg: "bg-gradient-to-br from-accent-light to-accent/20",
+      text: "text-accent-dark",
     },
     title: "Rushed Decisions",
     description:
@@ -50,8 +50,8 @@ const problemCards: ProblemCard[] = [
   {
     icon: "trendingUp",
     iconColor: {
-      bg: "bg-purple-100",
-      text: "text-purple-600",
+      bg: "bg-gradient-to-br from-accent-light to-accent/20",
+      text: "text-accent",
     },
     title: "Unmanaged Growth",
     description:
@@ -60,8 +60,8 @@ const problemCards: ProblemCard[] = [
   {
     icon: "monitor",
     iconColor: {
-      bg: "bg-blue-100",
-      text: "text-blue-600",
+      bg: "bg-gradient-to-br from-accent-light to-accent/20",
+      text: "text-accent-dark",
     },
     title: "Ineffective Technology",
     description:
@@ -70,8 +70,8 @@ const problemCards: ProblemCard[] = [
   {
     icon: "helpCircle",
     iconColor: {
-      bg: "bg-green-100",
-      text: "text-green-600",
+      bg: "bg-gradient-to-br from-accent-light to-accent/20",
+      text: "text-accent",
     },
     title: "Unclear Problems",
     description:
@@ -95,27 +95,34 @@ export function ProblemAcknowledgementSection() {
 
         {/* Problem Cards Grid */}
         <div className="mx-auto mb-10 max-w-6xl">
-          <div className="grid gap-5 md:grid-cols-2 lg:gap-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
             {problemCards.map((problem, index) => {
               const IconComponent = Icons[problem.icon];
               return (
                 <div
                   key={index}
-                  className="group rounded-lg border border-border bg-background p-5 transition-shadow hover:shadow-md sm:p-6"
+                  className="group relative rounded-xl border-2 border-border bg-background p-6 transition-all duration-300 hover:border-accent hover:shadow-xl hover:shadow-accent/10 sm:p-8"
                 >
-                  <div className="mb-3 flex items-start gap-3">
-                    <div
-                      className={cn(
-                        "flex h-12 w-12 shrink-0 items-center justify-center rounded-lg",
-                        problem.iconColor.bg
-                      )}
-                    >
-                      <IconComponent
-                        className={cn("h-6 w-6", problem.iconColor.text)}
-                      />
+                  {/* Gradient glow effect on hover */}
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  
+                  <div className="relative mb-4 flex items-start gap-4">
+                    <div className="relative shrink-0">
+                      {/* Glow behind icon */}
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-accent to-accent-dark opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-20" />
+                      <div
+                        className={cn(
+                          "relative flex h-14 w-14 items-center justify-center rounded-xl",
+                          problem.iconColor.bg
+                        )}
+                      >
+                        <IconComponent
+                          className={cn("h-7 w-7", problem.iconColor.text)}
+                        />
+                      </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="mb-2 text-lg font-semibold sm:text-xl">
+                      <h3 className="mb-2 text-xl font-bold text-primary group-hover:text-accent transition-colors sm:text-2xl">
                         {problem.title}
                       </h3>
                       <p className="leading-relaxed text-muted-foreground">

@@ -138,8 +138,8 @@ export default function CapabilitiesPage() {
                   </div>
 
                   {/* Our Approach */}
-                  <div className="rounded-lg border-l-4 border-gray-900 bg-gray-50 p-6">
-                    <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-600">
+                  <div className="rounded-lg border-l-4 border-accent bg-accent/5 p-6">
+                    <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
                       Our Approach
                     </h3>
                     <p className="text-base leading-relaxed text-foreground sm:text-lg">
@@ -175,9 +175,9 @@ export default function CapabilitiesPage() {
                 href="/contact"
                 className={cn(
                   "inline-flex items-center justify-center rounded-lg",
-                  "bg-gray-900 px-8 py-6 text-base font-medium text-white",
-                  "transition-colors hover:bg-gray-800",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+                  "bg-accent px-8 py-6 text-base font-medium text-white",
+                  "transition-all hover:bg-accent-dark hover:shadow-lg hover:shadow-accent/20",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                 )}
               >
                 Discuss your challenges

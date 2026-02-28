@@ -71,11 +71,11 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Info Section */}
-      <section className="bg-gray-50 py-12 md:py-16">
+      <section className="bg-background-secondary py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
             <div className="mx-auto mb-10 max-w-2xl text-center">
-              <h2 className="mb-3 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+              <h2 className="mb-3 text-3xl font-bold tracking-tight text-primary sm:text-4xl md:text-5xl">
                 Other ways to connect
               </h2>
               <p className="text-lg leading-relaxed text-muted-foreground sm:text-xl">
@@ -90,23 +90,26 @@ export default function ContactPage() {
                   return (
                     <div
                       key={index}
-                      className="text-center"
+                      className="group text-center"
                     >
                       <div className="mb-4 flex justify-center">
-                        <div className="rounded-full bg-gray-200 p-3">
-                          <IconComponent className="h-6 w-6 text-gray-700" />
+                        <div className="relative">
+                          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent to-accent-dark opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-20" />
+                          <div className="relative rounded-full bg-gradient-to-br from-accent-light to-accent/20 p-4">
+                            <IconComponent className="h-6 w-6 text-accent" />
+                          </div>
                         </div>
                       </div>
-                      <h3 className="mb-2 text-lg font-semibold text-gray-900">
+                      <h3 className="mb-2 text-lg font-semibold text-primary group-hover:text-accent transition-colors">
                         {method.label}
                       </h3>
                       <Link
                         href={method.href}
-                        className="mb-2 block text-base font-medium text-gray-700 transition-colors hover:text-gray-900"
+                        className="mb-2 block text-base font-medium text-foreground transition-colors hover:text-accent"
                       >
                         {method.contact}
                       </Link>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-muted-foreground">
                         {method.description}
                       </p>
                     </div>
@@ -116,7 +119,7 @@ export default function ContactPage() {
             </div>
 
             <div className="mx-auto max-w-2xl text-center">
-              <p className="text-lg leading-relaxed text-gray-700 sm:text-xl">
+              <p className="text-lg leading-relaxed text-foreground sm:text-xl">
                 No matter how you reach out, we approach every conversation
                 with the same goal: understanding before action.
               </p>

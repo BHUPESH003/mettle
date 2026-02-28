@@ -33,11 +33,11 @@ const principles: Principle[] = [
 
 export function PhilosophySection() {
   return (
-    <section className="py-12 md:py-20">
+    <section className="bg-background-secondary py-12 md:py-20">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="mx-auto mb-10 max-w-3xl text-center">
-          <h2 className="mb-3 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+          <h2 className="mb-3 text-4xl font-bold tracking-tight text-primary sm:text-5xl md:text-6xl">
             Why Mettle
           </h2>
           <p className="text-xl font-medium text-muted-foreground sm:text-2xl">
@@ -47,7 +47,7 @@ export function PhilosophySection() {
 
         {/* Main Quote */}
         <div className="mx-auto mb-10 max-w-3xl">
-          <blockquote className="text-center text-2xl font-medium italic leading-relaxed text-foreground sm:text-3xl md:text-4xl">
+          <blockquote className="border-l-4 border-accent pl-6 text-center text-2xl font-medium italic leading-relaxed text-foreground sm:text-3xl md:text-4xl">
             "Complexity is inevitable — confusion is optional"
           </blockquote>
         </div>
