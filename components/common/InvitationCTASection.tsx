@@ -1,44 +1,69 @@
-/**
- * Invitation CTA Section Component
- * Final call-to-action inviting visitors to start a conversation
- */
-
 import Link from "next/link";
+import { Icons } from "@/lib/icons";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+const checklistItems = [
+  "Every engagement starts with understanding, not a proposal",
+  "We work with founders navigating real operational complexity",
+  "Outcomes over deliverables — always",
+];
+
 export function InvitationCTASection() {
+  const ArrowIcon = Icons.arrowRight;
+  const CheckIcon = Icons.check;
+
   return (
-    <section className="bg-accent-light py-12 md:py-20">
+    <section className="py-24 md:py-32">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
-          {/* Section Header */}
-          <h2 className="mb-4 text-2xl font-bold text-primary md:text-3xl">
-            If you're navigating complexity
+          {/* Checklist callout */}
+          <div className="mb-10 inline-flex flex-col items-start gap-3 rounded-2xl border border-border bg-background-secondary px-8 py-6 text-left">
+            {checklistItems.map((item) => (
+              <div key={item} className="flex items-center gap-3">
+                <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent">
+                  <CheckIcon className="h-3 w-3 text-white" />
+                </div>
+                <span className="text-sm font-medium text-foreground">
+                  {item}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <h2 className="mb-4 text-4xl font-black tracking-tight sm:text-5xl">
+            If you&apos;re navigating complexity
           </h2>
-
-          {/* Main Description */}
-          <p className="mb-3 text-lg leading-relaxed text-foreground sm:text-xl">
-            And want clarity before committing to solutions, let's talk.
+          <div className="mx-auto mb-6 h-1 w-12 rounded-full bg-accent" />
+          <p className="mb-3 text-lg leading-relaxed text-foreground">
+            And want clarity before committing to solutions — let&apos;s talk.
+          </p>
+          <p className="mb-10 text-base leading-relaxed text-muted-foreground">
+            We don&apos;t start with proposals or pitches. We start with
+            understanding your situation.
           </p>
 
-          {/* Supporting Text */}
-          <p className="mb-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            We don't start with proposals or pitches. We start with understanding
-            your situation.
-          </p>
-
-          {/* Call-to-Action Button */}
-          <Link
-            href="/contact"
-            className={cn(
-              "inline-flex items-center justify-center rounded-md",
-              "bg-accent px-8 py-3 text-base font-medium text-accent-foreground shadow-sm",
-              "transition-all hover:bg-accent-dark hover:shadow-md",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-            )}
-          >
-            Discuss your problem
-          </Link>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="/contact"
+              className={cn(
+                buttonVariants({ size: "lg" }),
+                "group inline-flex items-center gap-2 px-10 py-6 text-base font-semibold shadow-lg shadow-accent/25"
+              )}
+            >
+              Discuss your problem
+              <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <Link
+              href="/how-we-work"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "px-10 py-6 text-base font-semibold"
+              )}
+            >
+              See how we work
+            </Link>
+          </div>
         </div>
       </div>
     </section>

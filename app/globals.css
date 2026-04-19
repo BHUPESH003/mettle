@@ -1,56 +1,60 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 /**
- * Design tokens via CSS variables
- * Deep Teal/Slate color system - consulting-grade, trustworthy
- * These are consumed by Tailwind and components
- * DO NOT hardcode color/spacing values elsewhere
+ * Design tokens — Black + White + Blue
+ * Black: near-pure dark for sections and text
+ * White: clean white surfaces
+ * Blue: hsl(217,91%,60%) — vibrant, professional, reads great on both
  */
 
 :root {
-  /* Base colors */
-  --background: 0 0% 100%;
-  --foreground: 210 20% 12%;
-  
-  /* Surface backgrounds */
-  --background-secondary: 210 20% 98%;
-  --background-muted: 210 10% 96%;
+  /* Base */
+  --background: 0 0% 100%;            /* pure white */
+  --foreground: 220 10% 7%;           /* near-black #0d0e10 */
 
-  /* Primary brand color - Deep Teal/Slate */
-  --primary: 200 35% 25%;
+  /* Surfaces — very slightly cool white, not plain gray */
+  --background-secondary: 216 20% 97%;
+  --background-muted: 216 16% 95%;
+
+  /* Primary — near-pure black (dark sections, dark buttons) */
+  --primary: 220 10% 7%;             /* #0d0e10 */
   --primary-foreground: 0 0% 100%;
-  --primary-hover: 200 35% 20%;
-  --primary-light: 200 35% 85%;
+  --primary-hover: 220 10% 4%;
+  --primary-light: 216 14% 91%;
 
-  /* Accent color - Bright Teal for CTAs and highlights */
-  --accent: 200 85% 45%;
+  /* Accent — clean blue (#3b82f6 family) */
+  --accent: 217 91% 60%;             /* vivid blue */
   --accent-foreground: 0 0% 100%;
-  --accent-hover: 200 85% 38%;
-  --accent-light: 200 85% 92%;
-  --accent-dark: 200 85% 35%;
+  --accent-hover: 217 91% 52%;
+  --accent-light: 217 91% 96%;       /* barely-blue white */
+  --accent-dark: 217 91% 46%;
 
-  /* Secondary - subtle, supporting */
-  --secondary: 210 15% 92%;
-  --secondary-foreground: 210 20% 12%;
-  --secondary-hover: 210 15% 88%;
+  /* Secondary */
+  --secondary: 216 16% 91%;
+  --secondary-foreground: 220 10% 7%;
+  --secondary-hover: 216 16% 87%;
 
-  /* Muted - for subtle backgrounds and secondary text */
-  --muted: 210 10% 96%;
-  --muted-foreground: 210 10% 45%;
-  --muted-text-subtle: 210 10% 60%;
+  /* Muted */
+  --muted: 216 16% 95%;
+  --muted-foreground: 220 8% 44%;
+  --muted-text-subtle: 220 6% 61%;
 
-  /* Borders and inputs */
-  --border: 210 15% 90%;
-  --border-subtle: 210 10% 94%;
-  --input: 210 15% 90%;
-  --ring: 200 85% 45%;
+  /* Borders — cool light gray */
+  --border: 216 14% 88%;
+  --border-subtle: 216 12% 93%;
+  --input: 216 14% 88%;
+  --ring: 217 91% 60%;
 
-  /* Semantic colors */
-  --success: 140 60% 45%;
+  /* Semantic */
+  --success: 142 72% 40%;
   --success-foreground: 0 0% 100%;
-  --warning: 35 90% 50%;
+  --warning: 38 96% 52%;
   --warning-foreground: 0 0% 100%;
-  --destructive: 0 70% 50%;
+  --destructive: 0 72% 52%;
   --destructive-foreground: 0 0% 100%;
 
   /* Radius tokens */
@@ -61,50 +65,50 @@
 }
 
 .dark {
-  /* Base colors - dark mode */
-  --background: 210 20% 8%;
-  --foreground: 210 15% 95%;
-  
-  /* Surface backgrounds */
-  --background-secondary: 210 18% 12%;
-  --background-muted: 210 15% 15%;
+  /* Base */
+  --background: 220 10% 6%;
+  --foreground: 216 20% 94%;
 
-  /* Primary brand color - adjusted for dark mode */
-  --primary: 200 40% 70%;
-  --primary-foreground: 210 20% 8%;
-  --primary-hover: 200 40% 75%;
-  --primary-light: 200 40% 20%;
+  /* Surfaces */
+  --background-secondary: 220 10% 10%;
+  --background-muted: 220 8% 13%;
 
-  /* Accent color - brightened for dark mode */
-  --accent: 200 80% 55%;
-  --accent-foreground: 210 20% 8%;
-  --accent-hover: 200 80% 60%;
-  --accent-light: 200 80% 25%;
-  --accent-dark: 200 80% 45%;
+  /* Primary */
+  --primary: 216 18% 70%;
+  --primary-foreground: 220 10% 6%;
+  --primary-hover: 216 18% 76%;
+  --primary-light: 216 18% 18%;
+
+  /* Accent */
+  --accent: 217 91% 68%;
+  --accent-foreground: 220 10% 6%;
+  --accent-hover: 217 91% 74%;
+  --accent-light: 217 91% 16%;
+  --accent-dark: 217 91% 56%;
 
   /* Secondary */
-  --secondary: 210 15% 20%;
-  --secondary-foreground: 210 15% 95%;
-  --secondary-hover: 210 15% 25%;
+  --secondary: 220 10% 18%;
+  --secondary-foreground: 216 20% 94%;
+  --secondary-hover: 220 10% 23%;
 
   /* Muted */
-  --muted: 210 15% 15%;
-  --muted-foreground: 210 10% 60%;
-  --muted-text-subtle: 210 10% 50%;
+  --muted: 220 8% 13%;
+  --muted-foreground: 220 8% 60%;
+  --muted-text-subtle: 220 6% 50%;
 
-  /* Borders and inputs */
-  --border: 210 15% 25%;
-  --border-subtle: 210 10% 20%;
-  --input: 210 15% 25%;
-  --ring: 200 80% 55%;
+  /* Borders */
+  --border: 220 10% 22%;
+  --border-subtle: 220 8% 17%;
+  --input: 220 10% 22%;
+  --ring: 217 91% 68%;
 
-  /* Semantic colors - adjusted for dark mode */
-  --success: 140 55% 50%;
-  --success-foreground: 210 20% 8%;
-  --warning: 35 85% 55%;
-  --warning-foreground: 210 20% 8%;
-  --destructive: 0 65% 55%;
-  --destructive-foreground: 210 20% 8%;
+  /* Semantic */
+  --success: 142 68% 46%;
+  --success-foreground: 220 10% 6%;
+  --warning: 38 90% 56%;
+  --warning-foreground: 220 10% 6%;
+  --destructive: 0 68% 56%;
+  --destructive-foreground: 220 10% 6%;
 }
 
 @theme inline {
@@ -155,6 +159,26 @@
   --font-mono: var(--font-geist-mono);
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
 * {
   border-color: hsl(var(--border));
 }
@@ -163,4 +187,28 @@ body {
   background: hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: var(--font-sans);
+}
+
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    hsl(220, 10%, 12%) 0%,    /* near-black */
+    hsl(217, 91%, 55%) 50%,   /* vibrant blue */
+    hsl(210, 88%, 70%) 100%   /* sky blue */
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
 }
