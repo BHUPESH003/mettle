@@ -4,8 +4,8 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const checklistItems = [
-  "Every engagement starts with understanding, not a proposal",
-  "We work with founders navigating real operational complexity",
+  "We start by understanding — not pitching",
+  "Every system is tailored to how your business actually runs",
   "Outcomes over deliverables — always",
 ];
 
@@ -32,15 +32,12 @@ export function InvitationCTASection() {
           </div>
 
           <h2 className="mb-4 text-4xl font-black tracking-tight sm:text-5xl">
-            If you&apos;re navigating complexity
+            Let&apos;s fix how your business operates
           </h2>
           <div className="mx-auto mb-6 h-1 w-12 rounded-full bg-accent" />
-          <p className="mb-3 text-lg leading-relaxed text-foreground">
-            And want clarity before committing to solutions — let&apos;s talk.
-          </p>
-          <p className="mb-10 text-base leading-relaxed text-muted-foreground">
-            We don&apos;t start with proposals or pitches. We start with
-            understanding your situation.
+          <p className="mb-10 text-lg leading-relaxed text-foreground">
+            We&apos;ll understand your workflow and show you where things can
+            improve.
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -51,7 +48,7 @@ export function InvitationCTASection() {
                 "group inline-flex items-center gap-2 px-10 py-6 text-base font-semibold shadow-lg shadow-accent/25"
               )}
             >
-              Discuss your problem
+              Book a call
               <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link

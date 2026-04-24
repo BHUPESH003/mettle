@@ -9,46 +9,45 @@ interface ProblemCard {
 
 const problemCards: ProblemCard[] = [
   {
-    icon: "alertTriangle",
+    icon: "workflow",
     number: "01",
-    title: "Disconnected Tools",
+    title: "Operations are messy and inconsistent",
     description:
-      "Systems that don't communicate, creating silos and manual workarounds.",
+      "We restructure how your business runs — from lead to delivery — so every step is clear and repeatable.",
   },
   {
-    icon: "lightbulb",
+    icon: "layers",
     number: "02",
-    title: "Half-Built Systems",
+    title: "Work is scattered across tools",
     description:
-      "Solutions implemented partially, leading to inconsistent processes and user confusion.",
+      "We bring everything into one system so your team doesn't rely on memory, WhatsApp, or Excel.",
   },
   {
-    icon: "clock",
+    icon: "messageSquare",
     number: "03",
-    title: "Rushed Decisions",
+    title: "Leads are not handled properly",
     description:
-      "Choices made under time pressure without considering long-term implications.",
+      "We automate responses, follow-ups, and reminders so no opportunity is missed.",
   },
   {
-    icon: "trendingUp",
+    icon: "barChart",
     number: "04",
-    title: "Unmanaged Growth",
+    title: "You don't know what's working",
     description:
-      "Scaling without clear systems, leading to chaos and lost productivity.",
+      "We convert your daily activity into dashboards that actually help you make decisions.",
   },
   {
-    icon: "monitor",
+    icon: "repeat",
     number: "05",
-    title: "Ineffective Technology",
+    title: "Too much manual work",
     description:
-      "Tools that look good but don't solve real problems or improve outcomes.",
+      "We automate repetitive tasks so your team can focus on what matters.",
   },
   {
-    icon: "helpCircle",
+    icon: "gitBranch",
     number: "06",
-    title: "Unclear Problems",
-    description:
-      "Symptoms treated as root causes, leading to recurring issues and wasted effort.",
+    title: "Systems don't talk to each other",
+    description: "We connect your tools into one smooth workflow.",
   },
 ];
 
@@ -59,19 +58,19 @@ export function ProblemAcknowledgementSection() {
         {/* Section header */}
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-accent">
-            The Reality
+            What we fix
           </p>
           <h2 className="mb-4 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
-            Complexity is inevitable
+            Problems we solve for growing businesses
           </h2>
           <div className="mx-auto mb-5 h-1 w-16 rounded-full bg-accent" />
           <p className="text-xl font-medium text-muted-foreground sm:text-2xl">
-            But confusion doesn&apos;t have to be
+            These are the points where most operations start breaking down
           </p>
         </div>
 
         {/* Problem cards */}
-        <div className="mx-auto mb-14 max-w-6xl">
+        <div className="mx-auto max-w-6xl">
           <div className="grid gap-5 md:grid-cols-2 lg:gap-6">
             {problemCards.map((problem) => {
               const Icon = Icons[problem.icon];
@@ -108,14 +107,6 @@ export function ProblemAcknowledgementSection() {
               );
             })}
           </div>
-        </div>
-
-        {/* Closing statement */}
-        <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-background-secondary px-8 py-6 text-center">
-          <p className="text-base font-medium leading-relaxed text-foreground sm:text-lg">
-            These aren&apos;t just minor inconveniences — they&apos;re systemic
-            issues that prevent companies from reaching their potential.
-          </p>
         </div>
       </div>
     </section>
