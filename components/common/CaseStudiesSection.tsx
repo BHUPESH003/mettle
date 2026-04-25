@@ -1,43 +1,10 @@
+import Link from "next/link";
 import { Icons } from "@/lib/icons";
+import { featuredCaseStudies } from "@/lib/case-studies";
 
-interface Pattern {
-  icon: keyof typeof Icons;
-  number: string;
-  problem: string;
-  insight: string;
-  outcome: string;
-}
+export function CaseStudiesSection() {
+  const ArrowIcon = Icons.arrowRight;
 
-const patterns: Pattern[] = [
-  {
-    icon: "package",
-    number: "01",
-    problem: "Manual inventory and order chaos as volume scaled",
-    insight:
-      "Fragmented visibility was the real bottleneck, not the staff speed",
-    outcome:
-      "A centralized operations panel that halved fulfillment time and eliminated sync errors",
-  },
-  {
-    icon: "messageSquare",
-    number: "02",
-    problem: "Support teams overwhelmed by routine policy inquiries",
-    insight: "The solution was intent-based navigation, not more human agents",
-    outcome:
-      "A specialized automation bot that handles routine queries autonomously without friction",
-  },
-  {
-    icon: "workflow",
-    number: "03",
-    problem: "Operational data siloed in fragmented spreadsheets",
-    insight:
-      "Businesses need a source of truth that matches their actual workflow sequence",
-    outcome:
-      "Custom workflow systems that provide real-time clarity across sales, ops, and reporting",
-  },
-];
-
-export function WorkPatternsSection() {
   return (
     <section
       className="relative overflow-hidden py-20 md:py-28"
@@ -60,25 +27,27 @@ export function WorkPatternsSection() {
         {/* Section header */}
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-accent">
-            Case Studies
+            Case studies
           </p>
           <h2 className="mb-4 text-4xl font-black tracking-tight text-white sm:text-5xl md:text-6xl">
-            The patterns we&apos;ve seen
+            Real work, real outcomes
           </h2>
           <div className="mx-auto mb-5 h-1 w-16 rounded-full bg-accent" />
           <p className="text-xl font-medium text-white/60 sm:text-2xl">
-            Common complexity across different businesses
+            Every project starts with a problem, not a pitch
           </p>
         </div>
 
-        {/* Pattern cards */}
+        {/* Case study cards */}
         <div className="mx-auto mb-12 max-w-7xl">
           <div className="grid gap-6 md:grid-cols-3">
-            {patterns.map((pattern) => {
-              const Icon = Icons[pattern.icon];
+            {featuredCaseStudies.map((study) => {
+              const Icon = Icons[study.icon];
+              const featured = study.featured!;
               return (
-                <div
-                  key={pattern.number}
+                <Link
+                  key={study.slug}
+                  href={`/work/${study.slug}`}
                   className="group relative flex flex-col rounded-2xl border border-white/10 bg-white/5 p-8 transition-all duration-300 hover:border-accent/40 hover:bg-white/8"
                 >
                   {/* Top row: icon + number */}
@@ -90,9 +59,14 @@ export function WorkPatternsSection() {
                       aria-hidden
                       className="select-none text-5xl font-black leading-none text-white/8 transition-colors duration-300 group-hover:text-accent/20"
                     >
-                      {pattern.number}
+                      {study.number}
                     </span>
                   </div>
+
+                  {/* Industry tag */}
+                  <span className="mb-4 w-fit rounded-full border border-accent/20 bg-accent/8 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-accent">
+                    {study.industry}
+                  </span>
 
                   {/* Problem */}
                   <div className="mb-5">
@@ -102,52 +76,62 @@ export function WorkPatternsSection() {
                         Problem
                       </span>
                     </div>
-                    <p className="text-base font-semibold leading-snug text-white sm:text-lg">
-                      {pattern.problem}
+                    <p className="text-base font-semibold leading-snug text-white">
+                      {featured.problem}
                     </p>
                   </div>
 
-                  {/* Insight */}
+                  {/* Solution */}
                   <div className="mb-5">
                     <div className="mb-2 flex items-center gap-2">
                       <div className="h-1.5 w-1.5 rounded-full bg-yellow-400" />
                       <span className="text-xs font-bold uppercase tracking-wider text-white/40">
-                        Insight
+                        Solution
                       </span>
                     </div>
                     <p className="text-base leading-relaxed text-white/60">
-                      {pattern.insight}
+                      {featured.solution}
                     </p>
                   </div>
 
-                  {/* Outcome */}
-                  <div className="flex-1">
+                  {/* Impact */}
+                  <div className="mb-6 flex-1">
                     <div className="mb-2 flex items-center gap-2">
                       <div className="h-1.5 w-1.5 rounded-full bg-accent" />
                       <span className="text-xs font-bold uppercase tracking-wider text-accent/70">
-                        Outcome
+                        Impact
                       </span>
                     </div>
                     <p className="text-base leading-relaxed text-white/80">
-                      {pattern.outcome}
+                      {featured.impact}
                     </p>
                   </div>
 
+                  {/* Read more row */}
+                  <div className="flex items-center justify-between border-t border-white/10 pt-5 text-sm font-bold text-white/70 transition-colors group-hover:text-accent">
+                    <span>Read case study</span>
+                    <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </div>
+
                   {/* Bottom accent line */}
-                  <div className="mt-8 h-px w-full overflow-hidden rounded-full bg-white/10">
+                  <div className="mt-5 h-px w-full overflow-hidden rounded-full bg-white/10">
                     <div className="h-full w-0 bg-linear-to-r from-accent to-accent-dark transition-all duration-500 group-hover:w-full" />
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>
         </div>
 
-        <div className="mx-auto max-w-xl text-center">
-          <p className="text-lg font-medium leading-relaxed text-white/60 sm:text-xl">
-            Each situation is unique, but the approach to complexity is
-            consistent.
-          </p>
+        {/* See all link */}
+        <div className="mx-auto text-center">
+          <Link
+            href="/work"
+            className="group inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-sm font-bold text-white backdrop-blur-sm transition-all hover:border-accent/40 hover:bg-white/10"
+          >
+            See all 6 case studies
+            <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
       </div>
     </section>

@@ -39,7 +39,7 @@ export function HeroSection() {
           {/* Tag */}
           <div className="mb-8 inline-flex items-center rounded-full border border-white/15 bg-white/6 px-4 py-2 text-sm font-semibold text-white/70 backdrop-blur-sm">
             <span className="mr-2 h-2 w-2 animate-pulse rounded-full bg-accent inline-block" />
-            AI-First Execution Firm
+            Systems & Automation Firm
           </div>
 
           {/* Brand name */}
@@ -68,14 +68,14 @@ export function HeroSection() {
                 "group inline-flex items-center gap-2 px-10 py-6 text-base font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 transition-shadow"
               )}
             >
-              Start a conversation
+              Let&apos;s understand your business
               <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
-              href="/how-we-work"
+              href="/services"
               className="inline-flex items-center gap-2 rounded-xl border-2 border-white/25 px-10 py-4 text-base font-bold text-white/80 backdrop-blur-sm transition-all hover:border-white/50 hover:bg-white/5 hover:text-white"
             >
-              How we work
+              See our services
             </Link>
           </div>
 

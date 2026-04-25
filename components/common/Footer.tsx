@@ -29,10 +29,9 @@ const socialLinks = [
 
 const footerLinkGroups = [
   {
-    title: "Services",
+    title: "What we do",
     links: [
-      { label: "How We Work", href: "/how-we-work" },
-      { label: "Capabilities", href: "/capabilities" },
+      { label: "Services", href: "/services" },
       { label: "Work", href: "/work" },
     ],
   },
