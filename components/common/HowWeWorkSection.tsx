@@ -109,7 +109,7 @@ export function HowWeWorkSection() {
         {/* Link to full process page */}
         <div className="mx-auto mt-12 text-center">
           <Link
-            href="/how-we-work"
+            href="/work#process"
             className="group inline-flex items-center gap-1.5 text-sm font-bold text-accent transition-colors hover:text-accent-dark"
           >
             See the full process

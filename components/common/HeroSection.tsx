@@ -72,10 +72,10 @@ export function HeroSection() {
               <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
-              href="/how-we-work"
+              href="/services"
               className="inline-flex items-center gap-2 rounded-xl border-2 border-white/25 px-10 py-4 text-base font-bold text-white/80 backdrop-blur-sm transition-all hover:border-white/50 hover:bg-white/5 hover:text-white"
             >
-              How we work
+              See our services
             </Link>
           </div>
 

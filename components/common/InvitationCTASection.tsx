@@ -52,7 +52,7 @@ export function InvitationCTASection() {
               <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
-              href="/how-we-work"
+              href="/work"
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
                 "px-10 py-6 text-base font-semibold"
