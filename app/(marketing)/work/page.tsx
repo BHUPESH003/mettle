@@ -8,6 +8,11 @@ import { Icons } from "@/lib/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { caseStudies } from "@/lib/case-studies";
+import {
+  WorkflowStorySection,
+  WorkflowStorySectionMobile,
+} from "@/components/workflow/WorkflowStorySection";
+import { workflowSteps } from "@/lib/workflow-config";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -21,108 +26,6 @@ const phases = [
   { number: "03", label: "Build" },
   { number: "04", label: "Optimize" },
 ] as const;
-
-const diagnosisCards = [
-  {
-    icon: "search" as const,
-    title: "Workflow Mapping",
-    description:
-      "We map exactly how decisions and data move through your business today, exposing the manual workarounds that slow you down.",
-  },
-  {
-    icon: "target" as const,
-    title: "Constraint Identification",
-    description:
-      "We surface the true bottlenecks — technical debt, fragmented tools, unclear ownership — not just the visible symptoms.",
-  },
-  {
-    icon: "alertTriangle" as const,
-    title: "Operational Debt Audit",
-    description:
-      "We identify where disconnected tools and spreadsheet-first thinking are creating data silos and invisible risk.",
-  },
-  {
-    icon: "gitBranch" as const,
-    title: "Systemic Dependencies",
-    description:
-      "We find the hidden relationships between departments that cause one process change to break three others.",
-  },
-];
-
-const architectureCards = [
-  {
-    icon: "layers" as const,
-    title: "Modular System Design",
-    description:
-      "We design software that matches your specific business sequence, not a generic template that forces you to adapt.",
-  },
-  {
-    icon: "zap" as const,
-    title: "Leverage Points",
-    description:
-      "We identify the highest-impact areas for automation — where 20% of effort delivers 80% of the efficiency gain.",
-  },
-  {
-    icon: "database" as const,
-    title: "Unified Source of Truth",
-    description:
-      "We architect data pipelines that consolidate your operational knowledge into one readable, reliable system.",
-  },
-];
-
-const executionCards = [
-  {
-    icon: "code" as const,
-    title: "Custom CRM & Dashboards",
-    description:
-      "Production-grade tools built in React, Node, and PostgreSQL that your team actually wants to use.",
-  },
-  {
-    icon: "zap" as const,
-    title: "AI Agent Deployment",
-    description:
-      "Intelligent bots and agentic workflows that handle repetitive work like support triage and lead management.",
-  },
-  {
-    icon: "workflow" as const,
-    title: "Automation Pipelines",
-    description:
-      "Robust integrations that move data between your systems reliably, without manual intervention.",
-  },
-  {
-    icon: "server" as const,
-    title: "Scalable Infrastructure",
-    description:
-      "Cloud-ready, secure systems built to evolve alongside your business, not require a rewrite in 18 months.",
-  },
-];
-
-const partnershipCards = [
-  {
-    icon: "repeat" as const,
-    title: "Systems Need Refinement",
-    description:
-      "What works today may not work tomorrow. We help evolve systems as your business and needs change.",
-  },
-  {
-    icon: "users" as const,
-    title: "Knowledge Transfer",
-    description:
-      "We don't just build — we teach. Your team leaves every engagement understanding the systems they now own.",
-  },
-  {
-    icon: "star" as const,
-    title: "Long-term Value",
-    description:
-      "Our goal is sustainable growth. We stay involved where we can add real, compounding value.",
-  },
-  {
-    icon: "shield" as const,
-    title: "Adaptive Support",
-    description:
-      "As new challenges emerge, we bring the same systems thinking to help you navigate them clearly.",
-  },
-];
 
 const stats = [
   { value: "6", label: "Case studies" },
@@ -217,264 +120,22 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* ── Step 01 — Understand ─────────────────────────────────────── */}
-      <section id="process" className="py-20 md:py-28">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto mb-16 max-w-3xl text-center">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-accent">
-              Our process
-            </p>
-            <h2 className="mb-4 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
-              How we work
-            </h2>
-            <div className="mx-auto mb-5 h-1 w-16 rounded-full bg-accent" />
-            <p className="text-xl font-medium text-muted-foreground sm:text-2xl">
-              Four steps from messy workflow to working system
-            </p>
-          </div>
-
-          <div className="mx-auto max-w-6xl">
-            <div className="mb-12 flex items-center gap-4">
-              <span className="shrink-0 rounded-full border border-accent/30 bg-accent/8 px-3 py-1 text-xs font-black uppercase tracking-widest text-accent">
-                Step 01
-              </span>
-              <div className="h-px flex-1 bg-border" />
-            </div>
-
-            <div className="mb-12 grid items-start gap-12 md:grid-cols-2 lg:gap-20">
-              <div>
-                <div
-                  aria-hidden
-                  className="mb-2 select-none text-8xl font-black leading-none text-border/25 sm:text-9xl"
-                >
-                  01
-                </div>
-                <h3 className="mb-4 text-3xl font-black tracking-tight sm:text-4xl">
-                  Understand your business
-                </h3>
-                <div className="mb-5 h-1 w-12 rounded-full bg-accent" />
-                <p className="mb-4 text-xl font-semibold text-foreground">
-                  We don&apos;t start with solutions
-                </p>
-                <p className="text-lg leading-relaxed text-muted-foreground">
-                  Most businesses try to automate broken processes. We spend
-                  time finding the root cause of friction before writing a
-                  single line of code.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                {diagnosisCards.map((card) => {
-                  const Icon = Icons[card.icon];
-                  return (
-                    <div
-                      key={card.title}
-                      className="group rounded-2xl border border-border bg-background p-5 transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/8"
-                    >
-                      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl border border-accent/20 bg-accent/8 transition-colors group-hover:border-accent/40 group-hover:bg-accent/15">
-                        <Icon className="h-5 w-5 text-accent" />
-                      </div>
-                      <h4 className="mb-1.5 text-sm font-bold text-foreground group-hover:text-accent transition-colors">
-                        {card.title}
-                      </h4>
-                      <p className="text-xs leading-relaxed text-muted-foreground">
-                        {card.description}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+      <section id="process" className="bg-[#070C14] pt-16 text-white md:pt-20">
+        <div className="container mx-auto px-4 pb-10 text-center md:pb-12">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-accent">
+            Our process
+          </p>
+          <h2 className="mb-4 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
+            How we work
+          </h2>
+          <div className="mx-auto mb-5 h-1 w-16 rounded-full bg-accent" />
+          <p className="mx-auto max-w-2xl text-xl font-medium text-white/55 sm:text-2xl">
+            Four steps from messy workflow to working system
+          </p>
         </div>
       </section>
-
-      {/* ── Step 02 — Redesign ───────────────────────────────────────── */}
-      <section className="bg-background-secondary py-20 md:py-28">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-6xl">
-            <div className="mb-12 flex items-center gap-4">
-              <span className="shrink-0 rounded-full border border-accent/30 bg-accent/8 px-3 py-1 text-xs font-black uppercase tracking-widest text-accent">
-                Step 02
-              </span>
-              <div className="h-px flex-1 bg-border" />
-            </div>
-
-            <div className="mb-12 grid items-start gap-12 md:grid-cols-2 lg:gap-20">
-              <div>
-                <div
-                  aria-hidden
-                  className="mb-2 select-none text-8xl font-black leading-none text-border/25 sm:text-9xl"
-                >
-                  02
-                </div>
-                <h3 className="mb-4 text-3xl font-black tracking-tight sm:text-4xl">
-                  Redesign your processes
-                </h3>
-                <div className="mb-5 h-1 w-12 rounded-full bg-accent" />
-                <p className="mb-4 text-xl font-semibold text-foreground">
-                  From ambiguity to direction
-                </p>
-                <p className="text-lg leading-relaxed text-muted-foreground">
-                  Once the process is clear, we design the digital foundation
-                  required to support it — modular, purposeful, and built to
-                  scale.
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-4">
-                {architectureCards.map((card) => {
-                  const Icon = Icons[card.icon];
-                  return (
-                    <div
-                      key={card.title}
-                      className="group flex items-start gap-4 rounded-2xl border border-border bg-background p-5 transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/8"
-                    >
-                      <div className="shrink-0 flex h-10 w-10 items-center justify-center rounded-xl border border-accent/20 bg-accent/8 transition-colors group-hover:border-accent/40 group-hover:bg-accent/15">
-                        <Icon className="h-5 w-5 text-accent" />
-                      </div>
-                      <div>
-                        <h4 className="mb-1 text-sm font-bold text-foreground group-hover:text-accent transition-colors">
-                          {card.title}
-                        </h4>
-                        <p className="text-xs leading-relaxed text-muted-foreground">
-                          {card.description}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Step 03 — Build ──────────────────────────────────────────── */}
-      <section
-        className="relative overflow-hidden py-20 md:py-28"
-        style={{ background: "hsl(var(--primary))" }}
-      >
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
-            backgroundSize: "52px 52px",
-          }}
-        />
-        <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-accent/8 blur-[100px] pointer-events-none" />
-
-        <div className="container relative mx-auto px-4">
-          <div className="mx-auto max-w-6xl">
-            <div className="mb-12 flex items-center gap-4">
-              <span className="shrink-0 rounded-full border border-accent/40 bg-accent/15 px-3 py-1 text-xs font-black uppercase tracking-widest text-accent">
-                Step 03
-              </span>
-              <div className="h-px flex-1 bg-white/10" />
-            </div>
-
-            <div className="mb-12 max-w-2xl">
-              <div
-                aria-hidden
-                className="mb-2 select-none text-8xl font-black leading-none text-white/6 sm:text-9xl"
-              >
-                03
-              </div>
-              <h3 className="mb-4 text-3xl font-black tracking-tight text-white sm:text-4xl">
-                Build your system
-              </h3>
-              <div className="mb-5 h-1 w-12 rounded-full bg-accent" />
-              <p className="text-xl font-semibold text-white/80">
-                Engineering-led delivery
-              </p>
-            </div>
-
-            <div className="mb-12 grid gap-5 md:grid-cols-2">
-              {executionCards.map((card) => {
-                const Icon = Icons[card.icon];
-                return (
-                  <div
-                    key={card.title}
-                    className="group flex items-start gap-4 rounded-2xl border border-white/8 bg-white/4 p-6 transition-all duration-300 hover:border-accent/30 hover:bg-white/7 backdrop-blur-sm"
-                  >
-                    <div className="shrink-0 flex h-11 w-11 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 transition-colors group-hover:border-accent/50 group-hover:bg-accent/20">
-                      <Icon className="h-5 w-5 text-accent" />
-                    </div>
-                    <div>
-                      <h4 className="mb-1.5 text-base font-bold text-white">
-                        {card.title}
-                      </h4>
-                      <p className="text-sm leading-relaxed text-white/55">
-                        {card.description}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Step 04 — Automate & Optimize ────────────────────────────── */}
-      <section className="py-20 md:py-28">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-6xl">
-            <div className="mb-12 flex items-center gap-4">
-              <span className="shrink-0 rounded-full border border-accent/30 bg-accent/8 px-3 py-1 text-xs font-black uppercase tracking-widest text-accent">
-                Step 04
-              </span>
-              <div className="h-px flex-1 bg-border" />
-            </div>
-
-            <div className="mb-12 grid items-start gap-12 md:grid-cols-2 lg:gap-20">
-              <div>
-                <div
-                  aria-hidden
-                  className="mb-2 select-none text-8xl font-black leading-none text-border/25 sm:text-9xl"
-                >
-                  04
-                </div>
-                <h3 className="mb-4 text-3xl font-black tracking-tight sm:text-4xl">
-                  Automate and optimize
-                </h3>
-                <div className="mb-5 h-1 w-12 rounded-full bg-accent" />
-                <p className="mb-4 text-xl font-semibold text-foreground">
-                  Business evolution doesn&apos;t stop
-                </p>
-                <p className="text-lg leading-relaxed text-muted-foreground">
-                  Shipping is not the finish line. We stay involved where we
-                  can add real value — refining, teaching, and adapting
-                  alongside your growth.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                {partnershipCards.map((card) => {
-                  const Icon = Icons[card.icon];
-                  return (
-                    <div
-                      key={card.title}
-                      className="group rounded-2xl border border-border bg-background p-5 transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/8"
-                    >
-                      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl border border-accent/20 bg-accent/8 transition-colors group-hover:border-accent/40 group-hover:bg-accent/15">
-                        <Icon className="h-5 w-5 text-accent" />
-                      </div>
-                      <h4 className="mb-1.5 text-sm font-bold text-foreground group-hover:text-accent transition-colors">
-                        {card.title}
-                      </h4>
-                      <p className="text-xs leading-relaxed text-muted-foreground">
-                        {card.description}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <WorkflowStorySection steps={workflowSteps} />
+      <WorkflowStorySectionMobile steps={workflowSteps} />
 
       {/* ── Case Studies ─────────────────────────────────────────────── */}
       <section

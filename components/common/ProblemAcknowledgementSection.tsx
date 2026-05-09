@@ -5,110 +5,174 @@ interface ProblemCard {
   number: string;
   title: string;
   description: string;
+  signals: [string, string];
+  impact: string;
 }
 
 const problemCards: ProblemCard[] = [
   {
-    icon: "workflow",
+    icon: "alertTriangle",
     number: "01",
-    title: "Operations are messy and inconsistent",
+    title: "Disconnected Tools",
     description:
-      "We restructure how your business runs — from lead to delivery — so every step is clear and repeatable.",
+      "Systems that don't communicate, creating silos and manual workarounds.",
+    signals: [
+      "Teams maintain the same data in multiple places.",
+      "Status updates depend on manual follow-ups.",
+    ],
+    impact:
+      "Execution slows down because work is split across tools instead of flowing through one operational system.",
   },
   {
-    icon: "layers",
+    icon: "lightbulb",
     number: "02",
-    title: "Work is scattered across tools",
+    title: "Half-Built Systems",
     description:
-      "We bring everything into one system so your team doesn't rely on memory, WhatsApp, or Excel.",
+      "Solutions implemented partially, leading to inconsistent processes and user confusion.",
+    signals: [
+      "Critical workflows still rely on exceptions and side notes.",
+      "Different teams use different versions of the same process.",
+    ],
+    impact:
+      "Adoption drops because people cannot trust the system to handle real edge cases.",
   },
   {
-    icon: "messageSquare",
+    icon: "clock",
     number: "03",
-    title: "Leads are not handled properly",
+    title: "Rushed Decisions",
     description:
-      "We automate responses, follow-ups, and reminders so no opportunity is missed.",
+      "Choices made under time pressure without considering long-term implications.",
+    signals: [
+      "Quick fixes become permanent defaults.",
+      "Dependencies are added before ownership is clear.",
+    ],
+    impact:
+      "Near-term speed creates long-term drag, increasing rework and reducing strategic flexibility.",
   },
   {
-    icon: "barChart",
+    icon: "trendingUp",
     number: "04",
-    title: "You don't know what's working",
+    title: "Unmanaged Growth",
     description:
-      "We convert your daily activity into dashboards that actually help you make decisions.",
+      "Scaling without clear systems, leading to chaos and lost productivity.",
+    signals: [
+      "Headcount grows but handoffs still happen informally.",
+      "New projects start faster than old debt is resolved.",
+    ],
+    impact:
+      "Complexity compounds faster than capacity, so output rises while reliability declines.",
   },
   {
-    icon: "repeat",
+    icon: "monitor",
     number: "05",
-    title: "Too much manual work",
+    title: "Ineffective Technology",
     description:
-      "We automate repetitive tasks so your team can focus on what matters.",
+      "Tools that look good but don't solve real problems or improve outcomes.",
+    signals: [
+      "Dashboards are active, but decisions still happen from gut feel.",
+      "Automation exists, but teams bypass it to get work done.",
+    ],
+    impact:
+      "Technology spend increases without operational leverage because tooling is disconnected from real workflow constraints.",
   },
   {
-    icon: "gitBranch",
+    icon: "helpCircle",
     number: "06",
-    title: "Systems don't talk to each other",
-    description: "We connect your tools into one smooth workflow.",
+    title: "Unclear Problems",
+    description:
+      "Symptoms treated as root causes, leading to recurring issues and wasted effort.",
+    signals: [
+      "The same issue returns every quarter with new labels.",
+      "Initiatives solve visible pain, not structural causes.",
+    ],
+    impact:
+      "Teams stay busy but progress stalls because energy is spent reacting instead of redesigning the system.",
   },
 ];
 
 export function ProblemAcknowledgementSection() {
   return (
-    <section className="py-20 md:py-28">
-      <div className="container mx-auto px-4">
-        {/* Section header */}
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-accent">
-            What we fix
-          </p>
-          <h2 className="mb-4 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
-            Problems we solve for growing businesses
-          </h2>
-          <div className="mx-auto mb-5 h-1 w-16 rounded-full bg-accent" />
-          <p className="text-xl font-medium text-muted-foreground sm:text-2xl">
-            These are the points where most operations start breaking down
-          </p>
-        </div>
+    <section className="bg-slate-950 text-white">
+      <div className="wrapper">
+        <section className="grid h-screen w-full place-content-center sticky top-0 overflow-hidden bg-slate-950 px-6">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[54px_54px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+          <div className="relative max-w-4xl text-center">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-accent">
+              The Reality
+            </p>
+            <h2 className="text-4xl font-black tracking-tight leading-[115%] md:text-6xl">
+              Complexity is inevitable.
+              <br />
+              Confusion is optional.
+            </h2>
+          </div>
+        </section>
 
-        {/* Problem cards */}
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-5 md:grid-cols-2 lg:gap-6">
-            {problemCards.map((problem) => {
-              const Icon = Icons[problem.icon];
-              return (
-                <div
-                  key={problem.number}
-                  className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-background p-7 transition-all duration-300 hover:border-accent/40 hover:shadow-2xl hover:shadow-accent/8 sm:p-8"
-                >
-                  {/* Hover glow */}
-                  <div className="absolute inset-0 rounded-2xl bg-linear-to-br from-accent/4 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
+        {problemCards.map((problem, index) => {
+          const Icon = Icons[problem.icon];
+          return (
+            <section
+              key={problem.number}
+              className="grid h-screen place-content-center sticky top-0 overflow-hidden px-6"
+            >
+              <div className="absolute inset-0 bg-neutral-200/95" />
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[54px_54px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+              <div className="relative mx-auto w-full max-w-4xl rounded-3xl border border-black/10 bg-white/80 p-8 text-black shadow-2xl backdrop-blur md:p-10">
+                <div className="mb-6 flex items-center justify-between">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent/30 bg-accent/10">
+                    <Icon className="h-6 w-6 text-accent" />
+                  </div>
+                  <span className="text-5xl font-black text-black/20">
+                    {problem.number}
+                  </span>
+                </div>
+                <h3 className="mb-4 text-3xl font-black tracking-tight md:text-5xl">
+                  {problem.title}
+                </h3>
+                <p className="max-w-3xl text-base leading-relaxed text-black/70 md:text-lg">
+                  {problem.description}
+                </p>
 
-                  {/* Top row: icon + number */}
-                  <div className="relative mb-5 flex items-start justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent/20 bg-accent/8 transition-colors duration-300 group-hover:border-accent/40 group-hover:bg-accent/15">
-                      <Icon className="h-6 w-6 text-accent" />
-                    </div>
-                    <span
-                      aria-hidden
-                      className="select-none text-5xl font-black leading-none text-border/30 transition-colors duration-300 group-hover:text-accent/15"
-                    >
-                      {problem.number}
-                    </span>
+                <div className="mt-6 grid gap-4 md:grid-cols-2">
+                  <div className="rounded-2xl border border-black/10 bg-black/3 p-4">
+                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-black/50">
+                      Signals You See
+                    </p>
+                    <ul className="space-y-2 text-sm leading-relaxed text-black/75">
+                      {problem.signals.map((signal) => (
+                        <li key={signal} className="flex gap-2">
+                          <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                          <span>{signal}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <h3 className="relative mb-3 text-xl font-black leading-snug text-foreground transition-colors duration-300 group-hover:text-accent sm:text-2xl">
-                    {problem.title}
-                  </h3>
-                  {/* Animated accent rule */}
-                  <div className="relative mb-4 h-0.5 w-8 rounded-full bg-accent/40 transition-all duration-300 group-hover:w-16 group-hover:bg-accent" />
-                  <p className="relative text-sm leading-relaxed text-muted-foreground">
-                    {problem.description}
-                  </p>
+                  <div className="rounded-2xl border border-black/10 bg-black/3 p-4">
+                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-black/50">
+                      Business Impact
+                    </p>
+                    <p className="text-sm leading-relaxed text-black/75">
+                      {problem.impact}
+                    </p>
+                  </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
+
+                <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+                  Problem {index + 1} of {problemCards.length}
+                </p>
+              </div>
+            </section>
+          );
+        })}
       </div>
+
+      <footer className="bg-slate-950 pb-8 pt-6">
+        <div className="mx-auto mt-2 max-w-3xl rounded-t-[2.5rem] bg-black px-6 py-10 text-center text-lg text-white/80">
+          These are not isolated inconveniences; they are systemic blockers to
+          sustainable growth.
+        </div>
+      </footer>
     </section>
   );
 }
