@@ -189,6 +189,11 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Display / tech headline — monospace display (Departure-style usage) */
+.font-departure {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
 .gradient-text {
   background: linear-gradient(
     135deg,

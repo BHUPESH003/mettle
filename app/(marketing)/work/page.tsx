@@ -7,11 +7,11 @@ import Link from "next/link";
 import { Icons } from "@/lib/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { caseStudies } from "@/lib/case-studies";
 import {
   WorkflowStorySection,
   WorkflowStorySectionMobile,
 } from "@/components/workflow/WorkflowStorySection";
+import { WorkProjectList } from "@/components/work/WorkProjectList";
 import { workflowSteps } from "@/lib/workflow-config";
 
 export const metadata: Metadata = {
@@ -137,112 +137,7 @@ export default function WorkPage() {
       <WorkflowStorySection steps={workflowSteps} />
       <WorkflowStorySectionMobile steps={workflowSteps} />
 
-      {/* ── Case Studies ─────────────────────────────────────────────── */}
-      <section
-        id="case-studies"
-        className="relative overflow-hidden bg-background-secondary py-20 md:py-28"
-      >
-        <div className="container mx-auto px-4">
-          <div className="mx-auto mb-16 max-w-3xl text-center">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-accent">
-              Case studies
-            </p>
-            <h2 className="mb-4 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
-              Real work, real outcomes
-            </h2>
-            <div className="mx-auto mb-5 h-1 w-16 rounded-full bg-accent" />
-            <p className="text-xl font-medium text-muted-foreground sm:text-2xl">
-              The process above, applied to real operational problems
-            </p>
-          </div>
-
-          <div className="mx-auto max-w-6xl">
-            <div className="mb-12 flex items-center gap-4">
-              <span className="shrink-0 rounded-full border border-accent/30 bg-accent/8 px-3 py-1 text-xs font-black uppercase tracking-widest text-accent">
-                All projects
-              </span>
-              <div className="h-px flex-1 bg-border" />
-              <span className="shrink-0 text-xs font-semibold text-muted-foreground">
-                {caseStudies.length} case studies
-              </span>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-2">
-              {caseStudies.map((project) => {
-                const Icon = Icons[project.icon];
-                return (
-                  <article
-                    key={project.slug}
-                    className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-background transition-all duration-300 hover:border-accent/40 hover:shadow-2xl hover:shadow-accent/8"
-                  >
-                    <div className="absolute inset-0 rounded-2xl bg-linear-to-br from-accent/4 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
-
-                    <div className="relative flex-1 p-7 sm:p-8">
-                      <div className="mb-5 flex items-start justify-between">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent/20 bg-accent/8 transition-colors duration-300 group-hover:border-accent/40 group-hover:bg-accent/15">
-                          <Icon className="h-6 w-6 text-accent" />
-                        </div>
-                        <span
-                          aria-hidden
-                          className="select-none text-5xl font-black leading-none text-border/30 transition-colors duration-300 group-hover:text-accent/15"
-                        >
-                          {project.number}
-                        </span>
-                      </div>
-
-                      <div className="mb-3 flex flex-wrap gap-2">
-                        <span className="rounded-full border border-accent/20 bg-accent/8 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-accent">
-                          {project.industry}
-                        </span>
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-full border border-border bg-background-secondary px-2.5 py-0.5 text-xs font-semibold text-muted-foreground"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      <h3 className="mb-4 text-xl font-black leading-snug text-foreground transition-colors duration-300 group-hover:text-accent sm:text-2xl">
-                        {project.title}
-                      </h3>
-
-                      <div className="mb-4">
-                        <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground/60">
-                          Context
-                        </p>
-                        <p className="text-sm leading-relaxed text-muted-foreground">
-                          {project.context}
-                        </p>
-                      </div>
-
-                      {project.outcome && (
-                        <div className="flex items-start gap-2.5 rounded-xl border border-accent/15 bg-accent/5 px-4 py-3">
-                          <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                          <p className="text-sm font-medium leading-relaxed text-foreground">
-                            {project.outcome}
-                          </p>
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="relative border-t border-border px-7 py-5 sm:px-8">
-                      <Link
-                        href={`/work/${project.slug}`}
-                        className="group/link flex items-center justify-between text-sm font-bold text-foreground transition-colors hover:text-accent"
-                      >
-                        View case study
-                        <ArrowIcon className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-                      </Link>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
+      <WorkProjectList />
 
       {/* ── CTA ──────────────────────────────────────────────────────── */}
       <section className="py-24 md:py-32">

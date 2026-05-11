@@ -39,7 +39,7 @@ const footerLinkGroups = [
     title: "Company",
     links: [
       { label: "About", href: "/about" },
-      { label: "Thinking", href: "/thinking" },
+      // { label: "Thinking", href: "/thinking" },
       { label: "Contact", href: "/contact" },
     ],
   },

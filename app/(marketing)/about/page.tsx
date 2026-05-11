@@ -5,6 +5,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import Earth from "@/components/ui/globe";
 import { Icons } from "@/lib/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -90,13 +91,6 @@ const values: Value[] = [
   },
 ];
 
-const heroStats = [
-  { value: "AI-first", label: "Execution approach" },
-  { value: "6+", label: "Client engagements" },
-  { value: "4", label: "Industries served" },
-  { value: "0", label: "Strategy PDFs delivered" },
-] as const;
-
 const distinctives = [
   {
     icon: "rocket" as const,
@@ -129,9 +123,28 @@ export default function AboutPage() {
         className="relative min-h-[65vh] flex flex-col justify-center overflow-hidden py-20"
         style={{ background: "hsl(var(--primary))" }}
       >
-        {/* Grid overlay */}
+        {/* Dot field + COBE globe (reference UI) */}
+        <div className="pointer-events-none absolute inset-0 z-0">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "radial-gradient(rgba(88, 117, 214, 0.22) 1px, transparent 1px)",
+              backgroundSize: "20px 20px",
+            }}
+          />
+          <div className="absolute inset-0 flex items-end justify-center pb-2 md:items-center md:justify-center md:pb-0">
+            <div
+              className="relative w-[min(92vw,540px)] max-w-none md:w-[min(88vw,620px)] [filter:drop-shadow(0_0_48px_rgba(59,130,246,0.5))_drop-shadow(0_0_120px_rgba(59,130,246,0.25))]"
+              aria-hidden
+            >
+              <Earth className="mx-auto max-w-none w-full" />
+            </div>
+          </div>
+        </div>
+        {/* Light structure grid (keeps depth; very subtle) */}
         <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          className="pointer-events-none absolute inset-0 z-1 opacity-[0.025]"
           style={{
             backgroundImage:
               "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
@@ -139,10 +152,10 @@ export default function AboutPage() {
           }}
         />
         {/* Blue blobs */}
-        <div className="absolute top-1/4 right-[15%] w-96 h-96 rounded-full bg-accent/10 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-[10%] w-72 h-72 rounded-full bg-accent/7 blur-[90px] pointer-events-none" />
+        <div className="pointer-events-none absolute top-1/4 right-[15%] z-1 h-96 w-96 rounded-full bg-accent/10 blur-[120px]" />
+        <div className="pointer-events-none absolute bottom-0 left-[10%] z-1 h-72 w-72 rounded-full bg-accent/7 blur-[90px]" />
 
-        <div className="container relative mx-auto px-4">
+        <div className="container relative z-10 mx-auto px-4">
           <div className="mx-auto max-w-4xl text-center">
             {/* Tag */}
             <div className="mb-6 inline-flex items-center rounded-full border border-white/15 bg-white/6 px-4 py-2 text-sm font-semibold text-white/70 backdrop-blur-sm">
@@ -150,11 +163,11 @@ export default function AboutPage() {
               Who we are
             </div>
 
-            <h1 className="mb-5 text-5xl font-black tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl leading-none">
+            <h1 className="mb-5 text-5xl font-semibold tracking-tighter leading-[100%] bg-linear-to-b from-[#edeffd] to-[#06152e] bg-clip-text text-transparent sm:text-6xl md:text-7xl lg:text-8xl">
               About Mettle
             </h1>
 
-            <div className="mx-auto mb-6 h-1 w-16 rounded-full bg-accent" />
+            <div className="mx-auto mb-6 h-1 w-16 rounded-full bg-accent opacity-80" />
 
             <p className="mb-3 text-xl font-semibold text-white/90 sm:text-2xl">
               An AI-first execution firm built by engineers.
@@ -164,25 +177,6 @@ export default function AboutPage() {
               and recommendations, but with systems that run and problems that
               stay solved.
             </p>
-
-            {/* Stats row */}
-            <div className="mx-auto mt-14 max-w-2xl">
-              <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-4">
-                {heroStats.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="flex flex-col items-center gap-1 bg-white/4 px-4 py-5 text-center"
-                  >
-                    <span className="text-2xl font-black text-accent">
-                      {stat.value}
-                    </span>
-                    <span className="text-xs font-semibold text-white/50">
-                      {stat.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -267,9 +261,7 @@ export default function AboutPage() {
             <blockquote className="text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
               "Execution is the strategy.
               <br />
-              <span className="text-accent">
-                We don't advise. We build.
-              </span>"
+              <span className="text-accent">We don't advise. We build.</span>"
             </blockquote>
             <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-white/50 sm:text-lg">
               Every engagement starts with a real problem and ends with a system
@@ -412,7 +404,7 @@ export default function AboutPage() {
                 href="/contact"
                 className={cn(
                   buttonVariants({ size: "lg" }),
-                  "group inline-flex items-center gap-2 px-10 py-6 text-base font-semibold shadow-lg shadow-accent/25"
+                  "group inline-flex items-center gap-2 px-10 py-6 text-base font-semibold shadow-lg shadow-accent/25",
                 )}
               >
                 Start a conversation
@@ -422,7 +414,7 @@ export default function AboutPage() {
                 href="/work"
                 className={cn(
                   buttonVariants({ variant: "outline", size: "lg" }),
-                  "px-10 py-6 text-base font-semibold"
+                  "px-10 py-6 text-base font-semibold",
                 )}
               >
                 See how we work
