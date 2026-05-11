@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { ServicesHeroMerged } from "@/components/services/ServicesHeroMerged";
 import { Icons } from "@/lib/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -40,63 +41,9 @@ export default function ServicesPage() {
 
   return (
     <main>
-      {/* ── Hero ──────────────────────────────────────────────────────── */}
-      <section
-        className="bg-primary relative min-h-[65vh] flex flex-col justify-center overflow-hidden py-20"
-      >
-        <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-size-[52px_52px]" />
-        <div className="absolute top-1/4 right-[15%] w-96 h-96 rounded-full bg-accent/10 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-[10%] w-72 h-72 rounded-full bg-accent/7 blur-[90px] pointer-events-none" />
+      <ServicesHeroMerged />
 
-        <div className="container relative mx-auto px-4">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-6 inline-flex items-center rounded-full border border-white/15 bg-white/6 px-4 py-2 text-sm font-semibold text-white/70 backdrop-blur-sm">
-              <span className="mr-2 h-2 w-2 rounded-full bg-accent inline-block" />
-              Our services
-            </div>
-
-            <h1 className="mb-5 text-5xl font-black tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl leading-none">
-              What we actually do
-            </h1>
-
-            <div className="mx-auto mb-6 h-1 w-16 rounded-full bg-accent" />
-
-            <p className="mb-3 text-xl font-semibold text-white/90 sm:text-2xl">
-              Three ways we help you run a better business.
-            </p>
-            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/50">
-              We don&apos;t sell features. We solve problems — through process
-              redesign, custom tools, and automation, applied where they
-              actually move the needle.
-            </p>
-
-            <div className="mx-auto mt-14 max-w-3xl">
-              <div className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10">
-                {services.map((service, index) => {
-                  const Icon = Icons[service.icon];
-                  return (
-                    <Link
-                      href={`/services/${service.slug}`}
-                      key={service.number}
-                      className={cn(
-                        "group flex flex-col items-center gap-2 px-3 py-4 text-center transition-colors hover:bg-accent/20",
-                        index === 0 ? "bg-accent/20" : "bg-white/4"
-                      )}
-                    >
-                      <Icon className="h-5 w-5 text-accent/80" />
-                      <span className="text-xs font-semibold text-white/60 leading-tight">
-                        {service.tabLabel}
-                      </span>
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 md:py-28">
+      <section id="services-content" className="scroll-mt-8 py-20 md:py-28">
         <div className="container mx-auto px-4">
           <div className="mx-auto mb-12 max-w-3xl text-center">
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-accent">

@@ -5,7 +5,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
-import Earth from "@/components/ui/globe";
+import { AboutHeroMerged } from "@/components/about/AboutHeroMerged";
 import { Icons } from "@/lib/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -118,56 +118,10 @@ export default function AboutPage() {
 
   return (
     <main>
-      {/* ── Hero ──────────────────────────────────────────────────────── */}
-      <section
-        className="bg-primary relative min-h-[65vh] flex flex-col justify-center overflow-hidden py-20"
-      >
-        {/* Dot field + COBE globe (reference UI) */}
-        <div className="pointer-events-none absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[radial-gradient(rgba(88,117,214,0.22)_1px,transparent_1px)] bg-size-[20px_20px]" />
-          <div className="absolute inset-0 flex items-end justify-center pb-2 md:items-center md:justify-center md:pb-0">
-            <div
-              className="relative w-[min(92vw,540px)] max-w-none md:w-[min(88vw,620px)] [filter:drop-shadow(0_0_48px_rgba(59,130,246,0.5))_drop-shadow(0_0_120px_rgba(59,130,246,0.25))]"
-              aria-hidden
-            >
-              <Earth className="mx-auto max-w-none w-full" />
-            </div>
-          </div>
-        </div>
-        {/* Light structure grid (keeps depth; very subtle) */}
-        <div className="pointer-events-none absolute inset-0 z-1 opacity-[0.025] bg-[linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-size-[52px_52px]" />
-        {/* Blue blobs */}
-        <div className="pointer-events-none absolute top-1/4 right-[15%] z-1 h-96 w-96 rounded-full bg-accent/10 blur-[120px]" />
-        <div className="pointer-events-none absolute bottom-0 left-[10%] z-1 h-72 w-72 rounded-full bg-accent/7 blur-[90px]" />
-
-        <div className="container relative z-10 mx-auto px-4">
-          <div className="mx-auto max-w-4xl text-center">
-            {/* Tag */}
-            <div className="mb-6 inline-flex items-center rounded-full border border-white/15 bg-white/6 px-4 py-2 text-sm font-semibold text-white/70 backdrop-blur-sm">
-              <span className="mr-2 h-2 w-2 rounded-full bg-accent inline-block" />
-              Who we are
-            </div>
-
-            <h1 className="mb-5 text-5xl font-semibold tracking-tighter leading-[100%] bg-linear-to-b from-[#edeffd] to-[#06152e] bg-clip-text text-transparent sm:text-6xl md:text-7xl lg:text-8xl">
-              About Mettle
-            </h1>
-
-            <div className="mx-auto mb-6 h-1 w-16 rounded-full bg-accent opacity-80" />
-
-            <p className="mb-3 text-xl font-semibold text-white/90 sm:text-2xl">
-              An AI-first execution firm built by engineers.
-            </p>
-            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/50">
-              We help founders navigate operational complexity — not with decks
-              and recommendations, but with systems that run and problems that
-              stay solved.
-            </p>
-          </div>
-        </div>
-      </section>
+      <AboutHeroMerged />
 
       {/* ── Core beliefs ─────────────────────────────────────────────── */}
-      <section className="py-20 md:py-28">
+      <section id="about-content" className="scroll-mt-8 py-20 md:py-28">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-6xl">
             {/* Section label */}

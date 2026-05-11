@@ -1,73 +1,93 @@
+"use client";
+
 import { Icons } from "@/lib/icons";
 
 const hints = [
   {
     icon: "users" as const,
-    label: "Use them yourself",
-    description: "Drop-in systems ready for teams to adopt directly.",
+    title: "Use them yourself",
+    description: "Drop-in systems your team can adopt and run from day one.",
+    delayClass: "home-anim-delay-3",
   },
   {
     icon: "sliders" as const,
-    label: "Or let us customize",
-    description: "We tailor and integrate them into your existing setup.",
+    title: "Or let us customize",
+    description: "We tailor and integrate into your existing infrastructure.",
+    delayClass: "home-anim-delay-4",
   },
-];
+] as const;
 
 export function ProductsSection() {
-  const PackageIcon = Icons.package;
+  const BoxIcon = Icons.box;
 
   return (
-    <section className="py-20 md:py-28">
-      <div className="container mx-auto px-4">
-        <div className="mx-auto max-w-4xl">
-          <div className="relative overflow-hidden rounded-3xl border border-border bg-background-secondary px-8 py-14 text-center sm:px-12 sm:py-16">
-            {/* Decorative blobs */}
-            <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-accent/5 blur-[80px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-56 h-56 rounded-full bg-accent/4 blur-[70px] pointer-events-none" />
+    <section className="relative overflow-hidden border-t border-border bg-background px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-40 bg-[radial-gradient(circle,hsl(var(--border))_1px,transparent_1px)] bg-size-[24px_24px]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -top-32 right-0 h-96 w-96 rounded-full bg-[radial-gradient(circle_at_50%_50%,hsl(var(--accent)/0.12),transparent_70%)] opacity-60"
+        aria-hidden
+      />
 
-            <div className="relative">
-              {/* Coming soon pill */}
-              <div className="mb-6 inline-flex items-center rounded-full border border-accent/30 bg-accent/8 px-4 py-2 text-sm font-semibold text-accent">
-                <span className="mr-2 h-2 w-2 animate-pulse rounded-full bg-accent inline-block" />
-                Coming soon
+      <div className="relative mx-auto max-w-6xl">
+        <div className="overflow-hidden rounded-3xl border border-border bg-background/90 shadow-sm backdrop-blur-sm">
+          <div className="grid grid-cols-1 gap-0 lg:grid-cols-2">
+            <div className="relative flex flex-col justify-center gap-6 border-b border-border p-8 sm:p-10 lg:border-b-0 lg:border-r lg:p-14">
+              <div
+                className="absolute bottom-12 left-0 top-12 w-[3px] rounded-full bg-linear-to-b from-transparent via-accent to-transparent"
+                aria-hidden
+              />
+
+              <div className="home-anim-fade-in relative inline-flex w-fit items-center gap-2 rounded-full border border-accent/25 bg-accent-light px-4 py-1.5">
+                <span
+                  className="home-badge-dot inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                  aria-hidden
+                />
+                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-accent">
+                  Coming soon
+                </span>
               </div>
 
-              {/* Large icon */}
-              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-accent/20 bg-accent/8">
-                <PackageIcon className="h-8 w-8 text-accent" />
+              <div className="home-anim-fade-up home-anim-delay-1 flex items-center gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-accent/20 bg-accent-light shadow-sm">
+                  <BoxIcon className="h-5 w-5 text-accent" strokeWidth={1.75} />
+                </div>
+                <h2 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
+                  Products
+                </h2>
               </div>
 
-              <h2 className="mb-4 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
-                Products
-              </h2>
-              <div className="mx-auto mb-6 h-1 w-16 rounded-full bg-accent" />
+              <div
+                className="home-anim-slide-bar h-[3px] rounded-full bg-accent"
+                aria-hidden
+              />
 
-              <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-                We are building open systems that businesses can use directly.
+              <p className="home-anim-fade-up home-anim-delay-2 max-w-sm text-base leading-relaxed text-muted-foreground">
+                We are building open systems that businesses can use directly — without compromise.
               </p>
+            </div>
 
-              {/* Hint bullets */}
-              <div className="mx-auto grid max-w-2xl gap-4 md:grid-cols-2">
-                {hints.map((hint) => {
-                  const Icon = Icons[hint.icon];
-                  return (
-                    <div
-                      key={hint.label}
-                      className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-background p-6 text-center"
-                    >
-                      <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-accent/20 bg-accent/8">
-                        <Icon className="h-5 w-5 text-accent" />
-                      </div>
-                      <p className="text-sm font-bold text-foreground">
-                        {hint.label}
-                      </p>
-                      <p className="text-xs leading-relaxed text-muted-foreground">
-                        {hint.description}
-                      </p>
+            <div className="flex flex-col gap-4 bg-background-secondary p-8 sm:flex-row sm:p-10 lg:flex-col lg:p-10">
+              {hints.map(({ icon, title, description, delayClass }) => {
+                const Icon = Icons[icon];
+                return (
+                  <div
+                    key={title}
+                    className={`home-card-lift home-anim-scale-in ${delayClass} group flex-1 cursor-default rounded-2xl border border-border bg-background p-6`}
+                  >
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-accent/15 bg-accent-light transition-colors duration-200 group-hover:border-transparent group-hover:bg-accent">
+                      <Icon
+                        className="h-4 w-4 text-accent transition-colors duration-200 group-hover:text-accent-foreground"
+                        strokeWidth={1.75}
+                      />
                     </div>
-                  );
-                })}
-              </div>
+                    <h3 className="mb-1.5 text-[15px] font-semibold text-foreground">{title}</h3>
+                    <p className="text-[13.5px] leading-relaxed text-muted-foreground">{description}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

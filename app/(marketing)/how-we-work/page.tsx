@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HowWeWorkHeroMerged } from "@/components/how-we-work/HowWeWorkHeroMerged";
 import { Icons } from "@/lib/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -42,45 +43,12 @@ export default function HowWeWorkPage() {
 
   return (
     <main>
-      {/* ── Hero ──────────────────────────────────────────────────────── */}
-      <section
-        className="bg-primary relative min-h-[56vh] flex flex-col justify-center overflow-hidden pt-20 pb-8"
-      >
-        {/* Grid overlay */}
-        <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-size-[52px_52px]" />
-        {/* Blue blobs */}
-        <div className="absolute top-1/4 right-[15%] w-96 h-96 rounded-full bg-accent/10 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-[10%] w-72 h-72 rounded-full bg-accent/8 blur-[90px] pointer-events-none" />
+      <HowWeWorkHeroMerged />
 
-        <div className="container relative mx-auto px-4">
-          <div className="mx-auto max-w-4xl text-center">
-            {/* Tag */}
-            <div className="mb-6 inline-flex items-center rounded-full border border-white/15 bg-white/6 px-4 py-2 text-sm font-semibold text-white/70 backdrop-blur-sm">
-              <span className="mr-2 h-2 w-2 rounded-full bg-accent inline-block" />
-              Our process
-            </div>
-
-            <h1 className="mb-5 text-5xl font-black tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl leading-none">
-              How We Work
-            </h1>
-
-            {/* Blue accent line */}
-            <div className="mx-auto mb-6 h-1 w-16 rounded-full bg-accent" />
-
-            <p className="mb-3 text-xl font-semibold text-white/90 sm:text-2xl">
-              Complexity is not a failure — it&apos;s a signal.
-            </p>
-            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/50">
-              Most problems are misunderstood, not unsolved. We bring clarity
-              before action — every time.
-            </p>
-
-          </div>
-        </div>
-      </section>
-
-      <WorkflowStorySection steps={workflowSteps} />
-      <WorkflowStorySectionMobile steps={workflowSteps} />
+      <div id="how-we-work-content" className="scroll-mt-8">
+        <WorkflowStorySection steps={workflowSteps} />
+        <WorkflowStorySectionMobile steps={workflowSteps} />
+      </div>
 
       {/* ── Principles ───────────────────────────────────────────────── */}
       <section

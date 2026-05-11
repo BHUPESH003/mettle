@@ -218,6 +218,182 @@ body {
   animation: fade-in-up 0.6s ease-out forwards;
 }
 
+/* ── Home: Products + Invitation (scroll-in motion, no GSAP) ─────── */
+@keyframes home-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes home-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes home-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes home-slide-bar {
+  from {
+    width: 0;
+  }
+  to {
+    width: 3rem;
+  }
+}
+
+@keyframes home-badge-dot-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.home-anim-fade-up {
+  animation: home-fade-up 0.65s cubic-bezier(0.22, 0.68, 0, 1.2) both;
+}
+
+.home-anim-fade-in {
+  animation: home-fade-in 0.5s ease both;
+}
+
+.home-anim-scale-in {
+  animation: home-scale-in 0.5s cubic-bezier(0.22, 0.68, 0, 1.2) both;
+}
+
+.home-anim-slide-bar {
+  animation: home-slide-bar 0.7s cubic-bezier(0.22, 0.68, 0, 1.2) 0.4s both;
+}
+
+.home-anim-delay-1 {
+  animation-delay: 0.08s;
+}
+
+.home-anim-delay-2 {
+  animation-delay: 0.16s;
+}
+
+.home-anim-delay-3 {
+  animation-delay: 0.24s;
+}
+
+.home-anim-delay-4 {
+  animation-delay: 0.32s;
+}
+
+.home-anim-delay-5 {
+  animation-delay: 0.4s;
+}
+
+.home-anim-delay-6 {
+  animation-delay: 0.5s;
+}
+
+.home-badge-dot {
+  animation: home-badge-dot-pulse 2s ease-in-out infinite;
+}
+
+.home-card-lift {
+  transition:
+    transform 0.25s cubic-bezier(0.22, 0.68, 0, 1.2),
+    box-shadow 0.25s ease,
+    border-color 0.2s ease;
+}
+
+.home-card-lift:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 40px -8px hsl(var(--accent) / 0.15);
+  border-color: hsl(var(--accent) / 0.45);
+}
+
+.home-check-row {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.home-check-row:hover {
+  background-color: hsl(var(--accent-light));
+  transform: translateX(4px);
+}
+
+.home-cta-primary {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.home-cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px hsl(var(--accent) / 0.45);
+  background-color: hsl(var(--accent-hover));
+}
+
+.home-cta-primary:hover .home-cta-arrow {
+  transform: translateX(4px);
+}
+
+.home-cta-arrow {
+  transition: transform 0.2s ease;
+}
+
+.home-cta-outline {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.home-cta-outline:hover {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  border-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-anim-fade-up,
+  .home-anim-fade-in,
+  .home-anim-scale-in,
+  .home-anim-slide-bar {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    width: 3rem;
+  }
+
+  .home-anim-delay-1,
+  .home-anim-delay-2,
+  .home-anim-delay-3,
+  .home-anim-delay-4,
+  .home-anim-delay-5,
+  .home-anim-delay-6 {
+    animation-delay: 0s;
+  }
+
+  .home-badge-dot {
+    animation: none;
+  }
+
+  .home-card-lift:hover,
+  .home-check-row:hover,
+  .home-cta-primary:hover {
+    transform: none;
+  }
+}
+
 /* ── SpotlightField ──────────────────────────────────────────────── */
 .contact-spotlight-field {
   --sx: 50%;

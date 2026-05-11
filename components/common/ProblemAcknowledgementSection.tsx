@@ -1,4 +1,5 @@
 import { Icons } from "@/lib/icons";
+import { cn } from "@/lib/utils";
 
 interface ProblemCard {
   icon: keyof typeof Icons;
@@ -90,17 +91,41 @@ const problemCards: ProblemCard[] = [
   },
 ];
 
+/** Deep navy base — continuous with hero, matches reference screenshot */
+const realitySurface = "bg-[#000510]";
+
 export function ProblemAcknowledgementSection() {
   return (
-    <section className="bg-slate-950 text-white">
-      <div className="wrapper">
-        <section className="grid h-screen w-full place-content-center sticky top-0 overflow-hidden bg-slate-950 px-6">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[54px_54px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-          <div className="relative max-w-4xl text-center">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-accent">
+    <section className={cn(realitySurface, "text-white")}>
+      <div className="relative">
+        {/* Intro — same palette as reference: grid + top glow + centered type */}
+        <section
+          className={cn(
+            realitySurface,
+            "sticky top-0 grid min-h-dvh w-full place-content-center overflow-hidden px-6 py-24 md:px-10 md:py-32",
+          )}
+        >
+          {/* Top-centered radial wash (subtle blue depth) */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-8%,rgba(59,130,246,0.22),transparent_58%)]"
+            aria-hidden
+          />
+          {/* Secondary vignette for legibility */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_100%_80%_at_50%_100%,#000510_0%,transparent_55%)]"
+            aria-hidden
+          />
+          {/* Muted blue grid */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(90,113,168,0.14)_1px,transparent_1px),linear-gradient(to_bottom,rgba(90,113,168,0.14)_1px,transparent_1px)] bg-size-[54px_54px] mask-[radial-gradient(ellipse_70%_60%_at_50%_0%,#000_50%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_50%,transparent_100%)]"
+            aria-hidden
+          />
+
+          <div className="relative z-10 mx-auto max-w-4xl text-center">
+            <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#5a6fa3] md:text-xs">
               The Reality
             </p>
-            <h2 className="text-4xl font-black tracking-tight leading-[115%] md:text-6xl">
+            <h2 className="text-balance text-4xl font-black leading-[1.12] tracking-tight text-white md:text-5xl lg:text-6xl">
               Complexity is inevitable.
               <br />
               Confusion is optional.
@@ -167,8 +192,8 @@ export function ProblemAcknowledgementSection() {
         })}
       </div>
 
-      <footer className="bg-slate-950 pb-8 pt-6">
-        <div className="mx-auto mt-2 max-w-3xl rounded-t-[2.5rem] bg-black px-6 py-10 text-center text-lg text-white/80">
+      <footer className={cn(realitySurface, "pb-8 pt-6")}>
+        <div className="mx-auto mt-2 max-w-3xl rounded-t-[2.5rem] bg-[#020814] px-6 py-10 text-center text-lg text-white/80">
           These are not isolated inconveniences; they are systemic blockers to
           sustainable growth.
         </div>

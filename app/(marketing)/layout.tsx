@@ -3,19 +3,12 @@
  * Shared layout for all marketing pages
  */
 
-import { Header } from "@/components/common/Header";
-import { Footer } from "@/components/common/Footer";
+import { MarketingChrome } from "@/components/common/MarketingChrome";
 
 export default function MarketingLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <Header />
-      {children}
-      <Footer />
-    </>
-  );
+  return <MarketingChrome>{children}</MarketingChrome>;
 }
