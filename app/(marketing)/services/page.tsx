@@ -42,17 +42,9 @@ export default function ServicesPage() {
     <main>
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <section
-        className="relative min-h-[65vh] flex flex-col justify-center overflow-hidden py-20"
-        style={{ background: "hsl(var(--primary))" }}
+        className="bg-primary relative min-h-[65vh] flex flex-col justify-center overflow-hidden py-20"
       >
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
-            backgroundSize: "52px 52px",
-          }}
-        />
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-size-[52px_52px]" />
         <div className="absolute top-1/4 right-[15%] w-96 h-96 rounded-full bg-accent/10 blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-[10%] w-72 h-72 rounded-full bg-accent/7 blur-[90px] pointer-events-none" />
 
@@ -126,7 +118,7 @@ export default function ServicesPage() {
                 <Link
                   href={`/services/${service.slug}`}
                   key={service.slug}
-                  className="group relative flex min-h-[430px] flex-col overflow-hidden rounded-3xl border border-border bg-background transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-2xl hover:shadow-accent/8"
+                  className="group relative flex min-h-107.5 flex-col overflow-hidden rounded-3xl border border-border bg-background transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-2xl hover:shadow-accent/8"
                 >
                   <div className="relative h-44 overflow-hidden">
                     <Image
@@ -181,8 +173,7 @@ export default function ServicesPage() {
 
       {/* ── Principles ───────────────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden py-20 md:py-24"
-        style={{ background: "hsl(var(--primary))" }}
+        className="bg-primary relative overflow-hidden py-20 md:py-24"
       >
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-accent/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-accent/30 to-transparent" />

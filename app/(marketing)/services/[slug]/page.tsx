@@ -40,17 +40,9 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   return (
     <main>
       <section
-        className="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28"
-        style={{ background: "hsl(var(--primary))" }}
+        className="bg-primary relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28"
       >
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
-            backgroundSize: "52px 52px",
-          }}
-        />
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-size-[52px_52px]" />
         <div className="absolute right-[-8%] top-[12%] h-96 w-96 rounded-full bg-accent/12 blur-[120px]" />
 
         <div className="container relative mx-auto px-4">
@@ -147,8 +139,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       </section>
 
       <section
-        className="relative overflow-hidden py-20 md:py-28"
-        style={{ background: "hsl(var(--primary))" }}
+        className="bg-primary relative overflow-hidden py-20 md:py-28"
       >
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[54px_54px]" />
         <div className="container relative mx-auto px-4">

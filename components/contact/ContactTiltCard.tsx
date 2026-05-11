@@ -38,14 +38,10 @@ export function ContactTiltCard({
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       className={cn(
-        "rounded-2xl border border-border bg-background shadow-sm transition-[box-shadow] duration-300",
+        "tilt-card rounded-2xl border border-border bg-background shadow-sm transition-shadow duration-300",
         "hover:shadow-[0_24px_56px_rgba(0,0,0,0.08),0_0_0_1px_hsl(var(--accent)/0.08)]",
         className,
       )}
-      style={{
-        transform: "perspective(920px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))",
-        willChange: "transform",
-      }}
     >
       {children}
     </div>

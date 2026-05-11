@@ -45,19 +45,9 @@ export function SpotlightField({
         "contact-spotlight-field group relative rounded-xl",
         className,
       )}
-      style={
-        {
-          "--sx": "50%",
-          "--sy": "50%",
-        } as React.CSSProperties
-      }
     >
       <div
-        className="pointer-events-none absolute inset-0 z-0 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100"
-        style={{
-          background:
-            "radial-gradient(140px 90px at var(--sx) var(--sy), hsl(var(--accent) / 0.14), transparent 72%)",
-        }}
+        className="spotlight-overlay pointer-events-none absolute inset-0 z-0 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100"
       />
       <div className="relative z-1">{children}</div>
     </div>

@@ -218,41 +218,6 @@ export function ContactForm() {
         </button>
       </div>
 
-      <style jsx>{`
-        .contact-send-shine {
-          background: linear-gradient(
-            105deg,
-            transparent 40%,
-            hsl(var(--accent-foreground) / 0.18) 50%,
-            transparent 60%
-          );
-        }
-        .contact-send-btn:not(:disabled):hover .contact-send-shine {
-          animation: contact-shine-sweep 0.85s ease-out forwards;
-        }
-        @keyframes contact-shine-sweep {
-          0% {
-            transform: translateX(-120%);
-          }
-          100% {
-            transform: translateX(120%);
-          }
-        }
-        .contact-send-btn:not(:disabled):hover {
-          transform: scale(1.02);
-          box-shadow:
-            0 22px 48px hsl(var(--accent) / 0.32),
-            0 12px 28px rgba(0, 0, 0, 0.12);
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .contact-send-btn:not(:disabled):hover {
-            transform: none;
-          }
-          .contact-send-btn:not(:disabled):hover .contact-send-shine {
-            animation: none;
-          }
-        }
-      `}</style>
     </form>
   );
 }

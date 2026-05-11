@@ -176,8 +176,7 @@ export default function ContactPage() {
         {/* ── What happens next ─────────────────────────────────────────── */}
         <section
           data-contact-section
-          className="relative overflow-hidden py-20 md:py-24"
-          style={{ background: "hsl(var(--primary))" }}
+          className="bg-primary relative overflow-hidden py-20 md:py-24"
         >
           <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-accent/30 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-accent/30 to-transparent" />

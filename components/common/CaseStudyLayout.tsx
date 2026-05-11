@@ -54,18 +54,10 @@ export function CaseStudyLayout({
     <main>
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <section
-        className="relative min-h-[60vh] flex flex-col justify-center overflow-hidden py-20"
-        style={{ background: "hsl(var(--primary))" }}
+        className="bg-primary relative min-h-[60vh] flex flex-col justify-center overflow-hidden py-20"
       >
         {/* Grid overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
-            backgroundSize: "52px 52px",
-          }}
-        />
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-size-[52px_52px]" />
         <div className="absolute top-1/4 right-[15%] w-96 h-96 rounded-full bg-accent/10 blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-[10%] w-72 h-72 rounded-full bg-accent/7 blur-[90px] pointer-events-none" />
 
@@ -177,8 +169,7 @@ export function CaseStudyLayout({
 
       {/* ── The Insight ───────────────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden py-20 md:py-24"
-        style={{ background: "hsl(var(--primary))" }}
+        className="bg-primary relative overflow-hidden py-20 md:py-24"
       >
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-accent/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-accent/30 to-transparent" />
@@ -275,8 +266,7 @@ export function CaseStudyLayout({
             {/* Metrics row */}
             {metrics && metrics.length > 0 && (
               <div
-                className="mb-8 overflow-hidden rounded-2xl"
-                style={{ background: "hsl(var(--primary))" }}
+                className="bg-primary mb-8 overflow-hidden rounded-2xl"
               >
                 <div className="divide-y divide-white/8">
                   {metrics.map((metric) => (
@@ -312,8 +302,7 @@ export function CaseStudyLayout({
       {/* ── Tech stack ────────────────────────────────────────────────── */}
       {tech && tech.length > 0 && (
         <section
-          className="relative overflow-hidden py-12"
-          style={{ background: "hsl(var(--primary))" }}
+          className="bg-primary relative overflow-hidden py-12"
         >
           <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-accent/30 to-transparent" />
           <div className="container mx-auto px-4">

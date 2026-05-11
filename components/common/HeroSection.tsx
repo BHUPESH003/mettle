@@ -191,8 +191,7 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="hero-surface relative flex min-h-[96vh] flex-col justify-center overflow-hidden py-20"
-      style={{ background: "hsl(var(--primary))" }}
+      className="hero-surface bg-primary relative flex min-h-[96vh] flex-col justify-center overflow-hidden py-20"
     >
       <div ref={cursorAuraRef} className="hero-cursor-aura pointer-events-none fixed left-0 top-0 z-[80] opacity-0" />
       <div ref={cursorRef} className="hero-cursor-core pointer-events-none fixed left-0 top-0 z-[90] opacity-0" />
@@ -313,135 +312,6 @@ export function HeroSection() {
         <ChevronDown className="h-4 w-4 animate-bounce" />
       </div>
 
-      <style jsx>{`
-        .hero-surface {
-          --mx: 50%;
-          --my: 50%;
-          --speed: 0;
-          --speed-px: 0px;
-          --spin: 0deg;
-          --blur: 0.2px;
-          --vx: 0;
-          --vy: 0;
-        }
-
-        .hero-grid {
-          background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-          background-size: 56px 56px;
-          mask-image: radial-gradient(circle at center, black 22%, transparent 92%);
-        }
-
-        .hero-vignette {
-          background: radial-gradient(circle at center, transparent 24%, rgba(3, 5, 10, 0.85) 94%);
-        }
-
-        .hero-glass-bloom {
-          filter: blur(105px) saturate(140%);
-          opacity: 0.24;
-          transform: translate3d(calc(var(--vx) * 1px), calc(var(--vy) * 1px), 0);
-          will-change: transform;
-        }
-
-        .hero-glass-bloom-one {
-          background: radial-gradient(circle at 40% 40%, rgba(179, 194, 223, 0.33), rgba(33, 42, 62, 0.08) 64%, transparent 80%);
-        }
-
-        .hero-glass-bloom-two {
-          background: radial-gradient(circle at 45% 55%, rgba(128, 147, 178, 0.22), rgba(31, 35, 50, 0.08) 68%, transparent 84%);
-        }
-
-        .hero-wordmark {
-          font-variation-settings: "wght" 840;
-          text-rendering: geometricPrecision;
-        }
-
-        .muted-wordmark {
-          color: rgba(245, 248, 255, 0.09);
-          text-shadow: 0 0 1px rgba(255, 255, 255, 0.08), 0 24px 80px rgba(0, 0, 0, 0.55);
-        }
-
-        .liquid-wordmark {
-          color: transparent;
-          background-image: radial-gradient(circle at calc(var(--mx) + 3%) calc(var(--my) - 8%), rgba(255, 255, 255, 0.9), rgba(220, 228, 248, 0.58) 18%, rgba(112, 123, 149, 0.25) 42%, rgba(18, 21, 30, 0.95) 78%),
-            conic-gradient(
-              from var(--spin) at var(--mx) var(--my),
-              rgba(247, 250, 255, 0.78),
-              rgba(137, 150, 176, 0.5),
-              rgba(47, 53, 72, 0.85),
-              rgba(206, 215, 237, 0.66),
-              rgba(247, 250, 255, 0.78)
-            );
-          background-size: calc(120% + var(--speed-px)) calc(120% + var(--speed-px));
-          background-position: calc(48% + var(--vx) * 0.8px) calc(52% + var(--vy) * 0.8px);
-          background-clip: text;
-          -webkit-background-clip: text;
-          filter: blur(var(--blur)) saturate(122%) contrast(115%);
-          mix-blend-mode: screen;
-          -webkit-mask-image: radial-gradient(circle calc(76px + var(--speed-px)) at var(--mx) var(--my), black 0%, black 36%, transparent 72%);
-          mask-image: radial-gradient(circle calc(76px + var(--speed-px)) at var(--mx) var(--my), black 0%, black 36%, transparent 72%);
-          transition: -webkit-mask-image 0.16s ease-out, mask-image 0.16s ease-out;
-        }
-
-        .stroke-wordmark {
-          color: transparent;
-          -webkit-text-stroke: 1px rgba(255, 255, 255, 0.16);
-          opacity: 0.33;
-        }
-
-        .glass-button {
-          background: linear-gradient(140deg, rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0.04));
-          backdrop-filter: blur(18px) saturate(145%);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), 0 20px 40px rgba(0, 0, 0, 0.36);
-        }
-
-        .glass-button:hover {
-          border-color: rgba(255, 255, 255, 0.45);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32), 0 24px 56px rgba(0, 0, 0, 0.48);
-          transform: translateY(-2px);
-        }
-      `}</style>
-
-      <style jsx global>{`
-        .futuristic-cursor-active,
-        .futuristic-cursor-active * {
-          cursor: none !important;
-        }
-
-        .hero-cursor-core {
-          width: 18px;
-          height: 18px;
-          border-radius: 999px;
-          background: radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.94), rgba(213, 224, 244, 0.68) 40%, rgba(89, 107, 137, 0.28) 72%, rgba(15, 20, 30, 0.1) 100%);
-          border: 1px solid rgba(255, 255, 255, 0.32);
-          transform: translate(-50%, -50%);
-          box-shadow: inset 0 2px 8px rgba(255, 255, 255, 0.58), 0 8px 36px rgba(0, 0, 0, 0.45);
-          backdrop-filter: blur(10px) saturate(150%);
-        }
-
-        .hero-cursor-aura {
-          width: 56px;
-          height: 56px;
-          border-radius: 999px;
-          transform: translate(-50%, -50%);
-          background: radial-gradient(circle at center, rgba(194, 208, 233, 0.26), rgba(74, 90, 120, 0.08) 55%, transparent 72%);
-          border: 1px solid rgba(255, 255, 255, 0.14);
-          backdrop-filter: blur(28px) saturate(130%);
-          mix-blend-mode: screen;
-        }
-
-        @media (pointer: coarse) {
-          .hero-cursor-core,
-          .hero-cursor-aura {
-            display: none !important;
-          }
-
-          .futuristic-cursor-active,
-          .futuristic-cursor-active * {
-            cursor: auto !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

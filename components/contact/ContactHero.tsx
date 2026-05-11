@@ -121,42 +121,20 @@ export function ContactHero({ promises }: ContactHeroProps) {
   return (
     <section
       ref={sectionRef}
-      className="contact-hero-surface relative flex min-h-[55vh] flex-col justify-center overflow-hidden py-20"
-      style={{ background: "hsl(var(--primary))" }}
+      className="contact-hero-surface bg-primary relative flex min-h-[55vh] flex-col justify-center overflow-hidden py-20"
     >
       <div className="pointer-events-none absolute inset-0 z-0">
         <div
           ref={gridBaseRef}
-          className="absolute inset-0"
-          style={{
-            opacity: 0.038,
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.09) 1px, transparent 1px)",
-            backgroundSize: "52px 52px",
-          }}
+          className="contact-grid-base absolute inset-0 opacity-[0.038]"
         />
         <div
           ref={gridHighlightRef}
-          className="absolute inset-0"
-          style={{
-            opacity: 0.045,
-            backgroundImage:
-              "linear-gradient(rgba(147,171,214,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(147,171,214,0.42) 1px, transparent 1px)",
-            backgroundSize: "52px 52px",
-            maskImage:
-              "radial-gradient(circle 140px at var(--gx, 50%) var(--gy, 50%), black 0%, transparent 72%)",
-            WebkitMaskImage:
-              "radial-gradient(circle 140px at var(--gx, 50%) var(--gy, 50%), black 0%, transparent 72%)",
-          }}
+          className="contact-grid-highlight absolute inset-0 opacity-[0.045]"
         />
         <div
           ref={cursorGlowRef}
-          className="pointer-events-none absolute left-0 top-0 h-[280px] w-[280px] rounded-full opacity-[0.14]"
-          style={{
-            background:
-              "radial-gradient(circle, hsl(var(--accent) / 0.35) 0%, transparent 68%)",
-            willChange: "transform",
-          }}
+          className="contact-cursor-glow pointer-events-none absolute left-0 top-0 h-[280px] w-[280px] rounded-full opacity-[0.14]"
         />
       </div>
 
@@ -207,31 +185,6 @@ export function ContactHero({ promises }: ContactHeroProps) {
         </div>
       </div>
 
-      <style jsx>{`
-        .contact-hero-surface {
-          --gx: 50%;
-          --gy: 42%;
-        }
-        .contact-hero-pulse-dot {
-          animation: contact-dot-pulse 2.4s ease-in-out infinite;
-        }
-        @keyframes contact-dot-pulse {
-          0%,
-          100% {
-            opacity: 0.65;
-            box-shadow: 0 0 0 0 hsl(var(--accent) / 0.35);
-          }
-          50% {
-            opacity: 1;
-            box-shadow: 0 0 12px 1px hsl(var(--accent) / 0.45);
-          }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .contact-hero-pulse-dot {
-            animation: none;
-          }
-        }
-      `}</style>
     </section>
   );
 }

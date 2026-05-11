@@ -7,18 +7,10 @@ export function CaseStudiesSection() {
 
   return (
     <section
-      className="relative overflow-hidden py-20 md:py-28"
-      style={{ background: "hsl(var(--primary))" }}
+      className="bg-primary relative overflow-hidden py-20 md:py-28"
     >
       {/* Grid overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
-          backgroundSize: "52px 52px",
-        }}
-      />
+      <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-size-[52px_52px]" />
       <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-accent/30 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-accent/30 to-transparent" />
       <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-accent/8 blur-[90px] pointer-events-none" />

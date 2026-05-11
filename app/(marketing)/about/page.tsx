@@ -120,19 +120,11 @@ export default function AboutPage() {
     <main>
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <section
-        className="relative min-h-[65vh] flex flex-col justify-center overflow-hidden py-20"
-        style={{ background: "hsl(var(--primary))" }}
+        className="bg-primary relative min-h-[65vh] flex flex-col justify-center overflow-hidden py-20"
       >
         {/* Dot field + COBE globe (reference UI) */}
         <div className="pointer-events-none absolute inset-0 z-0">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "radial-gradient(rgba(88, 117, 214, 0.22) 1px, transparent 1px)",
-              backgroundSize: "20px 20px",
-            }}
-          />
+          <div className="absolute inset-0 bg-[radial-gradient(rgba(88,117,214,0.22)_1px,transparent_1px)] bg-size-[20px_20px]" />
           <div className="absolute inset-0 flex items-end justify-center pb-2 md:items-center md:justify-center md:pb-0">
             <div
               className="relative w-[min(92vw,540px)] max-w-none md:w-[min(88vw,620px)] [filter:drop-shadow(0_0_48px_rgba(59,130,246,0.5))_drop-shadow(0_0_120px_rgba(59,130,246,0.25))]"
@@ -143,14 +135,7 @@ export default function AboutPage() {
           </div>
         </div>
         {/* Light structure grid (keeps depth; very subtle) */}
-        <div
-          className="pointer-events-none absolute inset-0 z-1 opacity-[0.025]"
-          style={{
-            backgroundImage:
-              "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
-            backgroundSize: "52px 52px",
-          }}
-        />
+        <div className="pointer-events-none absolute inset-0 z-1 opacity-[0.025] bg-[linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-size-[52px_52px]" />
         {/* Blue blobs */}
         <div className="pointer-events-none absolute top-1/4 right-[15%] z-1 h-96 w-96 rounded-full bg-accent/10 blur-[120px]" />
         <div className="pointer-events-none absolute bottom-0 left-[10%] z-1 h-72 w-72 rounded-full bg-accent/7 blur-[90px]" />
@@ -238,8 +223,7 @@ export default function AboutPage() {
 
       {/* ── Manifesto strip ──────────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden py-20 md:py-28"
-        style={{ background: "hsl(var(--primary))" }}
+        className="bg-primary relative overflow-hidden py-20 md:py-28"
       >
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-accent/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-accent/30 to-transparent" />
@@ -324,8 +308,7 @@ export default function AboutPage() {
 
       {/* ── What makes us different ──────────────────────────────────── */}
       <section
-        className="relative overflow-hidden py-20 md:py-24"
-        style={{ background: "hsl(var(--primary))" }}
+        className="bg-primary relative overflow-hidden py-20 md:py-24"
       >
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-accent/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-accent/30 to-transparent" />
