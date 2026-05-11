@@ -54,7 +54,10 @@ export function WorkProjectList() {
     const rowCenter = rowRect.top - containerRect.top + rowRect.height / 2;
     const minY = 12;
     const maxY = containerRect.height - imageRect.height - 12;
-    const targetY = Math.min(Math.max(rowCenter - imageRect.height / 2, minY), maxY);
+    const targetY = Math.min(
+      Math.max(rowCenter - imageRect.height / 2, minY),
+      maxY,
+    );
 
     gsap.to(imageContainer, {
       y: targetY,
@@ -109,7 +112,9 @@ export function WorkProjectList() {
                 sizes="(min-width: 1280px) 350px, 260px"
                 className={cn(
                   "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",
-                  project.slug === selectedProject ? "opacity-100" : "opacity-0",
+                  project.slug === selectedProject
+                    ? "opacity-100"
+                    : "opacity-0",
                 )}
               />
             ))}
@@ -123,7 +128,9 @@ export function WorkProjectList() {
                 <Link
                   href={`/work/${project.slug}`}
                   key={project.slug}
-                  onMouseEnter={(event) => handleMouseEnter(project.slug, event.currentTarget)}
+                  onMouseEnter={(event) =>
+                    handleMouseEnter(project.slug, event.currentTarget)
+                  }
                   className="group/project border-b border-white/8 py-4 outline-none transition-colors first:border-t hover:border-white/20 focus-visible:border-accent md:py-5"
                 >
                   <div className="grid items-center gap-4 md:grid-cols-[3rem_1fr_auto]">
