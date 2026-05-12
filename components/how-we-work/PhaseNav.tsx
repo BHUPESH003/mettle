@@ -24,7 +24,7 @@ export function PhaseNav() {
         ([entry]) => {
           if (entry.isIntersecting) setActive(id);
         },
-        { rootMargin: "-40% 0px -55% 0px" }
+        { rootMargin: "-40% 0px -55% 0px" },
       );
 
       observer.observe(el);
@@ -49,7 +49,9 @@ export function PhaseNav() {
             onClick={() => scrollTo(phase.id)}
             className={cn(
               "flex flex-col items-center gap-1 px-4 py-4 text-center transition-colors duration-200 cursor-pointer",
-              active === phase.id ? "bg-accent/20" : "bg-white/4 hover:bg-white/8"
+              active === phase.id
+                ? "bg-accent/20"
+                : "bg-white/4 hover:bg-white/8",
             )}
           >
             <span className="text-xs font-black tracking-widest text-accent">
