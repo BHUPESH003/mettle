@@ -8,6 +8,7 @@ import {
   WorkflowStorySection,
   WorkflowStorySectionMobile,
 } from "@/components/workflow/WorkflowStorySection";
+import { WorkProjectList } from "@/components/work/WorkProjectList";
 import { workflowSteps } from "@/lib/workflow-config";
 
 export const metadata: Metadata = {
@@ -49,6 +50,8 @@ export default function HowWeWorkPage() {
         <WorkflowStorySection steps={workflowSteps} />
         <WorkflowStorySectionMobile steps={workflowSteps} />
       </div>
+
+      <WorkProjectList />
 
       {/* ── Principles ───────────────────────────────────────────────── */}
       <section

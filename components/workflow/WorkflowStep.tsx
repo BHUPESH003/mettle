@@ -36,7 +36,10 @@ export function WorkflowStep({
         <div className="mb-5 flex items-center justify-between">
           <span
             className="rounded-full border px-3 py-1 text-xs font-bold tracking-[0.2em]"
-            style={{ borderColor: `${step.accentColor}66`, color: step.accentColor }}
+            style={{
+              borderColor: `${step.accentColor}66`,
+              color: step.accentColor,
+            }}
           >
             STEP {step.number}
           </span>
@@ -56,7 +59,10 @@ export function WorkflowStep({
             <h3 className="mb-1 text-3xl font-black tracking-tight text-white md:text-5xl">
               {step.title}
             </h3>
-            <p className="mb-2 text-lg font-semibold" style={{ color: step.accentColor }}>
+            <p
+              className="mb-2 text-lg font-semibold"
+              style={{ color: step.accentColor }}
+            >
               {step.subtitle}
             </p>
             <p className="mb-5 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">

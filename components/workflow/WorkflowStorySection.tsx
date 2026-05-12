@@ -39,13 +39,15 @@ export function WorkflowStorySection({
   const signalX =
     steps.length <= 1
       ? 50
-      : (signal.connectorIndex + signal.connectorProgress) * (100 / (steps.length - 1));
+      : (signal.connectorIndex + signal.connectorProgress) *
+        (100 / (steps.length - 1));
 
   const scrollToStep = (index: number) => {
     if (!sectionRef.current || steps.length <= 1) return;
     const sectionTop = sectionRef.current.offsetTop;
     const progressForStep = index / (steps.length - 1);
-    const targetY = sectionTop + progressForStep * (steps.length * WORKFLOW_SCROLL_STEP_PX);
+    const targetY =
+      sectionTop + progressForStep * (steps.length * WORKFLOW_SCROLL_STEP_PX);
     window.scrollTo({ top: targetY, behavior: "smooth" });
   };
 
@@ -76,7 +78,9 @@ export function WorkflowStorySectionMobile({
   className = "",
 }: WorkflowStorySectionProps) {
   return (
-    <section className={`relative bg-[#070C14] py-10 text-white md:hidden ${className}`}>
+    <section
+      className={`relative bg-[#070C14] py-10 text-white md:hidden ${className}`}
+    >
       <BackgroundGrid />
       <div className="relative mx-auto flex max-w-xl flex-col gap-6 px-4">
         {steps.map((step, index) => (

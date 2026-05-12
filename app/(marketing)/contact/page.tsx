@@ -45,21 +45,18 @@ const contactMethods = [
 const whatHappensNext = [
   {
     number: "01",
-    title: "We read carefully",
-    description:
-      "We read your message in full before responding. No auto-replies, no templates.",
+    title: "We read it",
+    description: "A person reads your note — no auto-reply.",
   },
   {
     number: "02",
-    title: "We ask the right questions",
-    description:
-      "If we need more context, we'll ask a few specific questions to understand the situation properly.",
+    title: "We reply",
+    description: "Within one business day, usually sooner.",
   },
   {
     number: "03",
-    title: "We have a real conversation",
-    description:
-      "If it seems like a fit, we'll schedule a call. No proposal. No pitch. Just honest dialogue.",
+    title: "We talk",
+    description: "If it’s a fit, we book a short call. No pitch deck.",
   },
 ];
 
@@ -183,33 +180,40 @@ export default function ContactPage() {
           <div className="pointer-events-none absolute top-0 right-0 h-80 w-80 rounded-full bg-accent/7 blur-[100px]" />
 
           <div className="container mx-auto px-4">
-            <div data-contact-reveal className="mx-auto mb-12 max-w-2xl text-center">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-accent">After you reach out</p>
-              <h2 className="font-departure relative z-10 mx-auto min-h-16 max-w-xl text-3xl font-black leading-tight tracking-tight text-white sm:min-h-0 sm:text-4xl">
-                <span className="sr-only">What happens next</span>
-                <span aria-hidden className="block">
-                  <RandomizedTextEffect triggerOnView text="What happens next" className="text-balance" />
-                </span>
-              </h2>
-            </div>
-
-            <div className="mx-auto grid max-w-4xl gap-5 md:grid-cols-3">
-              {whatHappensNext.map((step) => (
-                <div
-                  key={step.number}
-                  data-contact-reveal
-                  className="group rounded-2xl border border-white/8 bg-white/4 p-7 transition-all duration-300 hover:border-accent/30 hover:bg-white/7"
-                >
-                  <span
-                    aria-hidden
-                    className="mb-4 block text-4xl font-black leading-none text-accent/30 transition-colors group-hover:text-accent/50"
-                  >
-                    {step.number}
+            <div data-contact-reveal className="mx-auto max-w-3xl text-center">
+              <div className="mx-auto mb-8 max-w-2xl md:mb-10">
+                <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-accent">
+                  After you reach out
+                </p>
+                <h2 className="font-departure relative z-10 mx-auto min-h-16 max-w-xl text-3xl font-black leading-tight tracking-tight text-white sm:min-h-0 sm:text-4xl">
+                  <span className="sr-only">What happens next</span>
+                  <span aria-hidden className="block">
+                    <RandomizedTextEffect
+                      triggerOnView
+                      text="What happens next"
+                      className="text-balance"
+                    />
                   </span>
-                  <h3 className="mb-3 text-lg font-bold text-white">{step.title}</h3>
-                  <p className="text-sm leading-relaxed text-white/50">{step.description}</p>
-                </div>
-              ))}
+                </h2>
+              </div>
+
+              <div className="mx-auto grid gap-4 sm:grid-cols-3 sm:gap-5">
+                {whatHappensNext.map((step) => (
+                  <div
+                    key={step.number}
+                    className="group rounded-2xl border border-white/8 bg-white/4 p-5 text-center transition-all duration-300 hover:border-accent/30 hover:bg-white/7 sm:p-6"
+                  >
+                    <span
+                      aria-hidden
+                      className="mb-3 block text-2xl font-black leading-none text-accent/35 transition-colors group-hover:text-accent/55 sm:text-3xl"
+                    >
+                      {step.number}
+                    </span>
+                    <h3 className="mb-2 text-base font-bold text-white">{step.title}</h3>
+                    <p className="text-sm leading-snug text-white/55">{step.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>

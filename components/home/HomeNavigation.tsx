@@ -1,11 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { brand } from "@/lib/brand";
 import { services } from "@/lib/services";
-import { caseStudies } from "@/lib/case-studies";
 import { Icons } from "@/lib/icons";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -16,152 +15,33 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
-type MegaKey = "services" | "work" | "company" | null;
 type NavVariant = "dark" | "light";
 
-const companyLinks = [
-  {
-    href: "/about",
-    title: "About",
-    description: "How we think about work, systems, and growth.",
-    icon: "users" as const,
-  },
-  {
-    href: "/how-we-work",
-    title: "How we work",
-    description: "Our process from complexity to clarity.",
-    icon: "workflow" as const,
-  },
-  {
-    href: "/contact",
-    title: "Contact",
-    description: "Start a conversation — no pitch, just understanding.",
-    icon: "mail" as const,
-  },
-];
-
-const workPreview = caseStudies.slice(0, 3);
-
-function MegaPanel({
-  children,
-  className,
-  variant = "dark",
-}: {
-  children: React.ReactNode;
-  className?: string;
-  variant?: NavVariant;
-}) {
-  return (
-    <div
-      className={cn(
-        variant === "light"
-          ? "rounded-xl border border-border bg-background/95 p-2 shadow-xl backdrop-blur-xl"
-          : "rounded-xl border border-white/12 bg-zinc-950/75 p-2 shadow-2xl shadow-black/40 backdrop-blur-xl",
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-}
-
-function DropdownRow({
-  href,
-  icon: IconName,
-  title,
-  description,
-  onNavigate,
-  variant = "dark",
-}: {
-  href: string;
-  icon: keyof typeof Icons;
-  title: string;
-  description: string;
-  onNavigate?: () => void;
-  variant?: NavVariant;
-}) {
-  const Icon = Icons[IconName];
-  return (
-    <Link
-      href={href}
-      onClick={onNavigate}
-      className={cn(
-        "group flex gap-3 rounded-lg p-3 transition-colors",
-        variant === "light" ? "hover:bg-muted" : "hover:bg-white/6",
-      )}
-    >
-      <div
-        className={cn(
-          "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-colors",
-          variant === "light"
-            ? "border border-border bg-muted/40 text-foreground group-hover:border-border group-hover:bg-muted"
-            : "border border-white/10 bg-white/7 text-white group-hover:border-white/20 group-hover:bg-white/10",
-        )}
-      >
-        <Icon className="h-5 w-5" />
-      </div>
-      <div className="min-w-0 text-left">
-        <p
-          className={cn(
-            "text-sm font-semibold tracking-tight",
-            variant === "light" ? "text-foreground" : "text-white",
-          )}
-        >
-          {title}
-        </p>
-        <p
-          className={cn(
-            "mt-0.5 line-clamp-2 text-xs leading-relaxed",
-            variant === "light" ? "text-muted-foreground" : "text-white/55",
-          )}
-        >
-          {description}
-        </p>
-      </div>
-    </Link>
-  );
-}
+const companyNavItems = [{ href: "/about", title: "About" }] as const;
 
 export function HomeNavigation({ variant = "dark" }: { variant?: NavVariant }) {
   const pathname = usePathname();
-  const [open, setOpen] = useState<MegaKey>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isLight = variant === "light";
-  const companyRouteActive =
-    pathname === "/about" || pathname === "/how-we-work" || pathname === "/contact";
+  const howWeWorkRouteActive = pathname === "/how-we-work";
   const servicesRouteActive =
     pathname === "/services" || pathname.startsWith("/services/");
-  const workRouteActive = pathname === "/work" || pathname.startsWith("/work/");
-
-  const clearClose = useCallback(() => {
-    if (closeTimer.current) {
-      clearTimeout(closeTimer.current);
-      closeTimer.current = null;
-    }
-  }, []);
-
-  const scheduleClose = useCallback(() => {
-    clearClose();
-    closeTimer.current = setTimeout(() => setOpen(null), 140);
-  }, [clearClose]);
 
   useEffect(() => {
-    setOpen(null);
     setMobileOpen(false);
   }, [pathname]);
 
-  useEffect(() => {
-    return () => clearClose();
-  }, [clearClose]);
-
-  const triggers: { key: Exclude<MegaKey, null>; label: string }[] = [
-    { key: "services", label: "Services" },
-    { key: "work", label: "Work" },
-    { key: "company", label: "Company" },
-  ];
-
   const MenuIcon = Icons.menu;
+
+  const desktopNavLinkClass = (active: boolean) =>
+    cn(
+      "flex items-center rounded-lg px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-colors",
+      isLight
+        ? active
+          ? "bg-muted text-foreground"
+          : "text-muted-foreground hover:bg-muted/80 hover:text-foreground"
+        : "text-white/75 hover:bg-white/8 hover:text-white",
+    );
 
   return (
     <header className="absolute inset-x-0 top-0 z-50">
@@ -184,156 +64,22 @@ export function HomeNavigation({ variant = "dark" }: { variant?: NavVariant }) {
                 ? "border border-border/70 bg-background/80 shadow-sm"
                 : "border border-white/12 bg-black/45 shadow-lg shadow-black/20",
             )}
-            onMouseLeave={scheduleClose}
           >
-            {triggers.map(({ key, label }) => {
-              const isOpen = open === key;
-              const companyPill = isLight && key === "company" && companyRouteActive && !isOpen;
-              const servicesPill = isLight && key === "services" && servicesRouteActive && !isOpen;
-              const workPill = isLight && key === "work" && workRouteActive && !isOpen;
-              const triggerClass = cn(
-                "flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-colors",
-                isLight
-                  ? isOpen
-                    ? "bg-foreground/10 text-foreground"
-                    : companyPill || servicesPill || workPill
-                      ? "bg-muted text-foreground"
-                      : "text-muted-foreground hover:bg-muted/80 hover:text-foreground"
-                  : isOpen
-                    ? "bg-white/12 text-white"
-                    : "text-white/75 hover:bg-white/8 hover:text-white",
-              );
-              return (
-                <div
-                  key={key}
-                  className="relative"
-                  onMouseEnter={() => {
-                    clearClose();
-                    setOpen(key);
-                  }}
-                >
-                  {key === "services" ? (
-                    <Link
-                      href="/services"
-                      aria-expanded={isOpen}
-                      aria-haspopup="true"
-                      className={triggerClass}
-                    >
-                      {label}
-                      <Icons.chevronDown
-                        className={cn(
-                          "h-3.5 w-3.5 transition-transform duration-200",
-                          isLight ? "text-foreground/45" : "text-white/50",
-                          isOpen && "rotate-180",
-                        )}
-                      />
-                    </Link>
-                  ) : key === "work" ? (
-                    <Link
-                      href="/work"
-                      aria-expanded={isOpen}
-                      aria-haspopup="true"
-                      className={triggerClass}
-                    >
-                      {label}
-                      <Icons.chevronDown
-                        className={cn(
-                          "h-3.5 w-3.5 transition-transform duration-200",
-                          isLight ? "text-foreground/45" : "text-white/50",
-                          isOpen && "rotate-180",
-                        )}
-                      />
-                    </Link>
-                  ) : (
-                    <button
-                      type="button"
-                      aria-expanded={isOpen}
-                      aria-haspopup="true"
-                      className={triggerClass}
-                    >
-                      {label}
-                      <Icons.chevronDown
-                        className={cn(
-                          "h-3.5 w-3.5 transition-transform duration-200",
-                          isLight ? "text-foreground/45" : "text-white/50",
-                          isOpen && "rotate-180",
-                        )}
-                      />
-                    </button>
-                  )}
-
-                  {isOpen && (
-                    <div
-                      className="absolute left-0 top-full z-50 pt-2"
-                      onMouseEnter={clearClose}
-                    >
-                      {key === "services" && (
-                        <MegaPanel variant={variant} className="w-[min(100vw-2rem,22rem)] sm:w-[24rem]">
-                          <div className="flex flex-col gap-0.5 py-1">
-                            <DropdownRow
-                              href="/services"
-                              icon="layers"
-                              title="All services"
-                              description="Compare offerings and how we engage."
-                              variant={variant}
-                            />
-                            {services.map((s) => (
-                              <DropdownRow
-                                key={s.slug}
-                                href={`/services/${s.slug}`}
-                                icon={s.icon}
-                                title={s.title}
-                                description={s.shortDescription}
-                                variant={variant}
-                              />
-                            ))}
-                          </div>
-                        </MegaPanel>
-                      )}
-                      {key === "work" && (
-                        <MegaPanel variant={variant} className="w-[min(100vw-2rem,22rem)] sm:w-[24rem]">
-                          <div className="flex flex-col gap-0.5 py-1">
-                            <DropdownRow
-                              href="/work"
-                              icon="briefcase"
-                              title="All work"
-                              description="Selected projects and case studies."
-                              variant={variant}
-                            />
-                            {workPreview.map((c) => (
-                              <DropdownRow
-                                key={c.slug}
-                                href={`/work/${c.slug}`}
-                                icon={c.icon}
-                                title={c.title}
-                                description={c.context}
-                                variant={variant}
-                              />
-                            ))}
-                          </div>
-                        </MegaPanel>
-                      )}
-                      {key === "company" && (
-                        <MegaPanel variant={variant} className="w-[min(100vw-2rem,20rem)]">
-                          <div className="flex flex-col gap-0.5 py-1">
-                            {companyLinks.map((l) => (
-                              <DropdownRow
-                                key={l.href}
-                                href={l.href}
-                                icon={l.icon}
-                                title={l.title}
-                                description={l.description}
-                                variant={variant}
-                              />
-                            ))}
-                          </div>
-                        </MegaPanel>
-                      )}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+            <Link href="/services" className={desktopNavLinkClass(servicesRouteActive)}>
+              Services
+            </Link>
+            <Link href="/how-we-work" className={desktopNavLinkClass(howWeWorkRouteActive)}>
+              Work
+            </Link>
+            {companyNavItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={desktopNavLinkClass(pathname === item.href)}
+              >
+                {item.title}
+              </Link>
+            ))}
           </nav>
 
           <Link
@@ -434,72 +180,34 @@ export function HomeNavigation({ variant = "dark" }: { variant?: NavVariant }) {
                 <div>
                   <SheetClose asChild>
                     <Link
-                      href="/work"
+                      href="/how-we-work"
                       className={cn(
-                        "mb-3 inline-block text-xs font-bold uppercase tracking-widest transition-colors",
+                        "inline-block rounded-lg px-2 py-2 text-sm transition-colors",
                         isLight
-                          ? "text-muted-foreground hover:text-foreground"
-                          : "text-white/45 hover:text-white/80",
+                          ? "text-foreground hover:bg-muted"
+                          : "text-white/85 hover:bg-white/8",
                       )}
                     >
                       Work
                     </Link>
                   </SheetClose>
-                  <div className="flex flex-col gap-1">
-                    {workPreview.map((c) => (
-                      <SheetClose key={c.slug} asChild>
-                        <Link
-                          href={`/work/${c.slug}`}
-                          className={cn(
-                            "rounded-lg px-2 py-2 text-sm",
-                            isLight
-                              ? "text-foreground hover:bg-muted"
-                              : "text-white/85 hover:bg-white/8",
-                          )}
-                        >
-                          {c.title}
-                        </Link>
-                      </SheetClose>
-                    ))}
-                    <SheetClose asChild>
+                </div>
+                <div className="flex flex-col gap-1">
+                  {companyNavItems.map((item) => (
+                    <SheetClose key={item.href} asChild>
                       <Link
-                        href="/work"
+                        href={item.href}
                         className={cn(
-                          "rounded-lg px-2 py-2 text-sm text-accent",
-                          isLight ? "hover:bg-muted" : "hover:bg-white/8",
+                          "inline-block rounded-lg px-2 py-2 text-sm transition-colors",
+                          isLight
+                            ? "text-foreground hover:bg-muted"
+                            : "text-white/85 hover:bg-white/8",
                         )}
                       >
-                        View all →
+                        {item.title}
                       </Link>
                     </SheetClose>
-                  </div>
-                </div>
-                <div>
-                  <p
-                    className={cn(
-                      "mb-3 text-xs font-bold uppercase tracking-widest",
-                      isLight ? "text-muted-foreground" : "text-white/45",
-                    )}
-                  >
-                    Company
-                  </p>
-                  <div className="flex flex-col gap-1">
-                    {companyLinks.map((l) => (
-                      <SheetClose key={l.href} asChild>
-                        <Link
-                          href={l.href}
-                          className={cn(
-                            "rounded-lg px-2 py-2 text-sm",
-                            isLight
-                              ? "text-foreground hover:bg-muted"
-                              : "text-white/85 hover:bg-white/8",
-                          )}
-                        >
-                          {l.title}
-                        </Link>
-                      </SheetClose>
-                    ))}
-                  </div>
+                  ))}
                 </div>
               </div>
             </SheetContent>

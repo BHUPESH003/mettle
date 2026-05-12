@@ -5,7 +5,10 @@ interface StepContentRendererProps {
   isActive: boolean;
 }
 
-export function StepContentRenderer({ step, isActive }: StepContentRendererProps) {
+export function StepContentRenderer({
+  step,
+  isActive,
+}: StepContentRendererProps) {
   if (step.renderNode) return <>{step.renderNode(isActive)}</>;
 
   return (

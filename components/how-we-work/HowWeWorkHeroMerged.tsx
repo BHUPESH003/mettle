@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HomeNavigation } from "@/components/home/HomeNavigation";
+import { HeroPhotoShadeLayers } from "@/components/marketing/HeroPhotoShadeLayers";
 import { Icons } from "@/lib/icons";
 
 export function HowWeWorkHeroMerged() {
@@ -20,25 +21,13 @@ export function HowWeWorkHeroMerged() {
           src="/images/howwework1.png"
           alt=""
           fill
-          className="object-cover object-center"
+          className="object-cover object-center brightness-[1.05] contrast-[1.02]"
           sizes="100vw"
           priority
         />
       </div>
 
-      <div
-        className="pointer-events-none absolute inset-0 z-8 bg-[#06080e]/55"
-        aria-hidden
-      />
-
-      <div
-        className="pointer-events-none absolute inset-0 z-20 bg-linear-to-b from-[#06080e]/82 via-transparent to-[#06080e]/72"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 z-20 bg-linear-to-r from-[#06080e] from-0% via-[#06080e]/50 via-34% to-transparent to-68%"
-        aria-hidden
-      />
+      <HeroPhotoShadeLayers variant="photo" />
 
       <HomeNavigation variant="dark" />
 

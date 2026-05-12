@@ -24,11 +24,17 @@ export function ProgressRail({
         </div>
         <div
           className="mt-3 grid gap-2 md:gap-4"
-          style={{ gridTemplateColumns: `repeat(${steps.length}, minmax(0, 1fr))` }}
+          style={{
+            gridTemplateColumns: `repeat(${steps.length}, minmax(0, 1fr))`,
+          }}
         >
           {steps.map((step, index) => {
             const state =
-              index < activeIndex ? "done" : index === activeIndex ? "active" : "idle";
+              index < activeIndex
+                ? "done"
+                : index === activeIndex
+                  ? "active"
+                  : "idle";
             return (
               <button
                 key={step.id}
@@ -37,10 +43,17 @@ export function ProgressRail({
                 className="cursor-pointer rounded-lg border px-2 py-2 text-center text-[11px] transition-all hover:border-white/30 md:px-3 md:text-xs"
                 style={{
                   borderColor:
-                    state === "idle" ? "rgba(255,255,255,0.14)" : `${step.accentColor}77`,
+                    state === "idle"
+                      ? "rgba(255,255,255,0.14)"
+                      : `${step.accentColor}77`,
                   backgroundColor:
-                    state === "active" ? `${step.accentColor}20` : "rgba(255,255,255,0.02)",
-                  color: state === "idle" ? "rgba(255,255,255,0.55)" : "rgba(255,255,255,0.92)",
+                    state === "active"
+                      ? `${step.accentColor}20`
+                      : "rgba(255,255,255,0.02)",
+                  color:
+                    state === "idle"
+                      ? "rgba(255,255,255,0.55)"
+                      : "rgba(255,255,255,0.92)",
                 }}
               >
                 <span className="mr-1 font-bold">{step.number}</span>

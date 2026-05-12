@@ -3,6 +3,7 @@
  */
 
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "@/lib/icons";
 import { buttonVariants } from "@/components/ui/button";
@@ -11,6 +12,7 @@ import {
   WorkflowStorySection,
   WorkflowStorySectionMobile,
 } from "@/components/workflow/WorkflowStorySection";
+import { HeroPhotoShadeLayers } from "@/components/marketing/HeroPhotoShadeLayers";
 import { WorkProjectList } from "@/components/work/WorkProjectList";
 import { workflowSteps } from "@/lib/workflow-config";
 
@@ -40,14 +42,24 @@ export default function WorkPage() {
   return (
     <main>
       {/* ── Hero ──────────────────────────────────────────────────────── */}
-      <section
-        className="bg-primary relative min-h-[70vh] flex flex-col justify-center overflow-hidden py-20"
-      >
-        <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-size-[52px_52px]" />
-        <div className="absolute top-1/4 right-[15%] w-96 h-96 rounded-full bg-accent/10 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-[10%] w-72 h-72 rounded-full bg-accent/7 blur-[90px] pointer-events-none" />
+      <section className="relative flex min-h-[70vh] flex-col justify-center overflow-hidden bg-[#06080e] py-20 text-white">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(#5875d653_1px,#06080e_1px)] bg-size-[20px_20px]"
+          aria-hidden
+        />
+        <div className="pointer-events-none absolute inset-0 z-5" aria-hidden>
+          <Image
+            src="/images/howwework1.png"
+            alt=""
+            fill
+            className="object-cover object-center brightness-[1.05] contrast-[1.02]"
+            sizes="100vw"
+            priority
+          />
+        </div>
+        <HeroPhotoShadeLayers variant="photo" />
 
-        <div className="container relative mx-auto px-4">
+        <div className="container relative z-40 mx-auto px-4">
           <div className="mx-auto max-w-4xl text-center">
             <div className="mb-6 inline-flex items-center rounded-full border border-white/15 bg-white/6 px-4 py-2 text-sm font-semibold text-white/70 backdrop-blur-sm">
               <span className="mr-2 h-2 w-2 rounded-full bg-accent inline-block" />

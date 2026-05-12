@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Earth from "@/components/ui/globe";
 import { HomeNavigation } from "@/components/home/HomeNavigation";
+import { HeroPhotoShadeLayers } from "@/components/marketing/HeroPhotoShadeLayers";
 import { Icons } from "@/lib/icons";
 
 export function AboutHeroMerged() {
@@ -26,15 +27,8 @@ export function AboutHeroMerged() {
         </div>
       </div>
 
-      {/* Vignettes for legibility */}
-      <div
-        className="pointer-events-none absolute inset-0 z-20 bg-linear-to-b from-[#06080e]/82 via-transparent to-[#06080e]/72"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 z-20 bg-linear-to-r from-[#06080e] from-0% via-[#06080e]/50 via-34% to-transparent to-68%"
-        aria-hidden
-      />
+      {/* Same scrims as Services / Contact / Work photo heroes */}
+      <HeroPhotoShadeLayers variant="globe" />
 
       <HomeNavigation variant="dark" />
 

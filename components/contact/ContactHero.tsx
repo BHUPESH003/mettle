@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { HomeNavigation } from "@/components/home/HomeNavigation";
+import { HeroPhotoShadeLayers } from "@/components/marketing/HeroPhotoShadeLayers";
 
 interface ContactHeroProps {
   promises: readonly string[];
@@ -17,19 +19,18 @@ export function ContactHero({ promises }: ContactHeroProps) {
         aria-hidden
       />
 
-      <div
-        className="pointer-events-none absolute inset-0 z-20 bg-[#06080e]/55"
-        aria-hidden
-      />
+      <div className="pointer-events-none absolute inset-0 z-5" aria-hidden>
+        <Image
+          src="/images/contactus.png"
+          alt=""
+          fill
+          className="object-cover object-center brightness-[1.05] contrast-[1.02]"
+          sizes="100vw"
+          priority
+        />
+      </div>
 
-      <div
-        className="pointer-events-none absolute inset-0 z-20 bg-linear-to-r from-[#06080e]/82 via-transparent to-[#06080e]/72"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 z-20 bg-linear-to-r from-[#06080e] from-0% via-[#06080e]/50 via-34% to-transparent to-68%"
-        aria-hidden
-      />
+      <HeroPhotoShadeLayers variant="photo" />
 
       {/* Header merged into the hero */}
       <HomeNavigation variant="dark" />

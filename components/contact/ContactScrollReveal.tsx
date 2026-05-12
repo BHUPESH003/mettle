@@ -32,7 +32,7 @@ export function ContactScrollReveal({ children }: { children: React.ReactNode })
           ease: "power3.out",
           scrollTrigger: {
             trigger: section,
-            start: "top 88%",
+            start: "top bottom",
             toggleActions: "play none none none",
           },
         });
