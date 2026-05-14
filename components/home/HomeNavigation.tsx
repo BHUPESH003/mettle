@@ -4,216 +4,183 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { brand } from "@/lib/brand";
-import { services } from "@/lib/services";
 import { Icons } from "@/lib/icons";
-import { buttonVariants } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetClose,
-} from "@/components/ui/sheet";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-type NavVariant = "dark" | "light";
+const navLinks = [
+  { href: "/services", label: "Services" },
+  { href: "/how-we-work", label: "How we work" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+] as const;
 
-const companyNavItems = [{ href: "/about", title: "About" }] as const;
-
-export function HomeNavigation({ variant = "dark" }: { variant?: NavVariant }) {
+export function HomeNavigation() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const isLight = variant === "light";
-  const howWeWorkRouteActive = pathname === "/how-we-work";
-  const servicesRouteActive =
-    pathname === "/services" || pathname.startsWith("/services/");
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
 
-  const MenuIcon = Icons.menu;
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 32);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-  const desktopNavLinkClass = (active: boolean) =>
-    cn(
-      "flex items-center rounded-lg px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-colors",
-      isLight
-        ? active
-          ? "bg-muted text-foreground"
-          : "text-muted-foreground hover:bg-muted/80 hover:text-foreground"
-        : "text-white/75 hover:bg-white/8 hover:text-white",
-    );
+  useEffect(() => {
+    if (mobileOpen) {
+      // Compensate for scrollbar removal so page doesn't shift
+      const scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = "hidden";
+      if (scrollbarW > 0) document.body.style.paddingRight = `${scrollbarW}px`;
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    };
+  }, [mobileOpen]);
+
+  const isActive = (href: string) =>
+    pathname === href || (href !== "/" && pathname.startsWith(href));
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
-      <div className="container mx-auto flex items-center justify-between px-4 pb-3 pt-5 md:pt-6">
-        <Link
-          href="/"
-          className={cn(
-            "text-xl font-black tracking-tight transition-opacity hover:opacity-90 md:text-2xl lg:text-3xl",
-            isLight ? "text-foreground" : "text-white",
-          )}
-        >
-          {brand.name}
-        </Link>
-
-        <div className="hidden items-center gap-3 md:flex">
-          <nav
-            className={cn(
-              "flex items-center rounded-xl px-1 py-1 backdrop-blur-xl",
-              isLight
-                ? "border border-border/70 bg-background/80 shadow-sm"
-                : "border border-white/12 bg-black/45 shadow-lg shadow-black/20",
-            )}
-          >
-            <Link href="/services" className={desktopNavLinkClass(servicesRouteActive)}>
-              Services
-            </Link>
-            <Link href="/how-we-work" className={desktopNavLinkClass(howWeWorkRouteActive)}>
-              Work
-            </Link>
-            {companyNavItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={desktopNavLinkClass(pathname === item.href)}
-              >
-                {item.title}
-              </Link>
-            ))}
-          </nav>
-
+    <>
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+          scrolled && !mobileOpen
+            ? "border-b border-white/8 bg-black/70 backdrop-blur-lg"
+            : "bg-transparent",
+        )}
+      >
+        <div className="container mx-auto flex items-center justify-between px-5 py-4 md:py-5">
           <Link
-            href={brand.cta.href}
-            className={cn(
-              buttonVariants({ size: "sm" }),
-              "rounded-lg border-0 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.12em] shadow-none",
-              isLight
-                ? "bg-foreground text-background hover:bg-foreground/90"
-                : "bg-white text-zinc-950 hover:bg-white/92",
-            )}
+            href="/"
+            onClick={() => setMobileOpen(false)}
+            className="logo-shimmer relative z-60 text-xl font-black tracking-tight transition-opacity hover:opacity-90 md:text-2xl"
           >
-            {brand.cta.text}
+            {brand.name}
           </Link>
-        </div>
 
-        <div className="flex items-center gap-2 md:hidden">
-          <Link
-            href={brand.cta.href}
-            className={cn(
-              buttonVariants({ size: "sm" }),
-              "rounded-lg px-3 py-2 text-[10px] font-bold uppercase tracking-wide",
-              isLight
-                ? "bg-foreground text-background hover:bg-foreground/90"
-                : "bg-white text-zinc-950",
-            )}
-          >
-            {brand.cta.text}
-          </Link>
-          <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-            <SheetTrigger asChild>
-              <button
-                type="button"
-                className={cn(
-                  "rounded-lg border p-2.5 backdrop-blur-sm",
-                  isLight
-                    ? "border-border bg-background/90 text-foreground"
-                    : "border-white/15 bg-white/10 text-white",
-                )}
-                aria-label="Open menu"
-              >
-                <MenuIcon className="h-5 w-5" />
-              </button>
-            </SheetTrigger>
-            <SheetContent
-              side="right"
-              className={cn(
-                "w-[min(100vw-1rem,22rem)]",
-                isLight
-                  ? "border-l border-border bg-background text-foreground"
-                  : "border-l border-white/10 bg-zinc-950 text-white",
-              )}
+          {/* Desktop nav */}
+          <div className="hidden items-center gap-10 md:flex">
+            <nav className="flex items-center gap-7">
+              {navLinks.slice(0, 3).map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "text-[11px] font-bold uppercase tracking-[0.14em] transition-colors",
+                    isActive(link.href)
+                      ? "text-white"
+                      : "text-white/60 hover:text-white",
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+            <Link
+              href="/contact"
+              className="rounded-full border border-white/20 bg-white/8 px-5 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-white backdrop-blur-sm transition-all hover:border-white/35 hover:bg-white/16"
             >
-              <div className="mt-10 flex flex-col gap-8">
-                <div>
-                  <SheetClose asChild>
-                    <Link
-                      href="/services"
-                      className={cn(
-                        "mb-3 inline-block text-xs font-bold uppercase tracking-widest transition-colors",
-                        isLight
-                          ? "text-muted-foreground hover:text-foreground"
-                          : "text-white/45 hover:text-white/80",
-                      )}
-                    >
-                      Services
-                    </Link>
-                  </SheetClose>
-                  <div className="flex flex-col gap-1">
-                    {services.map((s) => (
-                      <SheetClose key={s.slug} asChild>
-                        <Link
-                          href={`/services/${s.slug}`}
-                          className={cn(
-                            "rounded-lg px-2 py-2 text-sm",
-                            isLight
-                              ? "text-foreground hover:bg-muted"
-                              : "text-white/85 hover:bg-white/8",
-                          )}
-                        >
-                          {s.title}
-                        </Link>
-                      </SheetClose>
-                    ))}
-                    <SheetClose asChild>
-                      <Link
-                        href="/services"
-                        className={cn(
-                          "rounded-lg px-2 py-2 text-sm text-accent",
-                          isLight ? "hover:bg-muted" : "hover:bg-white/8",
-                        )}
-                      >
-                        View all →
-                      </Link>
-                    </SheetClose>
-                  </div>
-                </div>
-                <div>
-                  <SheetClose asChild>
-                    <Link
-                      href="/how-we-work"
-                      className={cn(
-                        "inline-block rounded-lg px-2 py-2 text-sm transition-colors",
-                        isLight
-                          ? "text-foreground hover:bg-muted"
-                          : "text-white/85 hover:bg-white/8",
-                      )}
-                    >
-                      Work
-                    </Link>
-                  </SheetClose>
-                </div>
-                <div className="flex flex-col gap-1">
-                  {companyNavItems.map((item) => (
-                    <SheetClose key={item.href} asChild>
-                      <Link
-                        href={item.href}
-                        className={cn(
-                          "inline-block rounded-lg px-2 py-2 text-sm transition-colors",
-                          isLight
-                            ? "text-foreground hover:bg-muted"
-                            : "text-white/85 hover:bg-white/8",
-                        )}
-                      >
-                        {item.title}
-                      </Link>
-                    </SheetClose>
-                  ))}
-                </div>
-              </div>
-            </SheetContent>
-          </Sheet>
+              Work with us
+            </Link>
+          </div>
+
+          {/* Mobile toggle */}
+          <button
+            type="button"
+            onClick={() => setMobileOpen((v) => !v)}
+            className="relative z-60 flex items-center gap-2 rounded-full border border-white/20 bg-white/8 px-4 py-2 text-[10px] font-bold uppercase tracking-wide text-white backdrop-blur-sm md:hidden"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              {mobileOpen ? (
+                <motion.span
+                  key="x"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.16 }}
+                  className="flex"
+                >
+                  <Icons.close className="h-4 w-4" />
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.16 }}
+                  className="flex"
+                >
+                  <Icons.menu className="h-4 w-4" />
+                </motion.span>
+              )}
+            </AnimatePresence>
+            {mobileOpen ? "Close" : "Menu"}
+          </button>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {/* Full-screen mobile overlay — scales in from top-right corner */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            className="fixed inset-0 z-40 flex flex-col bg-zinc-950 text-white origin-top-right"
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.94 }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {/* Nav links — large text */}
+            <nav className="flex flex-1 flex-col items-start justify-center px-8 pt-24">
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + i * 0.055, duration: 0.28 }}
+                >
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={cn(
+                      "block py-3 text-4xl font-black tracking-tight transition-colors sm:text-5xl",
+                      isActive(link.href) ? "text-white" : "text-white/60 hover:text-white",
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+            </nav>
+
+            {/* Bottom contact */}
+            <motion.div
+              className="border-t border-white/10 px-8 py-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.32 }}
+            >
+              <Link
+                href="mailto:hello@mettleconsulting.com"
+                className="text-sm text-white/40 transition-colors hover:text-white/75"
+              >
+                hello@mettleconsulting.com
+              </Link>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

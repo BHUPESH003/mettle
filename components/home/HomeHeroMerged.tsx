@@ -1,57 +1,26 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { brand } from "@/lib/brand";
 import { Icons } from "@/lib/icons";
-import { HomeNavigation } from "@/components/home/HomeNavigation";
-
-/** Hero background playlist — files in `public/video/` */
-const HERO_VIDEOS = [
-  "/video/herosectionvideo1.mp4",
-  "/video/herosectionvideo2.mp4",
-] as const;
 
 export function HomeHeroMerged() {
   const ArrowIcon = Icons.arrowRight;
   const ChevronDown = Icons.chevronDown;
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoIndex, setVideoIndex] = useState(0);
-
-  useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
-    el.src = HERO_VIDEOS[videoIndex];
-    el.load();
-    void el.play().catch(() => {});
-  }, [videoIndex]);
 
   return (
     <section className="relative flex min-h-dvh flex-col overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          className="absolute inset-0 h-full w-full scale-[1.02] object-cover object-center"
-          muted
-          playsInline
-          preload="auto"
-          aria-hidden
-          onEnded={() => setVideoIndex((i) => (i + 1) % HERO_VIDEOS.length)}
-        />
-      </div>
+      {/* Dark overlay on top of the shared video background */}
       <div
         className="absolute inset-0 bg-linear-to-b from-black/72 via-black/48 to-black/82"
         aria-hidden
       />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_-10%,rgba(59,130,246,0.12),transparent_55%)]" />
       {/* Handoff into Problem section (#000510) */}
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 z-1 h-40 bg-linear-to-t from-[#000510] via-[#000510]/75 to-transparent md:h-48"
         aria-hidden
       />
-
-      <HomeNavigation />
 
       <div className="relative z-10 flex flex-1 flex-col justify-center px-4 pb-16 pt-28 md:px-6 md:pb-24 md:pt-32">
         <div className="container mx-auto max-w-4xl text-center">
@@ -87,13 +56,13 @@ export function HomeHeroMerged() {
           >
             <Link
               href="/contact"
-              className="inline-flex min-h-14 min-w-[200px] items-center justify-center rounded-lg border-0 bg-white px-8 text-sm font-bold uppercase tracking-widest text-zinc-950 shadow-lg shadow-black/25 transition-colors hover:bg-white/92 sm:min-h-16"
+              className="inline-flex min-h-14 min-w-50 items-center justify-center rounded-lg border-0 bg-white px-8 text-sm font-bold uppercase tracking-widest text-zinc-950 shadow-lg shadow-black/25 transition-colors hover:bg-white/92 sm:min-h-16"
             >
               Start a conversation
             </Link>
             <Link
               href="/how-we-work"
-              className="inline-flex min-h-14 min-w-[200px] items-center justify-center gap-2 rounded-lg border border-white/25 bg-white/6 px-8 text-sm font-bold uppercase tracking-wide text-white backdrop-blur-md transition-colors hover:border-white/40 hover:bg-white/10 sm:min-h-16"
+              className="inline-flex min-h-14 min-w-50 items-center justify-center gap-2 rounded-lg border border-white/25 bg-white/6 px-8 text-sm font-bold uppercase tracking-wide text-white backdrop-blur-md transition-colors hover:border-white/40 hover:bg-white/10 sm:min-h-16"
             >
               How we work
               <ArrowIcon className="h-4 w-4 shrink-0" />

@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { HomeNavigation } from "@/components/home/HomeNavigation";
 import { HeroPhotoShadeLayers } from "@/components/marketing/HeroPhotoShadeLayers";
 import { Icons } from "@/lib/icons";
 
@@ -29,9 +28,7 @@ export function ServicesHeroMerged() {
 
       <HeroPhotoShadeLayers variant="photo" />
 
-      <HomeNavigation variant="dark" />
-
-      <div className="relative z-40 flex flex-1 flex-col px-4 pb-10 pt-24 md:px-6 md:pb-12 md:pt-28">
+      <div className="relative z-20 flex flex-1 flex-col px-4 pb-10 pt-24 md:px-6 md:pb-12 md:pt-28">
         <div className="container mx-auto flex min-h-0 flex-1 flex-col">
           <div className="relative flex flex-1 flex-col justify-center py-8 md:py-12">
             <h1 className="text-balance text-5xl font-bold leading-[100%] tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">

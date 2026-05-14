@@ -1,196 +1,127 @@
-/**
- * Footer Component
- * Clean, professional footer with brand info, links, and contact details
- * Updated color scheme to match homepage aesthetic
- */
+"use client";
 
 import Link from "next/link";
 import { brand } from "@/lib/brand";
 import { Icons } from "@/lib/icons";
-import { cn } from "@/lib/utils";
 
-const socialLinks = [
-  {
-    name: "Twitter",
-    href: "#",
-    icon: Icons.twitter,
-  },
-  {
-    name: "LinkedIn",
-    href: "#",
-    icon: Icons.linkedin,
-  },
-  {
-    name: "GitHub",
-    href: "#",
-    icon: Icons.github,
-  },
+const navigateLinks = [
+  { label: "Services", href: "/services" },
+  { label: "How We Work", href: "/how-we-work" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
-const footerLinkGroups = [
-  {
-    title: "What we do",
-    links: [
-      { label: "Services", href: "/services" },
-      { label: "Work", href: "/work" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About", href: "/about" },
-      // { label: "Thinking", href: "/thinking" },
-      { label: "Contact", href: "/contact" },
-    ],
-  },
+const connectLinks = [
+  { label: "LinkedIn", href: "#" },
+  { label: "X", href: "#" },
+  { label: "GitHub", href: "#" },
 ] as const;
 
-const contactInfo = [
-  {
-    label: "Email",
-    value: "hello@mettleconsulting.com",
-    href: "mailto:hello@mettleconsulting.com",
-    icon: Icons.mail,
-  },
-  {
-    label: "Phone",
-    value: "(555) 123-4567",
-    href: "tel:+15551234567",
-    icon: Icons.phone,
-  },
-] as const;
+function BackToTop() {
+  return (
+    <button
+      type="button"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      className="group flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/6 text-white/50 transition-all hover:border-white/30 hover:bg-white/12 hover:text-white"
+      aria-label="Back to top"
+    >
+      <Icons.chevronUp className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
+    </button>
+  );
+}
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const ArrowIcon = Icons.arrowRight;
 
   return (
-    <footer className="border-t border-border bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid gap-12 lg:grid-cols-12">
-          {/* Brand Section - 5 columns */}
-          <div className="lg:col-span-5">
-            <h3 className="mb-3 text-2xl font-bold">
-              {brand.name}
-            </h3>
-            <p className="mb-6 max-w-md leading-relaxed text-primary-foreground/80">
-              {brand.longDescription}
+    <footer className="bg-[#060a12] text-white overflow-hidden">
+      {/* Upper section */}
+      <div className="container mx-auto px-6 pt-20 pb-0">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_auto] md:items-start">
+          {/* Left: tagline + CTAs */}
+          <div className="max-w-xl">
+            <p className="mb-10 text-2xl font-semibold leading-snug text-white/80 sm:text-3xl md:text-4xl">
+              {brand.tagline}
             </p>
-
-            {/* Newsletter Section */}
-            <div className="mb-6">
-              <label className="mb-2 block text-sm font-medium">
-                Subscribe to our newsletter
-              </label>
-              <form className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 rounded-lg border border-primary-foreground/20 bg-primary-light px-4 py-2.5 text-sm text-foreground placeholder-muted-foreground transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary"
-                />
-                <button
-                  type="submit"
-                  className="flex items-center justify-center rounded-lg bg-accent px-5 py-2.5 text-accent-foreground transition-all hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary"
-                  aria-label="Subscribe"
-                >
-                  <Icons.arrowRight className="h-4 w-4" />
-                </button>
-              </form>
+            <div className="flex items-center gap-3">
+              <Link
+                href="/contact"
+                className="rounded-full border border-white/15 bg-zinc-800/80 px-6 py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-colors hover:bg-zinc-700/80"
+              >
+                Work with us
+              </Link>
+              <Link
+                href="/contact"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-accent text-white transition-opacity hover:opacity-85"
+                aria-label="Get in touch"
+              >
+                <ArrowIcon className="h-4 w-4" />
+              </Link>
             </div>
+          </div>
 
-            {/* Social Links */}
+          {/* Right: nav columns + back-to-top */}
+          <div className="flex items-start gap-14 sm:gap-20">
             <div>
-              <div className="flex gap-3">
-                {socialLinks.map((social) => {
-                  const IconComponent = social.icon;
-                  return (
+              <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.22em] text-white/30">
+                Navigate
+              </p>
+              <ul className="space-y-3.5">
+                {navigateLinks.map((link) => (
+                  <li key={link.href}>
                     <Link
-                      key={social.name}
-                      href={social.href}
-                      className="rounded-lg p-2 text-primary-foreground/70 transition-all hover:bg-primary-light hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary"
-                      aria-label={social.name}
+                      href={link.href}
+                      className="text-sm text-white/60 transition-colors hover:text-white"
                     >
-                      <IconComponent className="h-5 w-5" />
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          {/* Footer Links - 4 columns */}
-          <div className="lg:col-span-4">
-            <div className="grid gap-8 sm:grid-cols-2">
-              {footerLinkGroups.map((group) => (
-                <div key={group.title}>
-                  <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider">
-                    {group.title}
-                  </h4>
-                  <ul className="space-y-2.5">
-                    {group.links.map((link) => (
-                      <li key={link.href}>
-                        <Link
-                          href={link.href}
-                          className="text-sm text-primary-foreground/80 transition-colors hover:text-accent"
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Contact Information - 3 columns */}
-          <div className="lg:col-span-3">
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider">
-              Get In Touch
-            </h4>
-            <ul className="space-y-3">
-              {contactInfo.map((contact) => {
-                const IconComponent = contact.icon;
-                return (
-                  <li key={contact.label}>
-                    <Link
-                      href={contact.href}
-                      className="flex items-center gap-3 text-sm text-primary-foreground/80 transition-colors hover:text-accent"
-                    >
-                      <IconComponent className="h-4 w-4 shrink-0" />
-                      <span>{contact.value}</span>
+                      {link.label}
                     </Link>
                   </li>
-                );
-              })}
-            </ul>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.22em] text-white/30">
+                Connect
+              </p>
+              <ul className="space-y-3.5">
+                {connectLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-white/60 transition-colors hover:text-white"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="pt-1">
+              <BackToTop />
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-primary-foreground/10 bg-primary-hover">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <p className="text-sm text-primary-foreground/70">
-              © {currentYear} {brand.name}. All rights reserved.
-            </p>
-            <div className="flex items-center gap-4 text-sm text-primary-foreground/70">
-              <Link
-                href="/privacy"
-                className="transition-colors hover:text-accent"
-              >
-                Privacy
-              </Link>
-              <span className="text-primary-foreground/30">•</span>
-              <Link
-                href="/terms"
-                className="transition-colors hover:text-accent"
-              >
-                Terms
-              </Link>
-            </div>
-          </div>
-        </div>
+      {/* Giant wordmark */}
+      <div className="mt-12 overflow-hidden px-4 leading-[0.8]">
+        <p
+          className="logo-shimmer select-none font-black tracking-[-0.04em]"
+          style={{ fontSize: "clamp(4.5rem, 18vw, 20rem)" }}
+          aria-hidden
+        >
+          {brand.name}
+        </p>
+      </div>
+
+      {/* Bottom bar */}
+      <div className="border-t border-white/8 px-6 py-5">
+        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/30">
+          © {currentYear} {brand.name.toUpperCase()}. ALL RIGHTS RESERVED.
+        </p>
       </div>
     </footer>
   );

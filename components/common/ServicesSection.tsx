@@ -1,117 +1,112 @@
+import Image from "next/image";
+import Link from "next/link";
 import { Icons } from "@/lib/icons";
+import { services } from "@/lib/services";
 
-interface Service {
-  icon: keyof typeof Icons;
-  number: string;
-  title: string;
-  description: string;
-  includes: string[];
-}
-
-const services: Service[] = [
+const cardStyles = [
   {
-    icon: "compass",
-    number: "01",
-    title: "System Design & Setup",
-    description:
-      "We understand your business and redesign how it should operate before building anything.",
-    includes: ["Workflow design", "Process mapping", "Business logic structuring"],
+    bg: "bg-[#c9dcc4]",
+    hoverBg: "hover:bg-[#bcd3b6]",
+    textClass: "text-zinc-900",
+    numClass: "text-zinc-900/30",
+    iconClass: "text-zinc-700",
+    dividerClass: "bg-zinc-900/15",
+    imgOverlay: "bg-white/10",
   },
   {
-    icon: "code",
-    number: "02",
-    title: "Custom Software & Tools",
-    description: "We build systems tailored to your exact business needs.",
-    includes: ["CRMs", "Admin panels", "Internal dashboards", "Custom tools"],
+    bg: "bg-[#192820]",
+    hoverBg: "hover:bg-[#1e3028]",
+    textClass: "text-white",
+    numClass: "text-white/25",
+    iconClass: "text-white/75",
+    dividerClass: "bg-white/15",
+    imgOverlay: "bg-black/30",
   },
   {
-    icon: "zap",
-    number: "03",
-    title: "Automation & AI",
-    description: "We automate repetitive tasks and communication.",
-    includes: [
-      "AI chatbots",
-      "Voice bots",
-      "Automated follow-ups",
-      "Data pipelines",
-    ],
+    bg: "bg-[#eaece8]",
+    hoverBg: "hover:bg-[#e0e3de]",
+    textClass: "text-zinc-900",
+    numClass: "text-zinc-900/25",
+    iconClass: "text-zinc-700",
+    dividerClass: "bg-zinc-900/12",
+    imgOverlay: "bg-white/10",
   },
-];
+] as const;
 
 export function ServicesSection() {
-  const CheckIcon = Icons.check;
-
   return (
     <section className="py-20 md:py-28">
       <div className="container mx-auto px-4">
-        {/* Section header */}
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-accent">
+        <div className="mx-auto mb-14 max-w-3xl text-center">
+          <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-accent">
             Our services
           </p>
-          <h2 className="mb-4 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
+          <h2 className="text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
             What we actually do
           </h2>
-          <div className="mx-auto mb-5 h-1 w-16 rounded-full bg-accent" />
-          <p className="text-xl font-medium text-muted-foreground sm:text-2xl">
-            Three ways we help you run a better business
-          </p>
         </div>
 
-        {/* Service cards */}
-        <div className="mx-auto max-w-6xl grid gap-6 md:grid-cols-3">
-          {services.map((service) => {
+        <div className="mx-auto max-w-6xl grid grid-cols-1 gap-3 md:grid-cols-3">
+          {services.map((service, i) => {
+            const style = cardStyles[i] ?? cardStyles[0];
             const Icon = Icons[service.icon];
             return (
-              <div
-                key={service.number}
-                className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-background p-7 transition-all duration-300 hover:border-accent/40 hover:shadow-2xl hover:shadow-accent/8 sm:p-8"
+              <Link
+                key={service.slug}
+                href={`/services#${service.slug}`}
+                className={`group relative flex flex-col overflow-hidden rounded-2xl p-8 transition-colors duration-300 md:min-h-120 ${style.bg} ${style.hoverBg}`}
               >
-                {/* Hover glow */}
-                <div className="absolute inset-0 rounded-2xl bg-linear-to-br from-accent/4 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
-
                 {/* Top row: icon + number */}
-                <div className="relative mb-5 flex items-start justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent/20 bg-accent/8 transition-colors duration-300 group-hover:border-accent/40 group-hover:bg-accent/15">
-                    <Icon className="h-6 w-6 text-accent" />
+                <div className="flex items-start justify-between">
+                  <div className={style.iconClass}>
+                    <Icon className="h-10 w-10" strokeWidth={1.25} />
                   </div>
-                  <span
-                    aria-hidden
-                    className="select-none text-5xl font-black leading-none text-border/30 transition-colors duration-300 group-hover:text-accent/15"
-                  >
-                    {service.number}
+                  <span className={`text-sm font-semibold tracking-wide ${style.numClass}`}>
+                    {service.number}.
                   </span>
                 </div>
 
-                <h3 className="relative mb-3 text-xl font-black leading-snug text-foreground transition-colors duration-300 group-hover:text-accent sm:text-2xl">
-                  {service.title}
-                </h3>
-                <div className="relative mb-4 h-0.5 w-8 rounded-full bg-accent/40 transition-all duration-300 group-hover:w-16 group-hover:bg-accent" />
-                <p className="relative mb-6 text-sm leading-relaxed text-muted-foreground">
-                  {service.description}
-                </p>
-
-                {/* Includes list */}
-                <div className="relative mt-auto">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-wider text-muted-foreground/60">
-                    Includes
-                  </p>
-                  <ul className="flex flex-col gap-2">
-                    {service.includes.map((item) => (
-                      <li key={item} className="flex items-start gap-2.5">
-                        <div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-accent/15">
-                          <CheckIcon className="h-2.5 w-2.5 text-accent" />
-                        </div>
-                        <span className="text-sm font-medium text-foreground">
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                {/* Center image */}
+                <div className="relative my-8 flex-1 min-h-32 overflow-hidden rounded-xl">
+                  <Image
+                    src={service.heroImage.src}
+                    alt={service.heroImage.alt}
+                    fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className={`absolute inset-0 ${style.imgOverlay}`} />
                 </div>
-              </div>
+
+                {/* Bottom content */}
+                <div>
+                  <div className={`mb-5 h-px w-10 ${style.dividerClass}`} />
+                  <h3 className={`mb-3 text-2xl font-bold leading-snug ${style.textClass}`}>
+                    {service.title}
+                  </h3>
+                  <p className={`text-sm leading-relaxed opacity-65 ${style.textClass}`}>
+                    {service.shortDescription}
+                  </p>
+                  <div
+                    className={`mt-6 flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.14em] opacity-45 transition-opacity group-hover:opacity-90 ${style.textClass}`}
+                  >
+                    <span>Learn more</span>
+                    <Icons.arrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </Link>
             );
           })}
+        </div>
+
+        <div className="mt-10 text-center">
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-accent transition-colors hover:text-accent/80"
+          >
+            View all services
+            <Icons.arrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     </section>
