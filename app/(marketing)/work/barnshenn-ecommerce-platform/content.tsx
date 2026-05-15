@@ -3,6 +3,7 @@ import { CaseStudyLayout } from "@/components/common/CaseStudyLayout";
 export default function BarnshennContent() {
   return (
     <CaseStudyLayout
+      slug="barnshenn-ecommerce-platform"
       breadcrumbLabel="Barnshenn"
       industry="E-commerce"
       tags={["Operations", "Platform"]}

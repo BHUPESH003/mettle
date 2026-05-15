@@ -3,6 +3,7 @@ import { CaseStudyLayout } from "@/components/common/CaseStudyLayout";
 export default function BichanceContent() {
   return (
     <CaseStudyLayout
+      slug="bichance-social-dining-platform"
       breadcrumbLabel="Bichance"
       industry="Consumer Platform"
       tags={["Strategy", "Validation"]}

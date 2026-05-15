@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { HowWeWorkHeroMerged } from "@/components/how-we-work/HowWeWorkHeroMerged";
-import { Icons } from "@/lib/icons";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { PageCTASection } from "@/components/common/PageCTASection";
 import {
   WorkflowStorySection,
   WorkflowStorySectionMobile,
@@ -39,9 +36,6 @@ const principles = [
 ];
 
 export default function HowWeWorkPage() {
-  const ArrowIcon = Icons.arrowRight;
-  const CheckIcon = Icons.check;
-
   return (
     <main>
       <HowWeWorkHeroMerged />
@@ -91,65 +85,14 @@ export default function HowWeWorkPage() {
         </div>
       </section>
 
-      {/* ── CTA ──────────────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-3xl text-center">
-            {/* Checklist */}
-            <div className="mb-10 inline-flex flex-col items-start gap-3 rounded-2xl border border-border bg-background-secondary px-8 py-6 text-left">
-              {[
-                "No proposals before we understand your problem",
-                "No pitch decks — just direct conversation",
-                "Clarity on fit before any commitment",
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-3">
-                  <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent">
-                    <CheckIcon className="h-3 w-3 text-white" />
-                  </div>
-                  <span className="text-sm font-medium text-foreground">
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
+      <PageCTASection
+        headline="Ready to work"
+        headlineAccent="differently?"
+        description="If you're navigating complexity and want clarity before action, let's explore how we can help. We don't sell services — we start conversations about real problems."
+        primary={{ href: "/contact", label: "Start a conversation" }}
+        secondary={{ href: "/work", label: "See our work" }}
+      />
 
-            <h2 className="mb-4 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
-              Ready to work differently?
-            </h2>
-            <div className="mx-auto mb-6 h-1 w-12 rounded-full bg-accent" />
-            <p className="mb-3 text-lg leading-relaxed text-foreground sm:text-xl">
-              If you&apos;re navigating complexity and want clarity before action,
-              let&apos;s explore how we can help.
-            </p>
-            <p className="mb-10 text-base leading-relaxed text-muted-foreground">
-              We don&apos;t sell services — we start conversations about real
-              problems.
-            </p>
-
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/contact"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "group inline-flex items-center gap-2 px-10 py-6 text-base font-semibold shadow-lg shadow-accent/25"
-                )}
-              >
-                Start a conversation
-                <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="/work"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" }),
-                  "px-10 py-6 text-base font-semibold"
-                )}
-              >
-                See our work
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

@@ -4,8 +4,9 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { AboutHeroMerged } from "@/components/about/AboutHeroMerged";
+import { TeamSection } from "@/components/about/TeamSection";
+import { PageCTASection } from "@/components/common/PageCTASection";
 import { Icons } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 
@@ -13,23 +14,6 @@ export const metadata: Metadata = {
   title: "About",
   description: "How Mettle thinks about work, systems, and growth.",
 };
-
-const team = [
-  {
-    name: "Bhupesh Yadav",
-    role: "Co-founder & CEO",
-    bio: "Bhupesh brings deep engineering experience across distributed systems, AI, and operational design. He founded Mettle to bridge the gap between strategic intent and working systems.",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    name: "Engineering Team",
-    role: "Builders & Systems Thinkers",
-    bio: "Our team is made up of engineers who have shipped real products under real constraints — across SaaS platforms, automation pipelines, and enterprise integrations.",
-    image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80",
-  },
-] as const;
 
 const beliefs = [
   {
@@ -78,7 +62,7 @@ const distinctives = [
 
 export default function AboutPage() {
   return (
-    <main className="bg-[#0a0d12] text-white">
+    <main className="bg-surface-dark text-white">
       <AboutHeroMerged />
 
       {/* ── Company intro ───────────────────────────────────────── */}
@@ -164,56 +148,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Meet the team ───────────────────────────────────────── */}
-      <section className="border-b border-white/8 px-6 py-20 md:py-28">
-        <div className="container mx-auto">
-          <p className="mb-14 text-[11px] font-bold uppercase tracking-[0.24em] text-white/35">
-            Meet the team
-          </p>
-
-          <div className="divide-y divide-white/8 border-y border-white/8">
-            {team.map((member) => (
-              <div
-                key={member.name}
-                className="group grid gap-8 py-12 md:grid-cols-[260px_1fr_auto] md:items-center"
-              >
-                {/* Photo — grayscale by default, color on hover */}
-                <div className="relative h-52 w-full overflow-hidden rounded-xl grayscale transition-[filter] duration-500 group-hover:grayscale-0 md:h-44">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover object-center"
-                    sizes="(min-width: 768px) 260px, 100vw"
-                  />
-                </div>
-
-                {/* Info */}
-                <div>
-                  <h3 className="mb-1.5 text-2xl font-black tracking-tight">
-                    {member.name}
-                  </h3>
-                  <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white/35">
-                    {member.role}
-                  </p>
-                  <p className="max-w-lg text-sm leading-relaxed text-white/55">
-                    {member.bio}
-                  </p>
-                </div>
-
-                {/* CTA */}
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-bold uppercase tracking-[0.14em] text-white/35 transition-colors hover:text-white"
-                >
-                  Get in touch
-                  <Icons.arrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TeamSection />
 
       {/* ── Why founders work with us ───────────────────────────── */}
       <section className="border-b border-white/8 px-6 py-20 md:py-28">
@@ -248,39 +183,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── CTA ──────────────────────────────────────────────────── */}
-      <section className="px-6 py-24 md:py-32">
-        <div className="container mx-auto">
-          <div className="grid gap-10 md:grid-cols-2 md:items-end">
-            <h2 className="text-5xl font-black leading-tight tracking-tight sm:text-6xl md:text-7xl">
-              Work
-              <br />
-              with us.
-            </h2>
-            <div className="pb-2">
-              <p className="mb-8 text-lg leading-relaxed text-white/55">
-                We don&apos;t start with proposals or pitches. We start with
-                understanding your situation — then figure out together if and
-                how we can help.
-              </p>
-              <div className="flex flex-wrap items-center gap-4">
-                <Link
-                  href="/contact"
-                  className="rounded-full bg-white px-8 py-3.5 text-sm font-bold uppercase tracking-[0.12em] text-zinc-950 transition-colors hover:bg-white/90"
-                >
-                  Start a conversation
-                </Link>
-                <Link
-                  href="/how-we-work"
-                  className="rounded-full border border-white/20 px-8 py-3.5 text-sm font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-white/6"
-                >
-                  How we work
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageCTASection
+        headline="Work"
+        headlineAccent="with us."
+        description="We don't start with proposals or pitches. We start with understanding your situation — then figure out together if and how we can help."
+        primary={{ href: "/contact", label: "Start a conversation" }}
+        secondary={{ href: "/how-we-work", label: "How we work" }}
+      />
     </main>
   );
 }

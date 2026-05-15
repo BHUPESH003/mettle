@@ -3,7 +3,8 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import { SlideOverPanel } from "@/components/ui/SlideOverPanel";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -16,45 +17,24 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 function ProjectPanel({
   project,
+  open,
   onClose,
 }: {
   project: CaseStudy;
+  open: boolean;
   onClose: () => void;
 }) {
   const featured = project.featured;
 
   return (
-    <>
-      <motion.div
-        className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={onClose}
-      />
-      <motion.aside
-        className="fixed inset-y-0 right-0 z-50 flex w-full max-w-lg flex-col bg-zinc-900 text-white shadow-2xl"
-        initial={{ x: "100%" }}
-        animate={{ x: 0 }}
-        exit={{ x: "100%" }}
-        transition={{ type: "spring", damping: 28, stiffness: 220 }}
-      >
-        {/* Header */}
-        <div className="flex items-center justify-between border-b border-white/10 px-7 py-5">
-          <span className="text-xs font-bold uppercase tracking-[0.18em] text-white/45">
-            {project.industry}
-          </span>
-          <button
-            type="button"
-            onClick={onClose}
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/6 text-white/60 transition-colors hover:bg-white/12 hover:text-white"
-            aria-label="Close"
-          >
-            <Icons.close className="h-4 w-4" />
-          </button>
-        </div>
+    <SlideOverPanel open={open} onClose={onClose} size="lg">
+      <div className="border-b border-white/10 px-7 pb-5 pt-16">
+        <span className="text-xs font-bold uppercase tracking-[0.18em] text-white/45">
+          {project.industry}
+        </span>
+      </div>
 
-        {/* Thumbnail */}
+      {/* Thumbnail */}
         <div className="relative h-52 shrink-0 overflow-hidden">
           <Image
             src={project.thumbnail}
@@ -63,7 +43,7 @@ function ProjectPanel({
             className="object-cover"
             sizes="512px"
           />
-          <div className="absolute inset-0 bg-linear-to-t from-zinc-900 via-zinc-900/30 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-surface-dark via-surface-dark/30 to-transparent" />
           <div className="absolute bottom-5 left-7">
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/45">
               {project.number}
@@ -126,14 +106,13 @@ function ProjectPanel({
         <div className="border-t border-white/10 px-7 py-5">
           <Link
             href={`/work/${project.slug}`}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold uppercase tracking-[0.12em] text-zinc-950 transition-colors hover:bg-white/90"
+            className="mettle-btn flex w-full bg-white px-6 py-3.5 text-sm text-zinc-950 hover:bg-white/90"
           >
             View full case study
             <Icons.arrowRight className="h-4 w-4" />
           </Link>
         </div>
-      </motion.aside>
-    </>
+    </SlideOverPanel>
   );
 }
 
@@ -193,7 +172,7 @@ export function WorkProjectList() {
   return (
     <section
       id="case-studies"
-      className="relative overflow-hidden bg-[#171717] py-20 text-white md:py-28"
+      className="relative overflow-hidden bg-surface-muted py-20 text-white md:py-28"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(255,255,255,0.08),transparent_18%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.06),transparent_22%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.35)_1px,transparent_1px)] bg-size-[96px_96px] opacity-30" />
@@ -284,12 +263,13 @@ export function WorkProjectList() {
         </div>
       </div>
 
-      {/* Side modal */}
-      <AnimatePresence>
-        {openProject && (
-          <ProjectPanel project={openProject} onClose={() => setOpenProject(null)} />
-        )}
-      </AnimatePresence>
+      {openProject ? (
+        <ProjectPanel
+          project={openProject}
+          open
+          onClose={() => setOpenProject(null)}
+        />
+      ) : null}
     </section>
   );
 }

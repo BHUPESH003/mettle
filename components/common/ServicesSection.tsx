@@ -2,36 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "@/lib/icons";
 import { services } from "@/lib/services";
-
-const cardStyles = [
-  {
-    bg: "bg-[#c9dcc4]",
-    hoverBg: "hover:bg-[#bcd3b6]",
-    textClass: "text-zinc-900",
-    numClass: "text-zinc-900/30",
-    iconClass: "text-zinc-700",
-    dividerClass: "bg-zinc-900/15",
-    imgOverlay: "bg-white/10",
-  },
-  {
-    bg: "bg-[#192820]",
-    hoverBg: "hover:bg-[#1e3028]",
-    textClass: "text-white",
-    numClass: "text-white/25",
-    iconClass: "text-white/75",
-    dividerClass: "bg-white/15",
-    imgOverlay: "bg-black/30",
-  },
-  {
-    bg: "bg-[#eaece8]",
-    hoverBg: "hover:bg-[#e0e3de]",
-    textClass: "text-zinc-900",
-    numClass: "text-zinc-900/25",
-    iconClass: "text-zinc-700",
-    dividerClass: "bg-zinc-900/12",
-    imgOverlay: "bg-white/10",
-  },
-] as const;
+import { serviceCardThemes } from "@/lib/service-card-styles";
 
 export function ServicesSection() {
   return (
@@ -46,28 +17,26 @@ export function ServicesSection() {
           </h2>
         </div>
 
-        <div className="mx-auto max-w-6xl grid grid-cols-1 gap-3 md:grid-cols-3">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-3 md:grid-cols-3">
           {services.map((service, i) => {
-            const style = cardStyles[i] ?? cardStyles[0];
+            const style = serviceCardThemes[i] ?? serviceCardThemes[0];
             const Icon = Icons[service.icon];
             return (
               <Link
                 key={service.slug}
                 href={`/services#${service.slug}`}
-                className={`group relative flex flex-col overflow-hidden rounded-2xl p-8 transition-colors duration-300 md:min-h-120 ${style.bg} ${style.hoverBg}`}
+                className={`group relative flex flex-col overflow-hidden rounded-panel p-8 transition-colors duration-300 md:min-h-120 ${style.cardBg} ${style.cardHover}`}
               >
-                {/* Top row: icon + number */}
                 <div className="flex items-start justify-between">
-                  <div className={style.iconClass}>
+                  <div className={style.icon}>
                     <Icon className="h-10 w-10" strokeWidth={1.25} />
                   </div>
-                  <span className={`text-sm font-semibold tracking-wide ${style.numClass}`}>
+                  <span className={`text-sm font-semibold tracking-wide ${style.num}`}>
                     {service.number}.
                   </span>
                 </div>
 
-                {/* Center image */}
-                <div className="relative my-8 flex-1 min-h-32 overflow-hidden rounded-xl">
+                <div className="relative my-8 min-h-32 flex-1 overflow-hidden rounded-panel">
                   <Image
                     src={service.heroImage.src}
                     alt={service.heroImage.alt}
@@ -78,17 +47,16 @@ export function ServicesSection() {
                   <div className={`absolute inset-0 ${style.imgOverlay}`} />
                 </div>
 
-                {/* Bottom content */}
                 <div>
-                  <div className={`mb-5 h-px w-10 ${style.dividerClass}`} />
-                  <h3 className={`mb-3 text-2xl font-bold leading-snug ${style.textClass}`}>
+                  <div className={`mb-5 h-px w-10 ${style.divider}`} />
+                  <h3 className={`mb-3 text-2xl font-bold leading-snug ${style.text}`}>
                     {service.title}
                   </h3>
-                  <p className={`text-sm leading-relaxed opacity-65 ${style.textClass}`}>
+                  <p className={`text-sm leading-relaxed opacity-65 ${style.text}`}>
                     {service.shortDescription}
                   </p>
                   <div
-                    className={`mt-6 flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.14em] opacity-45 transition-opacity group-hover:opacity-90 ${style.textClass}`}
+                    className={`mt-6 flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.14em] opacity-45 transition-opacity group-hover:opacity-90 ${style.text}`}
                   >
                     <span>Learn more</span>
                     <Icons.arrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />

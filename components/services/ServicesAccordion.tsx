@@ -6,58 +6,8 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Icons } from "@/lib/icons";
 import { services } from "@/lib/services";
+import { serviceCardThemes } from "@/lib/service-card-styles";
 import { cn } from "@/lib/utils";
-
-const cardStyles = [
-  {
-    cardBg: "bg-[#c9dcc4]",
-    cardHover: "hover:bg-[#bcd3b6]",
-    cardActive: "ring-2 ring-zinc-800/30 scale-[1.02]",
-    text: "text-zinc-900",
-    muted: "text-zinc-700/60",
-    num: "text-zinc-900/25",
-    icon: "text-zinc-700",
-    divider: "bg-zinc-900/12",
-    panelBg: "bg-[#f0f5ee]",
-    tagBg: "bg-zinc-900/8 border-zinc-900/12 text-zinc-800",
-    challengeDot: "bg-zinc-700",
-    outcomeCard: "bg-white/60 border-zinc-900/8",
-    processStep: "bg-white/70 border-zinc-900/8 text-zinc-800",
-    processNum: "text-zinc-700/40",
-  },
-  {
-    cardBg: "bg-[#192820]",
-    cardHover: "hover:bg-[#1e3028]",
-    cardActive: "ring-2 ring-white/20 scale-[1.02]",
-    text: "text-white",
-    muted: "text-white/50",
-    num: "text-white/20",
-    icon: "text-white/70",
-    divider: "bg-white/12",
-    panelBg: "bg-[#101a14]",
-    tagBg: "bg-white/8 border-white/12 text-white/80",
-    challengeDot: "bg-accent",
-    outcomeCard: "bg-white/5 border-white/8",
-    processStep: "bg-white/6 border-white/10 text-white/80",
-    processNum: "text-white/25",
-  },
-  {
-    cardBg: "bg-[#eaece8]",
-    cardHover: "hover:bg-[#e0e3de]",
-    cardActive: "ring-2 ring-zinc-800/20 scale-[1.02]",
-    text: "text-zinc-900",
-    muted: "text-zinc-600/60",
-    num: "text-zinc-900/20",
-    icon: "text-zinc-600",
-    divider: "bg-zinc-900/10",
-    panelBg: "bg-[#f5f6f3]",
-    tagBg: "bg-zinc-900/6 border-zinc-900/10 text-zinc-700",
-    challengeDot: "bg-zinc-600",
-    outcomeCard: "bg-white/80 border-zinc-900/8",
-    processStep: "bg-white/80 border-zinc-900/8 text-zinc-700",
-    processNum: "text-zinc-600/35",
-  },
-] as const;
 
 export function ServicesAccordion() {
   const [active, setActive] = useState<string>(services[0]?.slug ?? "");
@@ -65,7 +15,7 @@ export function ServicesAccordion() {
 
   const activeIndex = services.findIndex((s) => s.slug === active);
   const activeService = services[activeIndex];
-  const style = cardStyles[activeIndex] ?? cardStyles[0];
+  const style = serviceCardThemes[activeIndex] ?? serviceCardThemes[0];
 
   const handleSelect = (slug: string) => {
     setActive(slug);
@@ -82,7 +32,7 @@ export function ServicesAccordion() {
       {/* ── Selector cards ─────────────────────────────────────────── */}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         {services.map((service, i) => {
-          const s = cardStyles[i] ?? cardStyles[0];
+          const s = serviceCardThemes[i] ?? serviceCardThemes[0];
           const Icon = Icons[service.icon];
           const isActive = service.slug === active;
           return (
@@ -92,7 +42,7 @@ export function ServicesAccordion() {
               onClick={() => handleSelect(service.slug)}
               id={service.slug}
               className={cn(
-                "group relative flex flex-col overflow-hidden rounded-2xl p-6 text-left transition-all duration-300",
+                "group relative flex flex-col overflow-hidden rounded-panel p-6 text-left transition-all duration-300",
                 s.cardBg,
                 !isActive && s.cardHover,
                 isActive && s.cardActive,
@@ -145,7 +95,7 @@ export function ServicesAccordion() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-            className={cn("mt-3 overflow-hidden rounded-2xl", style.panelBg)}
+            className={cn("mt-3 overflow-hidden rounded-panel", style.panelBg)}
           >
             <div className="grid gap-0 lg:grid-cols-[1fr_400px]">
               {/* Left: content */}
@@ -273,10 +223,8 @@ export function ServicesAccordion() {
                   <Link
                     href="/contact"
                     className={cn(
-                      "rounded-full px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] transition-opacity hover:opacity-80",
-                      activeIndex === 1
-                        ? "bg-white text-zinc-950"
-                        : "bg-zinc-900 text-white",
+                      "mettle-btn rounded-pill px-6 py-3 text-xs transition-opacity hover:opacity-90",
+                      style.ctaPrimary,
                     )}
                   >
                     Discuss this service
@@ -305,7 +253,7 @@ export function ServicesAccordion() {
                   <div
                     className={cn(
                       "absolute inset-0",
-                      activeIndex === 1 ? "bg-black/25" : "bg-black/10",
+                      style.imageOverlay,
                     )}
                   />
                 </div>

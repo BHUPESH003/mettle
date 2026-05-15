@@ -33,6 +33,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
 
   return (
     <CaseStudyLayout
+      slug={project.slug}
       breadcrumbLabel={project.title}
       industry={project.industry}
       title={project.title}

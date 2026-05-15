@@ -1,5 +1,8 @@
 import Link from "next/link";
+import { CaseStudyGallery, CaseStudyHeroImage } from "@/components/common/CaseStudyGallery";
+import { PageCTASection } from "@/components/common/PageCTASection";
 import { Icons } from "@/lib/icons";
+import { getCaseStudyMedia, type CaseStudyMedia } from "@/lib/case-study-images";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -23,6 +26,9 @@ export interface CaseStudyData {
   tech?: string[];
   ctaHeadline: string;
   ctaBody: string;
+  /** Loads images from lib/case-study-images when provided */
+  slug?: string;
+  media?: CaseStudyMedia;
 }
 
 export function CaseStudyLayout({
@@ -45,7 +51,10 @@ export function CaseStudyLayout({
   tech,
   ctaHeadline,
   ctaBody,
+  slug,
+  media: mediaProp,
 }: CaseStudyData) {
+  const media = mediaProp ?? (slug ? getCaseStudyMedia(slug) : undefined);
   const ArrowIcon = Icons.arrowRight;
   const CheckIcon = Icons.check;
   const ChevronRight = Icons.chevronRight;
@@ -102,6 +111,7 @@ export function CaseStudyLayout({
             <p className="max-w-2xl text-lg leading-relaxed text-white/60 sm:text-xl">
               {description}
             </p>
+            {media?.hero ? <CaseStudyHeroImage image={media.hero} /> : null}
           </div>
         </div>
       </section>
@@ -234,7 +244,7 @@ export function CaseStudyLayout({
 
             {/* Architecture callout */}
             {architecture && (
-              <div className="rounded-2xl border-l-4 border-accent bg-background pl-6 pr-6 py-6 sm:py-8">
+              <div className="rounded-panel border-l-4 border-accent bg-background py-6 pl-6 pr-6 sm:py-8">
                 <p className="mb-2 text-xs font-bold uppercase tracking-wider text-accent/70">
                   Architecture overview
                 </p>
@@ -243,6 +253,8 @@ export function CaseStudyLayout({
                 </p>
               </div>
             )}
+
+            <CaseStudyGallery showcase={media?.showcase} />
           </div>
         </div>
       </section>
@@ -325,41 +337,13 @@ export function CaseStudyLayout({
         </section>
       )}
 
-      {/* ── CTA ───────────────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-4 text-4xl font-black tracking-tight sm:text-5xl">
-              {ctaHeadline}
-            </h2>
-            <div className="mx-auto mb-6 h-1 w-12 rounded-full bg-accent" />
-            <p className="mb-10 text-lg leading-relaxed text-muted-foreground">
-              {ctaBody}
-            </p>
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/contact"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "group inline-flex items-center gap-2 px-10 py-6 text-base font-semibold shadow-lg shadow-accent/25"
-                )}
-              >
-                Start a conversation
-                <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="/work"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" }),
-                  "px-10 py-6 text-base font-semibold"
-                )}
-              >
-                See all work
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageCTASection
+        headline={ctaHeadline}
+        description={ctaBody}
+        primary={{ href: "/contact", label: "Start a conversation" }}
+        secondary={{ href: "/work", label: "See all work" }}
+      />
+
     </main>
   );
 }

@@ -2,10 +2,7 @@
 
 import { useRef, useState } from "react";
 import type { WorkflowStepData } from "@/lib/workflow-config";
-import {
-  useWorkflowScroll,
-  WORKFLOW_SCROLL_STEP_PX,
-} from "@/hooks/useWorkflowScroll";
+import { useWorkflowScroll } from "@/hooks/useWorkflowScroll";
 import { useSignalAnimation } from "@/hooks/useSignalAnimation";
 import { BackgroundGrid } from "./BackgroundGrid";
 import { FloatingSignal } from "./FloatingSignal";
@@ -18,6 +15,8 @@ interface WorkflowStorySectionProps {
   className?: string;
 }
 
+const MOBILE_STACK_ROTATIONS = ["rotate-1", "-rotate-1", "rotate-[0.5deg]", "-rotate-1"];
+
 export function WorkflowStorySection({
   steps,
   className = "",
@@ -27,7 +26,7 @@ export function WorkflowStorySection({
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
 
-  useWorkflowScroll({
+  const { scrollToStep } = useWorkflowScroll({
     sectionRef,
     trackRef,
     stepsCount: steps.length,
@@ -42,19 +41,10 @@ export function WorkflowStorySection({
       : (signal.connectorIndex + signal.connectorProgress) *
         (100 / (steps.length - 1));
 
-  const scrollToStep = (index: number) => {
-    if (!sectionRef.current || steps.length <= 1) return;
-    const sectionTop = sectionRef.current.offsetTop;
-    const progressForStep = index / (steps.length - 1);
-    const targetY =
-      sectionTop + progressForStep * (steps.length * WORKFLOW_SCROLL_STEP_PX);
-    window.scrollTo({ top: targetY, behavior: "smooth" });
-  };
-
   return (
     <section
       ref={sectionRef}
-      className={`relative hidden h-screen overflow-hidden bg-[#070C14] text-white md:block ${className}`}
+      className={`relative hidden h-screen flex-col overflow-hidden bg-surface-dark text-white md:flex ${className}`}
     >
       <BackgroundGrid />
       <ProgressRail
@@ -63,9 +53,9 @@ export function WorkflowStorySection({
         progress={progress}
         onStepClick={scrollToStep}
       />
-      <div className="absolute inset-0 pt-20">
+      <div className="relative flex min-h-0 flex-1 items-center overflow-hidden pb-2 pt-1">
         <FloatingSignal xPercent={signalX} />
-        <div ref={trackRef} className="h-full will-change-transform">
+        <div ref={trackRef} className="h-full w-full will-change-transform">
           <WorkflowTrack steps={steps} activeIndex={activeIndex} />
         </div>
       </div>
@@ -79,21 +69,27 @@ export function WorkflowStorySectionMobile({
 }: WorkflowStorySectionProps) {
   return (
     <section
-      className={`relative bg-[#070C14] py-10 text-white md:hidden ${className}`}
+      className={`relative bg-surface-dark text-white md:hidden ${className}`}
     >
       <BackgroundGrid />
-      <div className="relative mx-auto flex max-w-xl flex-col gap-6 px-4">
+      <div className="relative">
         {steps.map((step, index) => (
-          <div key={step.id} className="relative">
-            <WorkflowStep
-              step={step}
-              isActive={index === 0}
-              fullViewport={false}
-            />
-            {index < steps.length - 1 ? (
-              <div className="mx-auto mt-4 h-8 w-px bg-white/15" />
-            ) : null}
-          </div>
+          <figure
+            key={step.id}
+            className="sticky top-0 grid h-dvh place-content-center px-4 py-16"
+            style={{ zIndex: index + 1 }}
+          >
+            <div
+              className={`w-full max-w-xl transition-transform duration-500 ${MOBILE_STACK_ROTATIONS[index % MOBILE_STACK_ROTATIONS.length]}`}
+            >
+              <WorkflowStep
+                step={step}
+                isActive
+                fullViewport={false}
+                domId={`${step.id}-mobile`}
+              />
+            </div>
+          </figure>
         ))}
       </div>
     </section>

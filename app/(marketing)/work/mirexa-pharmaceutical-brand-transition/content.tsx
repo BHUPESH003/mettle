@@ -3,6 +3,7 @@ import { CaseStudyLayout } from "@/components/common/CaseStudyLayout";
 export default function MirexaContent() {
   return (
     <CaseStudyLayout
+      slug="mirexa-pharmaceutical-brand-transition"
       breadcrumbLabel="Mirexa"
       industry="Pharmaceutical"
       tags={["Brand", "Digital"]}

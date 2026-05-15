@@ -7,6 +7,7 @@ import { Icons } from "@/lib/icons";
 const navigateLinks = [
   { label: "Services", href: "/services" },
   { label: "How We Work", href: "/how-we-work" },
+  { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ] as const;
@@ -35,7 +36,7 @@ export function Footer() {
   const ArrowIcon = Icons.arrowRight;
 
   return (
-    <footer className="bg-[#060a12] text-white overflow-hidden">
+    <footer className="overflow-hidden bg-surface-dark text-white">
       {/* Upper section */}
       <div className="container mx-auto px-6 pt-20 pb-0">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_auto] md:items-start">

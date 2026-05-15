@@ -3,6 +3,7 @@ import { CaseStudyLayout } from "@/components/common/CaseStudyLayout";
 export default function K2RenewalsContent() {
   return (
     <CaseStudyLayout
+      slug="k2renewals-crm"
       breadcrumbLabel="K2Renewals"
       industry="Operations"
       tags={["CRM", "Tracking"]}

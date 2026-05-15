@@ -29,8 +29,7 @@ export const caseStudies: CaseStudy[] = [
     industry: "Consumer Platform",
     icon: "users",
     tags: ["Strategy", "Validation"],
-    thumbnail:
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80",
+    thumbnail: "/images/bichance/image_sm.png",
     context:
       "Bichance in Singapore had a social dining concept but lacked clarity on feasibility, scope, and adoption risks before committing to any technical investment.",
     outcome: null,
@@ -42,8 +41,7 @@ export const caseStudies: CaseStudy[] = [
     industry: "E-commerce",
     icon: "package",
     tags: ["Operations", "Platform"],
-    thumbnail:
-      "https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=900&q=80",
+    thumbnail: "/images/barnshenn/image_sm.png",
     context:
       "A UK toy brand faced operational complexity and performance issues across WordPress and Magento, with fragmented admin workflows slowing the team daily.",
     outcome: null,
@@ -62,8 +60,7 @@ export const caseStudies: CaseStudy[] = [
     industry: "Pharmaceutical",
     icon: "briefcase",
     tags: ["Brand", "Digital"],
-    thumbnail:
-      "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=900&q=80",
+    thumbnail: "/images/mirexa/image_sm.png",
     context:
       "Mirexa Pharmaceutical, formerly Keshav Pharmaceuticals, needed alignment between business intent and digital representation within a regulated industry.",
     outcome: null,
@@ -75,8 +72,7 @@ export const caseStudies: CaseStudy[] = [
     industry: "Pharmacy",
     icon: "shield",
     tags: ["Healthcare", "Trust"],
-    thumbnail:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80",
+    thumbnail: "/images/themedcare/image_sm.png",
     context:
       "Themedcare.ca was transitioning from a physical pharmacy to a credible digital presence in Canada, where compliance and accessibility signals are expected.",
     outcome:
@@ -89,8 +85,7 @@ export const caseStudies: CaseStudy[] = [
     industry: "IT",
     icon: "zap",
     tags: ["SaaS", "Automation"],
-    thumbnail:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
+    thumbnail: "/images/mycleanone/image_sm.png",
     context:
       "Users struggled to understand the difference between free and Pro tiers, and the licensing system needed to handle high volume without manual intervention.",
     outcome:
@@ -110,8 +105,7 @@ export const caseStudies: CaseStudy[] = [
     industry: "Renewable sector",
     icon: "workflow",
     tags: ["CRM", "Tracking"],
-    thumbnail:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80",
+    thumbnail: "/images/k2renewals/image_sm.png",
     context:
       "K2Renewals depended on manual logs and Excel for raw material tracking, creating inconsistent data and near-zero visibility across logistics and reporting.",
     outcome:

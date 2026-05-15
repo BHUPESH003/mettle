@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Icons } from "@/lib/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { PageCTASection } from "@/components/common/PageCTASection";
 import { getServiceBySlug, services } from "@/lib/services";
 
 interface PageProps {
@@ -219,40 +220,14 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-3xl rounded-3xl border border-border bg-background-secondary p-8 text-center md:p-12">
-            <h2 className="mb-4 text-3xl font-black tracking-tight sm:text-5xl">
-              Want to explore this service?
-            </h2>
-            <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
-              We will start by understanding your workflow, then recommend the
-              right scope only if this is the right fit.
-            </p>
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/contact"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "group inline-flex items-center gap-2 px-10 py-6 text-base font-semibold shadow-lg shadow-accent/25"
-                )}
-              >
-                Book a call
-                <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="/services"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" }),
-                  "px-10 py-6 text-base font-semibold"
-                )}
-              >
-                Back to services
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageCTASection
+        headline="Want to explore"
+        headlineAccent="this service?"
+        description="We will start by understanding your workflow, then recommend the right scope only if this is the right fit."
+        primary={{ href: "/contact", label: "Book a call" }}
+        secondary={{ href: "/services", label: "All services" }}
+      />
+
     </main>
   );
 }

@@ -3,6 +3,7 @@ import { CaseStudyLayout } from "@/components/common/CaseStudyLayout";
 export default function MyCleanOneContent() {
   return (
     <CaseStudyLayout
+      slug="mycleanone-pro-license-generator"
       breadcrumbLabel="MyCleanOne"
       industry="B2C SaaS"
       tags={["SaaS", "Automation"]}

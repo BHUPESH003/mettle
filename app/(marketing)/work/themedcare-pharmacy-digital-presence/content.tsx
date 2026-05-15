@@ -3,6 +3,7 @@ import { CaseStudyLayout } from "@/components/common/CaseStudyLayout";
 export default function ThemedcareContent() {
   return (
     <CaseStudyLayout
+      slug="themedcare-pharmacy-digital-presence"
       breadcrumbLabel="themedcare.ca"
       industry="Healthcare"
       tags={["Healthcare", "Trust"]}

@@ -15,35 +15,58 @@ export function ContactScrollReveal({ children }: { children: React.ReactNode })
   useGSAP(
     () => {
       const root = containerRef.current;
-      if (!root || prefersReducedMotion) return () => {};
+      if (!root) return () => {};
 
-      const tweens: gsap.core.Tween[] = [];
-      const sections = root.querySelectorAll<HTMLElement>("[data-contact-section]");
+      if (prefersReducedMotion) {
+        root.querySelectorAll<HTMLElement>("[data-contact-reveal]").forEach((el) => {
+          el.style.opacity = "1";
+          el.style.transform = "none";
+        });
+        return () => {};
+      }
 
-      sections.forEach((section) => {
+      const triggers: ScrollTrigger[] = [];
+
+      root.querySelectorAll<HTMLElement>("[data-contact-section]").forEach((section) => {
         const items = section.querySelectorAll<HTMLElement>("[data-contact-reveal]");
         if (!items.length) return;
 
-        const tween = gsap.from(items, {
-          y: 22,
-          opacity: 0,
-          duration: 0.72,
-          stagger: 0.08,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            toggleActions: "play none none none",
-          },
+        const reveal = () => {
+          gsap.to(items, {
+            opacity: 1,
+            y: 0,
+            duration: 0.72,
+            stagger: 0.08,
+            ease: "power3.out",
+            overwrite: "auto",
+          });
+        };
+
+        gsap.set(items, { opacity: 0, y: 22 });
+
+        const st = ScrollTrigger.create({
+          trigger: section,
+          start: "top 88%",
+          once: true,
+          onEnter: reveal,
         });
-        tweens.push(tween);
+        triggers.push(st);
+
+        if (st.isActive) reveal();
+      });
+
+      ScrollTrigger.refresh();
+
+      root.querySelectorAll<HTMLElement>("[data-contact-section]").forEach((section) => {
+        const items = section.querySelectorAll<HTMLElement>("[data-contact-reveal]");
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+          gsap.set(items, { opacity: 1, y: 0 });
+        }
       });
 
       return () => {
-        tweens.forEach((tw) => {
-          tw.scrollTrigger?.kill();
-          tw.kill();
-        });
+        triggers.forEach((st) => st.kill());
       };
     },
     { scope: containerRef, dependencies: [prefersReducedMotion] },

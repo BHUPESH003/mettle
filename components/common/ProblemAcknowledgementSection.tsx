@@ -127,14 +127,13 @@ export function ProblemAcknowledgementSection() {
           </div>
         </section>
 
-        {problemCards.map((problem, index) => {
+        {/* {problemCards.map((problem, index) => {
           const Icon = Icons[problem.icon];
           return (
             <section
               key={problem.number}
               className="grid h-screen place-content-center sticky top-0 overflow-hidden px-6"
             >
-              {/* Dark video overlay — replaces the old light gray */}
               <div className="absolute inset-0 bg-black/75" />
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-size-[54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
               <div className={cn("relative mx-auto w-full max-w-4xl rounded-3xl border border-white/10 bg-white/8 p-8 text-white shadow-2xl backdrop-blur-md md:p-10")}>
@@ -184,7 +183,7 @@ export function ProblemAcknowledgementSection() {
               </div>
             </section>
           );
-        })}
+        })} */}
       </div>
 
       <footer className="bg-black/80 pb-8 pt-6">
