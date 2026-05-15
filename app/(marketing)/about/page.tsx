@@ -68,26 +68,26 @@ export default function AboutPage() {
       {/* ── Company intro ───────────────────────────────────────── */}
       <section
         id="about-content"
-        className="scroll-mt-8 border-b border-white/8 px-6 py-20 md:py-28"
+        className="scroll-mt-8 border-b border-border bg-background px-6 py-20 text-foreground md:py-28"
       >
         <div className="container mx-auto">
           <div className="grid gap-16 md:grid-cols-[1fr_1.4fr] md:items-start">
             <div>
-              <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em] text-white/35">
+              <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em] text-muted-foreground">
                 Who we are
               </p>
-              <h2 className="text-4xl font-black leading-tight tracking-tight sm:text-5xl">
+              <h2 className="text-4xl font-black leading-tight tracking-tight text-foreground sm:text-5xl">
                 An AI-first execution firm built by engineers.
               </h2>
             </div>
             <div className="space-y-5 pt-2 md:pt-8">
-              <p className="text-lg leading-relaxed text-white/65">
+              <p className="text-lg leading-relaxed text-muted-foreground">
                 Mettle is a systems-focused consulting firm that optimizes and
                 automates how businesses operate. We redesign your processes,
                 build custom software, and deploy automation so your team runs
                 faster with less friction.
               </p>
-              <p className="text-lg leading-relaxed text-white/65">
+              <p className="text-lg leading-relaxed text-muted-foreground">
                 We don&apos;t start with a service to sell. We start with your
                 situation, diagnose what&apos;s actually broken, and bring the
                 right capability to fix it — then build and ship it.
@@ -95,7 +95,7 @@ export default function AboutPage() {
               <div className="pt-2">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 text-sm font-bold text-white transition-colors hover:text-accent"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-foreground transition-colors hover:text-accent"
                 >
                   Start a conversation
                   <Icons.arrowRight className="h-4 w-4" />
@@ -131,16 +131,16 @@ export default function AboutPage() {
       </section>
 
       {/* ── Manifesto quote ─────────────────────────────────────── */}
-      <section className="border-b border-white/8 px-6 py-24 md:py-36">
+      <section className="relative isolate w-full border-y border-border bg-white px-6 py-24 text-foreground md:py-36">
         <div className="container mx-auto max-w-5xl">
-          <blockquote className="text-4xl font-black leading-tight tracking-tight sm:text-5xl md:text-6xl">
+          <blockquote className="text-4xl font-black leading-tight tracking-tight text-foreground sm:text-5xl md:text-6xl">
             &ldquo;Execution is the strategy.
             <br />
-            <span className="text-white/35">
+            <span className="text-muted-foreground">
               We don&apos;t advise. We build.&rdquo;
             </span>
           </blockquote>
-          <p className="mt-8 max-w-xl text-base leading-relaxed text-white/40">
+          <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground">
             Every engagement starts with a real problem and ends with a system
             that runs in production. The gap between those two points is where
             we work.
@@ -151,9 +151,9 @@ export default function AboutPage() {
       <TeamSection />
 
       {/* ── Why founders work with us ───────────────────────────── */}
-      <section className="border-b border-white/8 px-6 py-20 md:py-28">
+      <section className="relative isolate w-full border-y border-border bg-white px-6 py-20 text-foreground md:py-28">
         <div className="container mx-auto">
-          <p className="mb-16 text-[11px] font-bold uppercase tracking-[0.24em] text-white/35">
+          <p className="mb-16 text-[11px] font-bold uppercase tracking-[0.24em] text-muted-foreground">
             Why founders work with us
           </p>
 
@@ -164,17 +164,17 @@ export default function AboutPage() {
                 className={cn(
                   "rounded-2xl border p-8",
                   i === 1
-                    ? "border-white/10 bg-white/6"
-                    : "border-white/6 bg-white/3",
+                    ? "border-border bg-background-secondary"
+                    : "border-border bg-background",
                 )}
               >
-                <span className="mb-6 block text-[11px] font-bold uppercase tracking-[0.2em] text-white/25">
+                <span className="mb-6 block text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground/70">
                   0{i + 1}
                 </span>
-                <h3 className="mb-4 text-xl font-black tracking-tight">
+                <h3 className="mb-4 text-xl font-black tracking-tight text-foreground">
                   {item.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-white/55">
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   {item.description}
                 </p>
               </div>

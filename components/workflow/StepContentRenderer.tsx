@@ -1,3 +1,4 @@
+import { Icons } from "@/lib/icons";
 import type { WorkflowStepData } from "@/lib/workflow-config";
 import { cn } from "@/lib/utils";
 
@@ -14,24 +15,29 @@ export function StepContentRenderer({
 }: StepContentRendererProps) {
   if (step.renderNode) return <>{step.renderNode(isActive)}</>;
 
+  const Check = Icons.check;
+
   return (
-    <div
-      className={cn(
-        "grid gap-2",
-        compact ? "grid-cols-1 sm:grid-cols-2" : "gap-3 sm:grid-cols-2",
-      )}
-    >
-      {step.metrics.slice(0, 2).map((metric) => (
-        <div
+    <ul className={cn("space-y-2.5", compact ? "mt-2" : "mt-3")}>
+      {step.metrics.slice(0, 3).map((metric) => (
+        <li
           key={metric}
           className={cn(
-            "rounded-panel border border-white/10 bg-white/5 text-white/75",
-            compact ? "px-2 py-1 text-[10px]" : "px-3 py-2 text-xs",
+            "flex items-start gap-3 text-foreground/70",
+            compact ? "text-sm md:text-base" : "text-base md:text-lg",
           )}
         >
-          {metric}
-        </div>
+          <span
+            className={cn(
+              "mt-0.5 flex shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent",
+              compact ? "h-5 w-5" : "h-6 w-6",
+            )}
+          >
+            <Check className={compact ? "h-3 w-3" : "h-3.5 w-3.5"} strokeWidth={2.5} />
+          </span>
+          <span className="leading-snug font-medium">{metric}</span>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }

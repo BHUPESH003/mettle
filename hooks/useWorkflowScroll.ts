@@ -5,14 +5,16 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface WorkflowScrollParams {
-  sectionRef: RefObject<HTMLElement | null>;
+  sectionRef: RefObject<HTMLElement | HTMLDivElement | null>;
   trackRef: RefObject<HTMLDivElement | null>;
   stepsCount: number;
   onStepChange: (index: number) => void;
   onProgressChange: (progress: number) => void;
 }
 
-export const WORKFLOW_SCROLL_STEP_PX = 700;
+export const WORKFLOW_SCROLL_STEP_PX = 520;
+/** Matches fixed header (h-20) so pinned content clears the nav */
+export const WORKFLOW_HEADER_OFFSET_PX = 80;
 const WORKFLOW_SCROLL_TRIGGER_ID = "workflow-story";
 
 function getHorizontalShift(track: HTMLElement) {
@@ -45,7 +47,7 @@ export function useWorkflowScroll({
         scrollTrigger: {
           id: WORKFLOW_SCROLL_TRIGGER_ID,
           trigger: sectionRef.current,
-          start: "top top",
+          start: `top top+=${WORKFLOW_HEADER_OFFSET_PX}`,
           end: () =>
             `+=${Math.max(
               window.innerHeight,
@@ -55,6 +57,13 @@ export function useWorkflowScroll({
           pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
+          onRefresh: () => {
+            const el = sectionRef.current;
+            const spacer = el?.parentElement;
+            if (spacer?.classList.contains("pin-spacer")) {
+              spacer.classList.add("workflow-pin-spacer");
+            }
+          },
           onUpdate: (self) => {
             const progress = self.progress;
             onProgressChange(progress);
@@ -69,6 +78,16 @@ export function useWorkflowScroll({
 
       scrollTriggerRef.current =
         timeline.scrollTrigger as ScrollTrigger | null;
+
+      const tagPinSpacer = () => {
+        const el = sectionRef.current;
+        const spacer = el?.parentElement;
+        if (spacer?.classList.contains("pin-spacer")) {
+          spacer.classList.add("workflow-pin-spacer");
+        }
+      };
+      tagPinSpacer();
+      requestAnimationFrame(tagPinSpacer);
 
       return () => timeline.kill();
     }, sectionRef);

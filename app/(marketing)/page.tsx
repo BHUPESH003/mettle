@@ -21,7 +21,7 @@ export default function HomePage() {
       </HomeVideoBackground>
       <ClientsSection />
       <ServicesSection />
-      <div id="how-we-work-content" className="scroll-mt-8">
+      <div id="how-we-work-content" className="scroll-mt-8 bg-white">
         <WorkflowStorySection steps={workflowSteps} />
         <WorkflowStorySectionMobile steps={workflowSteps} />
       </div>
