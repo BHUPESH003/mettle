@@ -33,7 +33,7 @@ export function WorkflowStep({
         className={cn(
           "relative w-full transition-[opacity,transform] duration-500",
           compact ? "max-w-5xl" : "max-w-6xl",
-          isActive ? "opacity-100" : "opacity-40",
+          isActive ? "opacity-100" : "opacity-30",
         )}
       >
         <div
@@ -45,10 +45,11 @@ export function WorkflowStep({
           )}
         >
           <div className="relative min-w-0">
+            {/* Large watermark number */}
             <span
               aria-hidden
               className={cn(
-                "pointer-events-none absolute -left-1 top-1/2 -translate-y-1/2 select-none font-departure font-black leading-none tracking-tighter text-foreground/[0.04]",
+                "pointer-events-none absolute -left-1 top-1/2 -translate-y-1/2 select-none font-departure font-black leading-none tracking-tighter text-white/5",
                 compact ? "text-[7rem]" : "text-[9rem] md:text-[11rem]",
               )}
             >
@@ -59,7 +60,7 @@ export function WorkflowStep({
               <div className="mb-4 flex items-center gap-3">
                 <div
                   className={cn(
-                    "flex items-center justify-center rounded-xl border border-accent/25 bg-accent/10",
+                    "flex items-center justify-center rounded-xl border border-accent/30 bg-accent/12",
                     compact ? "h-10 w-10" : "h-12 w-12",
                   )}
                 >
@@ -67,12 +68,14 @@ export function WorkflowStep({
                     className={cn("text-accent", compact ? "h-4 w-4" : "h-5 w-5")}
                   />
                 </div>
-                <p className="mettle-label text-foreground/55">Phase {step.number}</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-white/40">
+                  Phase {step.number}
+                </p>
               </div>
 
               <h3
                 className={cn(
-                  "font-black tracking-tight text-foreground",
+                  "font-black tracking-tight text-white",
                   compact
                     ? "mb-1.5 text-2xl md:text-3xl"
                     : "mb-3 text-4xl md:text-5xl lg:text-6xl",
@@ -90,10 +93,10 @@ export function WorkflowStep({
               </p>
               <p
                 className={cn(
-                  "max-w-xl leading-relaxed text-foreground/75",
+                  "max-w-xl leading-relaxed text-white/60",
                   compact
-                    ? "mb-4 text-base leading-relaxed md:text-lg"
-                    : "mb-6 text-lg leading-relaxed md:text-xl",
+                    ? "mb-4 text-base md:text-lg"
+                    : "mb-6 text-lg md:text-xl",
                 )}
               >
                 {step.description}

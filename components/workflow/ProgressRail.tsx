@@ -19,13 +19,18 @@ export function ProgressRail({
   const fillHeight = `calc((100% - 1.5rem) * ${Math.max(0.06, progress)})`;
 
   return (
-    <aside className="relative z-30 hidden h-full w-64 shrink-0 flex-col border-r border-border bg-background-secondary md:flex xl:w-72">
+    <aside className="relative z-30 hidden h-full w-64 shrink-0 flex-col border-r border-white/8 bg-[#0b1120] md:flex xl:w-72">
+      {/* Top accent line */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-accent/30 to-transparent" aria-hidden />
+
       <div className="flex flex-1 flex-col justify-center px-5 py-8">
-        <p className="mettle-label mb-5 px-1 text-foreground/50">How we work</p>
+        <p className="mb-6 px-1 text-[10px] font-bold uppercase tracking-[0.28em] text-white/30">
+          How we work
+        </p>
 
         <div className="relative px-1">
           <div
-            className="pointer-events-none absolute left-[13px] w-px bg-border"
+            className="pointer-events-none absolute left-[13px] w-px bg-white/10"
             style={{ top: TRACK_INSET, bottom: TRACK_INSET }}
             aria-hidden
           />
@@ -51,18 +56,18 @@ export function ProgressRail({
                     onClick={() => onStepClick?.(index)}
                     className={cn(
                       "group flex w-full items-start gap-3 rounded-xl px-2 py-3 text-left transition-colors",
-                      state === "active" && "bg-accent/8",
+                      state === "active" && "bg-accent/10",
                     )}
                   >
                     <span
                       className={cn(
                         "relative z-10 mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-[10px] font-bold font-departure transition-all",
                         state === "active" &&
-                          "border-accent bg-accent text-accent-foreground shadow-[0_0_16px_hsl(var(--accent)/0.35)]",
+                          "border-accent bg-accent text-white shadow-[0_0_18px_hsl(var(--accent)/0.45)]",
                         state === "done" &&
-                          "border-accent/50 bg-accent-light text-accent",
+                          "border-accent/40 bg-accent/15 text-accent",
                         state === "idle" &&
-                          "border-border bg-background text-muted-foreground group-hover:border-foreground/25",
+                          "border-white/15 bg-white/5 text-white/40 group-hover:border-white/30",
                       )}
                     >
                       {step.number}
@@ -72,16 +77,16 @@ export function ProgressRail({
                         className={cn(
                           "block text-[15px] font-bold leading-tight transition-colors",
                           state === "active"
-                            ? "text-foreground"
+                            ? "text-white"
                             : state === "done"
-                              ? "text-foreground/80"
-                              : "text-foreground/55 group-hover:text-foreground/75",
+                              ? "text-white/65"
+                              : "text-white/40 group-hover:text-white/60",
                         )}
                       >
                         {step.title}
                       </span>
                       {state === "active" ? (
-                        <span className="mt-0.5 block text-xs leading-snug text-foreground/60">
+                        <span className="mt-0.5 block text-xs leading-snug text-white/50">
                           {step.subtitle}
                         </span>
                       ) : null}
@@ -94,7 +99,7 @@ export function ProgressRail({
         </div>
       </div>
 
-      <p className="shrink-0 px-6 pb-6 text-xs leading-relaxed text-foreground/45">
+      <p className="shrink-0 px-6 pb-6 text-xs leading-relaxed text-white/25">
         Scroll to move through each phase
       </p>
     </aside>
