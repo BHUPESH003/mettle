@@ -1,15 +1,12 @@
 import { HomeHeroMerged } from "@/components/home/HomeHeroMerged";
 import { HomeVideoBackground } from "@/components/home/HomeVideoBackground";
 import { ClientsSection } from "@/components/common/ClientsSection";
-import { ProblemAcknowledgementSection } from "@/components/common/ProblemAcknowledgementSection";
+import { ProblemCardsSection } from "@/components/common/ProblemCardsSection";
 import { ServicesSection } from "@/components/common/ServicesSection";
 import { PageCTASection } from "@/components/common/PageCTASection";
 import { ProductsSection } from "@/components/common/ProductsSection";
 import { WorkProjectList } from "@/components/work/WorkProjectList";
-import {
-  WorkflowStorySection,
-  WorkflowStorySectionMobile,
-} from "@/components/workflow/WorkflowStorySection";
+import { WorkflowStorySection } from "@/components/workflow/WorkflowStorySection";
 import { workflowSteps } from "@/lib/workflow-config";
 
 export default function HomePage() {
@@ -17,13 +14,12 @@ export default function HomePage() {
     <main>
       <HomeVideoBackground>
         <HomeHeroMerged />
-        <ProblemAcknowledgementSection />
       </HomeVideoBackground>
-      <ClientsSection />
+      <ProblemCardsSection />
       <ServicesSection />
+      <ClientsSection />
       <div id="how-we-work-content" className="scroll-mt-8">
         <WorkflowStorySection steps={workflowSteps} />
-        <WorkflowStorySectionMobile steps={workflowSteps} />
       </div>
       <WorkProjectList />
       <ProductsSection />

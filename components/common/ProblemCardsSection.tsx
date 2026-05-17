@@ -1,5 +1,4 @@
 import { Icons } from "@/lib/icons";
-import { cn } from "@/lib/utils";
 
 interface ProblemCard {
   icon: keyof typeof Icons;
@@ -91,38 +90,30 @@ const problemCards: ProblemCard[] = [
   },
 ];
 
-export function ProblemAcknowledgementSection() {
+export function ProblemCardsSection() {
   return (
-    <section className="text-white">
+    <section className="text-foreground">
       <div className="relative">
-        {/* Intro sticky panel — dark overlay so video shows through */}
+
+        {/* Intro sticky panel — full height, off-white bg */}
         <section className="sticky top-0 grid min-h-dvh w-full place-content-center overflow-hidden px-6 py-24 md:px-10 md:py-32">
-          {/* Dark base overlay */}
+          {/* Off-white base */}
+          <div className="pointer-events-none absolute inset-0 bg-[#f2f4f8]" aria-hidden />
+          {/* Top-centred radial blue wash */}
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-8%,rgba(59,130,246,0.12),transparent_58%)]" aria-hidden />
+          {/* Bottom vignette — fades toward next section */}
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_100%_60%_at_50%_110%,rgba(226,230,238,0.9)_0%,transparent_55%)]" aria-hidden />
+          {/* Subtle blue grid */}
           <div
-            className="pointer-events-none absolute inset-0 bg-black/60"
-            aria-hidden
-          />
-          {/* Top-centered radial blue wash */}
-          <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-8%,rgba(59,130,246,0.22),transparent_58%)]"
-            aria-hidden
-          />
-          {/* Bottom vignette */}
-          <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_100%_80%_at_50%_100%,#000510_0%,transparent_55%)]"
-            aria-hidden
-          />
-          {/* Muted blue grid */}
-          <div
-            className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(90,113,168,0.14)_1px,transparent_1px),linear-gradient(to_bottom,rgba(90,113,168,0.14)_1px,transparent_1px)] bg-size-[54px_54px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_50%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_50%,transparent_100%)]"
+            className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(59,130,246,0.07)_1px,transparent_1px),linear-gradient(to_bottom,rgba(59,130,246,0.07)_1px,transparent_1px)] bg-size-[54px_54px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_50%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_50%,transparent_100%)]"
             aria-hidden
           />
 
           <div className="relative z-10 mx-auto max-w-4xl text-center">
-            <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#5a6fa3] md:text-xs">
+            <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-accent md:text-xs">
               The Reality
             </p>
-            <h2 className="text-balance text-4xl font-black leading-[1.12] tracking-tight text-white md:text-5xl lg:text-6xl">
+            <h2 className="text-balance text-4xl font-black leading-[1.12] tracking-tight text-foreground md:text-5xl lg:text-6xl">
               Complexity is inevitable.
               <br />
               Confusion is optional.
@@ -130,41 +121,46 @@ export function ProblemAcknowledgementSection() {
           </div>
         </section>
 
+        {/* 6 sticky problem cards */}
         {problemCards.map((problem, index) => {
           const Icon = Icons[problem.icon];
           return (
             <section
               key={problem.number}
-              className="grid h-screen place-content-center sticky top-0 overflow-hidden px-6"
+              className="sticky top-0 grid h-screen place-content-center overflow-hidden px-6"
             >
-              <div className="absolute inset-0 bg-black/75" />
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-size-[54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+              {/* Off-white base */}
+              <div className="absolute inset-0 bg-[#f2f4f8]" aria-hidden />
+              {/* Grid lines */}
               <div
-                className={cn(
-                  "relative mx-auto w-full max-w-4xl rounded-3xl border border-white/10 bg-white/8 p-8 text-white shadow-2xl backdrop-blur-md md:p-10",
-                )}
-              >
+                className="absolute inset-0 bg-[linear-gradient(to_right,rgba(59,130,246,0.07)_1px,transparent_1px),linear-gradient(to_bottom,rgba(59,130,246,0.07)_1px,transparent_1px)] bg-size-[54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
+                aria-hidden
+              />
+
+              {/* Card */}
+              <div className="relative mx-auto w-full max-w-4xl rounded-3xl border border-border bg-white/80 p-8 shadow-[0_8px_48px_-12px_rgba(0,0,0,0.1)] backdrop-blur-sm md:p-10">
                 <div className="mb-6 flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent/30 bg-accent/10">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent/20 bg-accent-light">
                     <Icon className="h-6 w-6 text-accent" />
                   </div>
-                  <span className="text-5xl font-black text-white/15">
+                  <span className="select-none text-5xl font-black text-foreground/8">
                     {problem.number}
                   </span>
                 </div>
-                <h3 className="mb-4 text-3xl font-black tracking-tight md:text-5xl">
+
+                <h3 className="mb-4 text-3xl font-black tracking-tight text-foreground md:text-5xl">
                   {problem.title}
                 </h3>
-                <p className="max-w-3xl text-base leading-relaxed text-white/65 md:text-lg">
+                <p className="max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
                   {problem.description}
                 </p>
 
                 <div className="mt-6 grid gap-4 md:grid-cols-2">
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/40">
+                  <div className="rounded-2xl border border-border bg-background-secondary p-4">
+                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground/70">
                       Signals You See
                     </p>
-                    <ul className="space-y-2 text-sm leading-relaxed text-white/65">
+                    <ul className="space-y-2 text-sm leading-relaxed text-muted-foreground">
                       {problem.signals.map((signal) => (
                         <li key={signal} className="flex gap-2">
                           <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
@@ -174,11 +170,11 @@ export function ProblemAcknowledgementSection() {
                     </ul>
                   </div>
 
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/40">
+                  <div className="rounded-2xl border border-border bg-background-secondary p-4">
+                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground/70">
                       Business Impact
                     </p>
-                    <p className="text-sm leading-relaxed text-white/65">
+                    <p className="text-sm leading-relaxed text-muted-foreground">
                       {problem.impact}
                     </p>
                   </div>
@@ -192,7 +188,6 @@ export function ProblemAcknowledgementSection() {
           );
         })}
       </div>
-
     </section>
   );
 }

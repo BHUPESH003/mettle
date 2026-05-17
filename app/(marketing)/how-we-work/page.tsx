@@ -40,7 +40,7 @@ export default function HowWeWorkPage() {
     <main>
       <HowWeWorkHeroMerged />
 
-      <div id="how-we-work-content" className="scroll-mt-8">
+      <div id="how-we-work-content" className="scroll-mt-8 bg-white">
         <WorkflowStorySection steps={workflowSteps} />
         <WorkflowStorySectionMobile steps={workflowSteps} />
       </div>
@@ -48,18 +48,14 @@ export default function HowWeWorkPage() {
       <WorkProjectList />
 
       {/* ── Principles ───────────────────────────────────────────────── */}
-      <section
-        className="bg-primary relative overflow-hidden py-20 md:py-24"
-      >
-        <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-accent/30 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-accent/30 to-transparent" />
+      <section className="relative isolate w-full overflow-hidden border-y border-border bg-white py-20 text-foreground md:py-24">
 
         <div className="container mx-auto px-4">
           <div className="mx-auto mb-12 max-w-2xl text-center">
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-accent">
               Core principles
             </p>
-            <h2 className="text-3xl font-black tracking-tight text-white sm:text-4xl">
+            <h2 className="text-3xl font-black tracking-tight text-foreground sm:text-4xl">
               What guides every engagement
             </h2>
           </div>
@@ -68,15 +64,15 @@ export default function HowWeWorkPage() {
             {principles.map((p) => (
               <div
                 key={p.number}
-                className="group rounded-2xl border border-white/8 bg-white/4 p-7 transition-all duration-300 hover:border-accent/30 hover:bg-white/7"
+                className="group rounded-2xl border border-border bg-background p-7 transition-all duration-300 hover:border-accent/40 hover:bg-accent-light"
               >
-                <div className="mb-4 text-3xl font-black leading-none text-accent/40 transition-colors group-hover:text-accent/70">
+                <div className="mb-4 text-3xl font-black leading-none text-accent/50 transition-colors group-hover:text-accent">
                   {p.number}
                 </div>
-                <h3 className="mb-3 text-lg font-bold text-white leading-snug">
+                <h3 className="mb-3 text-lg font-bold leading-snug text-foreground">
                   {p.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-white/50">
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   {p.description}
                 </p>
               </div>

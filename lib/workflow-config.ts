@@ -33,7 +33,7 @@ export const workflowSteps: WorkflowStepData[] = [
       "We map fragmented workflows, hidden dependencies, and ownership gaps before any recommendation is made.",
     theme: "chaos",
     icon: "search",
-    accentColor: "#FF6B6B",
+    accentColor: "hsl(var(--accent))",
     metrics: [
       "Disconnected tools mapped",
       "Critical bottlenecks isolated",
@@ -50,7 +50,7 @@ export const workflowSteps: WorkflowStepData[] = [
       "We restructure process flow, define system boundaries, and align data contracts so teams can operate with confidence.",
     theme: "redesign",
     icon: "layers",
-    accentColor: "#60A5FA",
+    accentColor: "hsl(var(--accent))",
     metrics: [
       "Workflow blueprint created",
       "System contracts standardized",
@@ -67,7 +67,7 @@ export const workflowSteps: WorkflowStepData[] = [
       "We implement production-grade systems, connect APIs, and automate repetitive operations across the stack.",
     theme: "build",
     icon: "code",
-    accentColor: "#A78BFA",
+    accentColor: "hsl(var(--accent))",
     metrics: [
       "Core modules deployed",
       "Integrations activated",
@@ -84,7 +84,7 @@ export const workflowSteps: WorkflowStepData[] = [
       "We monitor performance, tune automation loops, and continuously refine the system as the business scales.",
     theme: "optimize",
     icon: "trendingUp",
-    accentColor: "#34D399",
+    accentColor: "hsl(var(--success))",
     metrics: [
       "Live performance telemetry",
       "Automated feedback loops",
